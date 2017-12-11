@@ -42,9 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HPpot.cs" />
-    <Compile Include="Items.cs" />
-    <Compile Include="lootChest.cs" />
+    <Compile Include="Chest.cs" />
     <Compile Include="Weapons.cs" />
     <Compile Include="Monsters.cs" />
     <Compile Include="Program.cs" />

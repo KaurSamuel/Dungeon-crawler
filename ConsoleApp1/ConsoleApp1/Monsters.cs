@@ -26,84 +26,411 @@ namespace ConsoleApp1
         // BB - Tier2 boss
         // CC - Tier3 boss
         // D - FINAL BOSS!!!!
+        // G - test
+
+        //Tier1 enemyd algavad
         public enemyvalues A001()
         {
-            enemyvalues green_slime = new enemyvalues();
-            green_slime.mobName = "Green Slime";
-            green_slime.mobHP = "15";
-            green_slime.mobMaxDMG = "15";
-            green_slime.mobMinDMG = "5";
-            green_slime.mobEXP = "30";
+            enemyvalues green_slime = new enemyvalues
+            {
+                mobName = "Green Slime",
+                mobHP = "15",
+                mobMaxDMG = "15",
+                mobMinDMG = "5",
+                mobEXP = "30"
+            };
             return (green_slime);
         }
 
         public enemyvalues A002()
         {
-            enemyvalues blue_slime  = new enemyvalues();
-            blue_slime.mobName = "Blue Slime";
-            blue_slime.mobHP = "20";
-            blue_slime.mobMaxDMG = "20";
-            blue_slime.mobMinDMG = "5";
-            blue_slime.mobEXP = "35";
+            enemyvalues blue_slime = new enemyvalues
+            {
+                mobName = "Blue Slime",
+                mobHP = "20",
+                mobMaxDMG = "20",
+                mobMinDMG = "5",
+                mobEXP = "35"
+            };
             return (blue_slime);
         }
 
-
+        public enemyvalues A003()
+        {
+            enemyvalues rat = new enemyvalues
+            {
+                mobName = "Rat",
+                mobHP = "25",
+                mobMaxDMG = "25",
+                mobMinDMG = "7",
+                mobEXP = "40"
+            };
+            return (rat);
+        }
+        public enemyvalues A004()
+        {
+            enemyvalues chicken = new enemyvalues
+            {
+                mobName = "Chicken",
+                mobHP = "20",
+                mobMaxDMG = "15",
+                mobMinDMG = "7",
+                mobEXP = "26"
+            };
+            return (chicken);
+        }
+        public enemyvalues A005()
+        {
+            enemyvalues snake = new enemyvalues
+            {
+                mobName = "Snake",
+                mobHP = "40",
+                mobMaxDMG = "30",
+                mobMinDMG = "10",
+                mobEXP = "35"
+            };
+            return (snake);
+        }
+        public enemyvalues A006()
+        {
+            enemyvalues imp = new enemyvalues
+            {
+                mobName = "Imp",
+                mobHP = "35",
+                mobMaxDMG = "26",
+                mobMinDMG = "8",
+                mobEXP = "32"
+            };
+            return (imp);
+        }
 
         public enemyvalues AA01()
         {
-            enemyvalues king_slime = new enemyvalues();
-            king_slime.mobName = "King Slime";
-            king_slime.mobHP = "150";
-            king_slime.mobMaxDMG = "40";
-            king_slime.mobMinDMG = "10";
-            king_slime.mobEXP = "200";
+            enemyvalues king_slime = new enemyvalues
+            {
+                mobName = "King Slime",
+                mobHP = "150",
+                mobMaxDMG = "40",
+                mobMinDMG = "10",
+                mobEXP = "200"
+            };
             return (king_slime);
         }
+        public enemyvalues AA02()
+        {
+            enemyvalues giant_rat = new enemyvalues
+            {
+                mobName = "Giant Rat",
+                mobHP = "200",
+                mobMaxDMG = "32",
+                mobMinDMG = "18",
+                mobEXP = "200"
+            };
+            return (giant_rat);
+        }
+        public enemyvalues AA03()
+        {
+            enemyvalues rogue = new enemyvalues
+            {
+                mobName = "Rogue",
+                mobHP = "350",
+                mobMaxDMG = "42",
+                mobMinDMG = "4",
+                mobEXP = "200"
+            };
+            return (rogue);
+        }
+        //Tier1 enemyd lõppevad
 
+        //Tier2 enemyd algavad
+        public enemyvalues B001()
+        {
+            enemyvalues zombie = new enemyvalues()
+            {
+                mobName = "Zombie",
+                mobHP = "235",
+                mobMaxDMG = "30",
+                mobMinDMG = "15",
+                mobEXP = "105"
+            };
+            return (zombie);
+        }
+        public enemyvalues B002()
+        {
+            enemyvalues poison_spider = new enemyvalues()
+            {
+                mobName = "Poison Spider",
+                mobHP = "285",
+                mobMaxDMG = "34",
+                mobMinDMG = "14",
+                mobEXP = "121"
+            };
+            return (poison_spider);
+        }
+        public enemyvalues B003()
+        {
+            enemyvalues wolf = new enemyvalues()
+            {
+                mobName = "Wolf",
+                mobHP = "268",
+                mobMaxDMG = "32",
+                mobMinDMG = "24",
+                mobEXP = "110"
+            };
+            return (wolf);
+        }
+        public enemyvalues B004()
+        {
+            enemyvalues black_bear = new enemyvalues()
+            {
+                mobName = "Black Bear",
+                mobHP = "308",
+                mobMaxDMG = "30",
+                mobMinDMG = "18",
+                mobEXP = "108"
+            };
+            return (black_bear);
+        }
+        public enemyvalues B005()
+        {
+            enemyvalues scorpion = new enemyvalues()
+            {
+                mobName = "Scorpion",
+                mobHP = "256",
+                mobMaxDMG = "42",
+                mobMinDMG = "13",
+                mobEXP = "97"
+            };
+            return (scorpion);
+        }
+        public enemyvalues B006()
+        {
+            enemyvalues ghost = new enemyvalues()
+            {
+                mobName = "Ghost",
+                mobHP = "288",
+                mobMaxDMG = "32",
+                mobMinDMG = "18",
+                mobEXP = "101"
+            };
+            return (ghost);
+        }
+        
+        public enemyvalues BB01()
+        {
+            enemyvalues dungeon_rat = new enemyvalues()
+            {
+                mobName = "Dungeon Rat",
+                mobHP = "582",
+                mobMaxDMG = "86",
+                mobMinDMG = "32",
+                mobEXP = "1000",
+            };
+            return (dungeon_rat);
+        }
+        public enemyvalues BB02()
+        {
+            enemyvalues giant = new enemyvalues()
+            {
+                mobName = "Giant",
+                mobHP = "750",
+                mobMaxDMG = "56",
+                mobMinDMG = "22",
+                mobEXP = "1000"
+            };
+            return (giant);
+        }
+        public enemyvalues BB03()
+        {
+            enemyvalues black_knight = new enemyvalues()
+            {
+                mobName = "Black Knight",
+                mobHP = "674",
+                mobMaxDMG = "48",
+                mobMinDMG = "40",
+                mobEXP = "1000"
+            };
+            return (black_knight);
+        }
+        //Tier2 enemyd lõppevad
+
+        //Tier3 enemyd algavad
+        public enemyvalues C001()
+        {
+            enemyvalues pirate = new enemyvalues()
+            {
+                mobName = "Pirate",
+                mobHP = "740",
+                mobMaxDMG = "64",
+                mobMinDMG = "38",
+                mobEXP = "400"
+            };
+            return (pirate);
+        }
+        public enemyvalues C002()
+        {
+            enemyvalues head_thief = new enemyvalues()
+            {
+                mobName = "Head thief",
+                mobHP = "950",
+                mobMaxDMG = "86",
+                mobMinDMG = "40",
+                mobEXP = "452"
+            };
+            return (head_thief);
+        }
+        public enemyvalues C003()
+        {
+            enemyvalues archer = new enemyvalues()
+            {
+                mobName = "Archer",
+                mobHP = "1050",
+                mobMaxDMG = "70",
+                mobMinDMG = "30",
+                mobEXP = "430"
+            };
+            return (archer);
+        }
+        public enemyvalues C004()
+        {
+            enemyvalues skeleton = new enemyvalues()
+            {
+                mobName = "Skeleton",
+                mobHP = "820",
+                mobMaxDMG = "52",
+                mobMinDMG = "45",
+                mobEXP = "482"
+            };
+            return (skeleton);
+        }
+        public enemyvalues C005()
+        {
+            enemyvalues minotaur = new enemyvalues()
+            {
+                mobName = "Minotaur",
+                mobHP = "1082",
+                mobMaxDMG = "73",
+                mobMinDMG = "52",
+                mobEXP = "500"
+            };
+            return (minotaur);
+        }
+        public enemyvalues C006() //peaks olema suht rare
+        {
+            enemyvalues gnome = new enemyvalues()
+            {
+                mobName = "Gnome",
+                mobHP = "4000",
+                mobMaxDMG = "40",
+                mobMinDMG = "20",
+                mobEXP = "2500"
+            };
+            return (gnome);
+        }
+
+        public enemyvalues CC01()
+        {
+            enemyvalues unicow = new enemyvalues()
+            {
+                mobName = "Unicow",
+                mobHP = "2840",
+                mobMaxDMG = "102",
+                mobMinDMG = "52",
+                mobEXP = "2500"
+            };
+            return (unicow);
+        }
+        public enemyvalues CC02()
+        {
+            enemyvalues wizard = new enemyvalues()
+            {
+                mobName = "Wizard",
+                mobHP = "2520",
+                mobMaxDMG = "92",
+                mobMinDMG = "58",
+                mobEXP = "2500",
+            };
+            return (wizard);
+        }
+        public enemyvalues CC03()
+        {
+            enemyvalues summoner = new enemyvalues()
+            {
+                mobName = "Summoner",
+                mobHP = "2300",
+                mobMaxDMG = "110",
+                mobMinDMG = "70",
+                mobEXP = "2500"
+            };
+            return (summoner);
+        }
+        //Tier3 enemyd lõppevad
+
+        //Final bossid:
         public enemyvalues D01()
         {
-            enemyvalues hindrek = new enemyvalues();
-            hindrek.mobName = "Hindrek the genius";
-            hindrek.mobHP = "5000";
-            hindrek.mobMaxDMG = "2000";
-            hindrek.mobMinDMG = "200";
-            hindrek.mobEXP = "10000";
+            enemyvalues hindrek = new enemyvalues
+            {
+                mobName = "Hindrek the genius",
+                mobHP = "5000",
+                mobMaxDMG = "2000",
+                mobMinDMG = "200",
+                mobEXP = "10000"
+            };
             return (hindrek);
         }
 
         public enemyvalues D02()
         {
-            enemyvalues kaur = new enemyvalues();
-            kaur.mobName = "Kaur the mastermind";
-            kaur.mobHP = "5000";
-            kaur.mobMaxDMG = "2000";
-            kaur.mobMinDMG = "200";
-            kaur.mobEXP = "10000";
+            enemyvalues kaur = new enemyvalues
+            {
+                mobName = "Kaur the mastermind",
+                mobHP = "5000",
+                mobMaxDMG = "2000",
+                mobMinDMG = "200",
+                mobEXP = "10000"
+            };
             return (kaur);
         }
         
         public enemyvalues D03()
         {
-            enemyvalues karl = new enemyvalues();
-            karl.mobName = "Karl the beast";
-            karl.mobHP = "5000";
-            karl.mobMaxDMG = "2000";
-            karl.mobMinDMG = "200";
-            karl.mobEXP = "10000";
+            enemyvalues karl = new enemyvalues
+            {
+                mobName = "Karl the beast",
+                mobHP = "5000",
+                mobMaxDMG = "2000",
+                mobMinDMG = "200",
+                mobEXP = "10000"
+            };
             return (karl);
         }
         public enemyvalues D04()
         {
-            enemyvalues jaan = new enemyvalues();
-            jaan.mobName = "Jaan the nerd";
-            jaan.mobHP = "5000";
-            jaan.mobMaxDMG = "2000";
-            jaan.mobMinDMG = "200";
-            jaan.mobEXP = "10000";
+            enemyvalues jaan = new enemyvalues
+            {
+                mobName = "Jaan the nerd",
+                mobHP = "5000",
+                mobMaxDMG = "2000",
+                mobMinDMG = "200",
+                mobEXP = "10000"
+            };
             return (jaan);
         }
+        //final bossid lõppevad
 
-
+        //test:
+        public enemyvalues G01()
+        {
+            enemyvalues test = new enemyvalues
+            {
+                mobName = "Test mob",
+                mobHP = "10",
+                mobMaxDMG = "8",
+                mobMinDMG = "5",
+                mobEXP = "200000"
+            };
+            return (test);
+        }
     }
 }

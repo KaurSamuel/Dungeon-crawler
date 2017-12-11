@@ -19,7 +19,7 @@ namespace ConsoleApp1
         public string healingAmount { get; set; }
     }
 
-    public class Hppotions
+    public class hppotions
     {
         // hA - Tier1
         // hB - Tier2
