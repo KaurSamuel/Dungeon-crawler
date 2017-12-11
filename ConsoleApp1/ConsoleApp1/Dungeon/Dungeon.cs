@@ -13,11 +13,11 @@ namespace ConsoleApp1
         Vector2 CurPos;
         Room CurRoom;
 
-        int SidesNone = 0;
-        int SidesUp = 1;
-        int SidesDown = 2;
-        int SidesLeft = 4;
-        int SidesRight = 8;
+        //Every side of a room
+        int SidesUp = 0;
+        int SidesDown = 1;
+        int SidesLeft = 2;
+        int SidesRight = 4;
 
         public struct Room
         {
@@ -35,16 +35,19 @@ namespace ConsoleApp1
             }
         }
 
+        //Generates a random map on creation
         public Dungeon()
         {
             GenerateMap();
         }
 
+        //Checks certain bit from a byte and returns it
         bool CheckSide(byte curSide, int bit)
         {
             return (curSide & (1 << bit)) != 0;
         }
 
+        //Replaces a letter at a certain index
         static string ReplaceAtIndex(int i, char value, string word)
         {
             char[] letters = word.ToCharArray();
@@ -52,8 +55,10 @@ namespace ConsoleApp1
             return string.Join("", letters);
         }
 
+        //Returns true if there are any enemies alive in the room
         public bool EnemiesAlive { get; set; }
 
+        //Generates first room
         public Room GenerateStartRoom(Vector2 MapSize)
         {
             Random rnd = new Random();
@@ -73,30 +78,32 @@ namespace ConsoleApp1
 
             return room;
         }
-        
+
+        //Adds door to a side of a room 
         public Room AddDoor(Room room, int sides)
         {
-            if (CheckSide((byte)room.sides, SidesUp))
-                room.roomData = ReplaceAtIndex((int)room.size.X / 2, '#', room.roomData);
-            if (CheckSide((byte)room.sides, SidesDown))
-                room.roomData = ReplaceAtIndex((int)((room.size.X * room.size.Y) - (room.size.X / 2)), '#', room.roomData);
-            if (CheckSide((byte)room.sides, SidesLeft))
+            
+
+           /* if (CheckSide((byte)room.sides, SidesUp)) //Up side
+               room.roomData = ReplaceAtIndex((int)room.size.X / 2, '#', room.roomData);
+          */  if (CheckSide((byte)room.sides, SidesDown)) //Down side
+                room.roomData = ReplaceAtIndex((int)((room.size.X * room.size.Y) - (room.size.X/ 2)), '#', room.roomData);
+          /*  if (CheckSide((byte)room.sides, SidesLeft)) //Left side
                 room.roomData = ReplaceAtIndex((int)((room.size.Y / 2) * room.size.X / 2), '#', room.roomData);
-            //if (CheckSide((byte)room.sides, SidesRight))
-               // room.roomData = ReplaceAtIndex((int)((room.size)))
-
-            // room.sides = sides;
-
+            if (CheckSide((byte)room.sides, SidesRight)) //Right side
+                room.roomData = ReplaceAtIndex((int)(((room.size.X) / 2) * room.size.Y), '#', room.roomData);
+                */
             return room;
         }
 
+        //Generates a random room
         public Room GenerateRoom(Vector2 pos = default(Vector2), int sides = 0)
         {
             Random rnd = new Random();
             Room room;
             string roomData = "";
             int roomWidth = rnd.Next(8, 32);
-            int roomHeight = rnd.Next(6, 16);
+            int roomHeight = rnd.Next(8, 16);
 
             for (int cur_height = 0; cur_height < roomHeight; cur_height++)
             {
@@ -116,19 +123,21 @@ namespace ConsoleApp1
                 roomData += '\n';
             }
 
-            //roomData = ReplaceAtIndex(0, '\u231C', roomData);
-            //roomData = ReplaceAtIndex(roomWidth, '\u231C', roomData);
+            //Adds a corners to a room
+            roomData = ReplaceAtIndex(0, '\u231C', roomData);
+            roomData = ReplaceAtIndex(roomWidth - 1, '\u231C', roomData);
             //roomData = ReplaceAtIndex(roomHeight)
 
             room = new Room(pos, new Vector2(roomWidth, roomHeight), roomData, (byte)sides);
 
-            room = AddDoor(room, rnd.Next(0, 15));
+            room = AddDoor(room, rnd.Next(1, 15));
 
             MapArray.Add(room);
 
             return room;
         }
 
+        //Generates a map
         public bool GenerateMap()
         {
             GenerateStartRoom(new Vector2(25, 25));
@@ -136,6 +145,7 @@ namespace ConsoleApp1
             return true;
         }
 
+        //If room exist sets CurRoom to that, else generates new
         private void MoveToRoom(int EnteredSide)
         {
             foreach (Room room in MapArray)
@@ -143,20 +153,23 @@ namespace ConsoleApp1
                 if (room.pos == CurPos)
                     CurRoom = room;
                 else
-                    GenerateRoom(CurPos, EnteredSide);
+                    CurRoom = GenerateRoom(CurPos, EnteredSide);
             }
         }
 
-        private void DrawFight()
+        //Calls fight scene
+        private bool DrawFight()
         {
-
+            return false;
         }
 
-        private void DrawInventory()
+        //Calls inventory scene
+        private bool DrawInventory()
         {
-
+            return false;
         }
 
+        //Prints Moving options
         private bool DrawMove()
         {
             int count = 0;
@@ -229,21 +242,23 @@ namespace ConsoleApp1
 
                 else if(userInput == count.ToString())
                 {
-                    
+                    return true;
                 }
                    
 
             }
 
-            
+            return true;
         }
 
-        private void DrawSuicide()
+        //Calls suicide options
+        private bool DrawSuicide()
         {
-
+            return false;
         }
 
-        private void DrawOptions()
+        //Calls user options
+        private bool DrawOptions()
         {
             string userInput;
 
@@ -257,42 +272,35 @@ namespace ConsoleApp1
                 userInput = Console.ReadLine();
 
                 if (userInput == "1")
-                {
-                    DrawFight();
-                    break;
-                }
+                    return DrawFight();
 
                 else if (userInput == "2")
-                {
-                    DrawInventory();
-                    break;
-                }
+                    return DrawInventory();
 
                 else if (userInput == "3")
-                {
-                    DrawMove();
-                    break;
-                }
-                   
+                    return DrawMove();
+
                 else if (userInput == "4")
-                {
-                    DrawSuicide();
-                    break; 
-                }
-                   
+                    return DrawSuicide();
+
                 else
                 {
                     Console.WriteLine("Unknown input");
-                }    
-               
+                    return false;
+                }
+                    
+
+
+                
             }
 
-            
+           
         }
 
+        //Prints CurRoom
         public bool DrawMap()
         {
-            Console.Clear();
+            
             Room curRoom = new Room();
 
             foreach (Room room in MapArray)
@@ -303,9 +311,20 @@ namespace ConsoleApp1
 
             CurRoom = curRoom;
 
-            DrawOptions();
-
             return true;
+        }
+
+        //Main loop
+        public void GameLoop()
+        {
+            while(true)
+            {
+                Console.Clear();
+                DrawMap();
+                DrawOptions();
+            }
+
+
         }
     }
 }
