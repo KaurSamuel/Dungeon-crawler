@@ -31,9 +31,9 @@ magic?
 
 Jaan:
 kõik assetid
-user interface
 
 
 karl:
 inventory system
+user interface
 
