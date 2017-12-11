@@ -11,7 +11,7 @@ namespace ConsoleApp1
     {
         List<Room> MapArray = new List<Room>();
         Vector2 CurPos;
-        Room curRoom;
+        Room CurRoom;
 
         int SidesNone = 0;
         int SidesUp = 1;
@@ -136,17 +136,28 @@ namespace ConsoleApp1
             return true;
         }
 
-        public void DrawFight()
+        private void MoveToRoom(int EnteredSide)
+        {
+            foreach (Room room in MapArray)
+            {
+                if (room.pos == CurPos)
+                    CurRoom = room;
+                else
+                    GenerateRoom(CurPos, EnteredSide);
+            }
+        }
+
+        private void DrawFight()
         {
 
         }
 
-        public void DrawInventory()
+        private void DrawInventory()
         {
 
         }
 
-        public void DrawMove()
+        private bool DrawMove()
         {
             int count = 0;
             int sideUp = 0;
@@ -154,33 +165,35 @@ namespace ConsoleApp1
             int sideLeft = 0;
             int sideRight = 0;
 
-            if (CheckSide(curRoom.sides, SidesUp))
+            if (CheckSide(CurRoom.sides, SidesUp))
             {
                 count++;
                 sideUp = count;
                 Console.WriteLine(count + ". " + '\u25B2');
             }
             
-            if (CheckSide(curRoom.sides, SidesUp))
+            if (CheckSide(CurRoom.sides, SidesDown))
             {
                 count++;
                 sideDown = count;
                 Console.WriteLine(count + ". " + '\u25BA');
             }
             
-            if (CheckSide(curRoom.sides, SidesUp))
+            if (CheckSide(CurRoom.sides, SidesLeft))
             {
                 count++;
                 sideLeft = count;
                 Console.WriteLine(count + ". " + '\u25BC');
             }
             
-            if (CheckSide(curRoom.sides, SidesUp))
+            if (CheckSide(CurRoom.sides, SidesRight))
             {
                 count++;
                 sideRight = count;
                 Console.WriteLine(count + ". " + '\u25C4');
             }
+
+            count++;
 
             Console.WriteLine(count + ". Back");
 
@@ -190,20 +203,47 @@ namespace ConsoleApp1
 
                 userInput = Console.ReadLine();
 
-                if (userInput == "1")
+                if (userInput == sideUp.ToString())
+                {
+                    MoveToRoom(sideUp);
                     break;
+                }
+
+                else if (userInput == sideDown.ToString())
+                {
+                    MoveToRoom(sideDown);
+                    break;
+                }
+
+                else if (userInput == sideLeft.ToString())
+                {
+                    MoveToRoom(sideLeft);
+                    break;
+                }
+
+                else if (userInput == sideLeft.ToString())
+                {
+                    MoveToRoom(sideRight);
+                    break;
+                }
+
+                else if(userInput == count.ToString())
+                {
+                    
+                }
+                   
 
             }
 
             
         }
 
-        public void DrawSuicide()
+        private void DrawSuicide()
         {
 
         }
 
-        public void DrawOptions()
+        private void DrawOptions()
         {
             string userInput;
 
@@ -260,6 +300,8 @@ namespace ConsoleApp1
                     curRoom = room;
 
             Console.WriteLine(curRoom.roomData);
+
+            CurRoom = curRoom;
 
             DrawOptions();
 
