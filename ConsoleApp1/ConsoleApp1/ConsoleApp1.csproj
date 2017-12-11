@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Engine.cs" />
     <Compile Include="InventoryItem.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
