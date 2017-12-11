@@ -23,5 +23,8 @@ namespace ConsoleApp1
         lblGold.Text = _player.Gold.ToString();
         lblExperience.Text = _player.ExperiencePoints.ToString();
         lblLevel.Text = _player.Level.ToString();
+
+        // Update Hit Points in UI
+        lblHitPoints.Text = _player.CurrentHitPoints.ToString();
     }
 }
