@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    public class lootChest : Items
+    public class lootChest
     {
         public int chestTier { get; set; }
-        public List<Items> chestLoot { get; set; }
+        public List<weapons> chestLoot { get; set; }
 
 
 
