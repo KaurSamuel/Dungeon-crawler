@@ -11,6 +11,7 @@ namespace ConsoleApp1
     {
         List<Room> MapArray = new List<Room>();
         Vector2 CurPos;
+        Room curRoom;
 
         int SidesNone = 0;
         int SidesUp = 1;
@@ -23,9 +24,9 @@ namespace ConsoleApp1
             public string roomData;
             public Vector2 pos;
             public Vector2 size;
-            public int sides;
+            public byte sides;
             
-            public Room(Vector2 Pos, Vector2 Size, string RoomData, int Sides)
+            public Room(Vector2 Pos, Vector2 Size, string RoomData, byte Sides)
             {
                 roomData = RoomData;
                 pos = Pos;
@@ -64,7 +65,7 @@ namespace ConsoleApp1
             newPos.X = rnd.Next((int)posTopLeft.X, (int)posBotRight.X);
             newPos.Y = rnd.Next((int)posTopLeft.Y, (int)posBotRight.Y);
 
-            room = GenerateRoom(newPos, (int)rnd.Next(0, 16));
+            room = GenerateRoom(newPos, (int)rnd.Next(1, 16));
 
             CurPos = room.pos;
 
@@ -75,21 +76,28 @@ namespace ConsoleApp1
         
         public Room AddDoor(Room room, int sides)
         {
-            room.roomData = ReplaceAtIndex((int)room.size.X / 2, ' ', room.roomData);
+            if (CheckSide((byte)room.sides, SidesUp))
+                room.roomData = ReplaceAtIndex((int)room.size.X / 2, '#', room.roomData);
+            if (CheckSide((byte)room.sides, SidesDown))
+                room.roomData = ReplaceAtIndex((int)((room.size.X * room.size.Y) - (room.size.X / 2)), '#', room.roomData);
+            if (CheckSide((byte)room.sides, SidesLeft))
+                room.roomData = ReplaceAtIndex((int)((room.size.Y / 2) * room.size.X / 2), '#', room.roomData);
+            //if (CheckSide((byte)room.sides, SidesRight))
+               // room.roomData = ReplaceAtIndex((int)((room.size)))
 
-            room.sides = sides;
+            // room.sides = sides;
 
             return room;
         }
 
         public Room GenerateRoom(Vector2 pos = default(Vector2), int sides = 0)
         {
+            Random rnd = new Random();
+            Room room;
             string roomData = "";
-            int roomWidth = 16;
-            int roomHeight = 8;
+            int roomWidth = rnd.Next(8, 32);
+            int roomHeight = rnd.Next(6, 16);
 
-            // Bug: Currently roomWidth and roomHeight are reversed
-            
             for (int cur_height = 0; cur_height < roomHeight; cur_height++)
             {
                 for (int cur_width = 0; cur_width < roomWidth; cur_width++)
@@ -108,37 +116,152 @@ namespace ConsoleApp1
                 roomData += '\n';
             }
 
-            return new Room(new Vector2(25, 25), new Vector2(roomWidth, roomHeight), roomData, SidesNone);
+            //roomData = ReplaceAtIndex(0, '\u231C', roomData);
+            //roomData = ReplaceAtIndex(roomWidth, '\u231C', roomData);
+            //roomData = ReplaceAtIndex(roomHeight)
+
+            room = new Room(pos, new Vector2(roomWidth, roomHeight), roomData, (byte)sides);
+
+            room = AddDoor(room, rnd.Next(0, 15));
+
+            MapArray.Add(room);
+
+            return room;
         }
 
         public bool GenerateMap()
         {
-            MapArray.Add(GenerateStartRoom(new Vector2(25, 25)));
+            GenerateStartRoom(new Vector2(25, 25));
 
             return true;
         }
 
+        public void DrawFight()
+        {
+
+        }
+
+        public void DrawInventory()
+        {
+
+        }
+
+        public void DrawMove()
+        {
+            int count = 0;
+            int sideUp = 0;
+            int sideDown = 0;
+            int sideLeft = 0;
+            int sideRight = 0;
+
+            if (CheckSide(curRoom.sides, SidesUp))
+            {
+                count++;
+                sideUp = count;
+                Console.WriteLine(count + ". " + '\u25B2');
+            }
+            
+            if (CheckSide(curRoom.sides, SidesUp))
+            {
+                count++;
+                sideDown = count;
+                Console.WriteLine(count + ". " + '\u25BA');
+            }
+            
+            if (CheckSide(curRoom.sides, SidesUp))
+            {
+                count++;
+                sideLeft = count;
+                Console.WriteLine(count + ". " + '\u25BC');
+            }
+            
+            if (CheckSide(curRoom.sides, SidesUp))
+            {
+                count++;
+                sideRight = count;
+                Console.WriteLine(count + ". " + '\u25C4');
+            }
+
+            Console.WriteLine(count + ". Back");
+
+            while(true)
+            {
+                string userInput;
+
+                userInput = Console.ReadLine();
+
+                if (userInput == "1")
+                    break;
+
+            }
+
+            
+        }
+
+        public void DrawSuicide()
+        {
+
+        }
+
+        public void DrawOptions()
+        {
+            string userInput;
+
+            while(true)
+            {
+                Console.WriteLine("1. Fight");
+                Console.WriteLine("2. Inventory");
+                Console.WriteLine("3. Move");
+                Console.WriteLine("4. Suicide");
+
+                userInput = Console.ReadLine();
+
+                if (userInput == "1")
+                {
+                    DrawFight();
+                    break;
+                }
+
+                else if (userInput == "2")
+                {
+                    DrawInventory();
+                    break;
+                }
+
+                else if (userInput == "3")
+                {
+                    DrawMove();
+                    break;
+                }
+                   
+                else if (userInput == "4")
+                {
+                    DrawSuicide();
+                    break; 
+                }
+                   
+                else
+                {
+                    Console.WriteLine("Unknown input");
+                }    
+               
+            }
+
+            
+        }
+
         public bool DrawMap()
         {
-            string buffer = "";
-            int sides;
-            Room curRoom = new Room();
-            Vector2[] sideRooms;
-
             Console.Clear();
+            Room curRoom = new Room();
 
             foreach (Room room in MapArray)
                 if (room.pos == CurPos)
                     curRoom = room;
-                else
-                    throw new System.ArgumentException("CurRoom not found");
-
-            //sideRooms = new Vector2[Vector2];
-
-            //foreach (Room room in MapArray)
 
             Console.WriteLine(curRoom.roomData);
-            Console.WriteLine(buffer);
+
+            DrawOptions();
 
             return true;
         }

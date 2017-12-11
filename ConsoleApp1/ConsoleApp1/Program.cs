@@ -10,6 +10,7 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
+            Console.OutputEncoding = System.Text.Encoding.Unicode;
             Dungeon dungeon = new Dungeon();
 
             dungeon.DrawMap();
