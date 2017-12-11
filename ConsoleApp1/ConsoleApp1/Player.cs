@@ -8,10 +8,19 @@ namespace ConsoleApp1
 {
     public class Player
     {
-        public int CurrentHitPoints { get; set; }
-        public int MaximumHitPoints { get; set; }
-        public int Gold { get; set; }
-        public int ExperiencePoints { get; set; }
-        public int Level { get; set; }
+        public string CurrentHitPoints { get; set; }
+        public string Gold { get; set; }
+        public string ExperiencePoints { get; set; }
+        public string Level { get; set; }
+        public List<InventoryItem> Inventory { get; set; }
+
+        public Player(string currentHitPoints,
+        string gold, string experiencePoints, string level) :
+        base(currentHitPoints)
+        {
+            Gold = gold;
+            ExperiencePoints = experiencePoints;
+            Level = level;
+            Inventory = new List<InventoryItem>();
+        }
     }
-}

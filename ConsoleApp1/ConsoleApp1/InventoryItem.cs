@@ -9,8 +9,8 @@ namespace ConsoleApp1
     public class InventoryItem
     {
         public Item Details { get; set; }
-        public int Quantity { get; set; }
-        public InventoryItem(Item details, int quantity)
+        public string Quantity { get; set; }
+        public InventoryItem(Item details, string quantity)
         {
             Details = details;
             Quantity = quantity;
