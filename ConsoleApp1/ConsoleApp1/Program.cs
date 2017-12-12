@@ -15,6 +15,13 @@ namespace ConsoleApp1
              * because they have diabolical plan to take over internet and spread pornographic viruses.
              * Your our last hope :(
              */
+            weaponvalues Uus_relv = new weaponvalues();
+            Uus_relv = weaponvalues.
+
+
+
+
+
         }
     }
 }
