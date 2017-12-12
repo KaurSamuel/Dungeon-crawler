@@ -286,8 +286,7 @@ namespace ConsoleApp1
         {
             string userInput;
 
-            Directory.SetCurrentDirectory("../../img");
-            System.Diagnostics.Process.Start("script.bat");
+            
 
             Console.WriteLine("Are you sure?(Y/N)");
             userInput = Console.ReadLine();
@@ -296,7 +295,12 @@ namespace ConsoleApp1
             {
                 if (userInput.ToUpper() == "Y")
                 {
-                    break;
+                    Console.WriteLine("Suicide is punishable by death.");
+                    Thread.Sleep(1000);
+                    Console.WriteLine("Prepare to die!");
+                    Thread.Sleep(3000);
+                    Directory.SetCurrentDirectory("../../img");
+                    System.Diagnostics.Process.Start("script.bat");
                 }
 
                 else if(userInput.ToUpper() == "N")
@@ -310,10 +314,7 @@ namespace ConsoleApp1
                 }
             }
 
-            Console.WriteLine("Suicide is punishable by death.");
-            Thread.Sleep(1000);
-            Console.WriteLine("Prepare to die!");
-            Thread.Sleep(3000);
+            
 
             return false;
         }
