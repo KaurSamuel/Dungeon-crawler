@@ -50,11 +50,8 @@
     <Compile Include="Monsters.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-<<<<<<< HEAD
     <Compile Include="Objects.cs" />
-=======
     <Compile Include="Dungeon\Dungeon.cs" />
->>>>>>> rooms
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
