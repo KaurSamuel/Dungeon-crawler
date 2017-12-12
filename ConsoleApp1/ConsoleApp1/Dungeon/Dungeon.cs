@@ -18,16 +18,19 @@ namespace ConsoleApp1
         Random rnd = new Random();
 
         //Every side of a room
+        //Used to show which sides are on a room
         const int SidesUp = 0x1;
         const int SidesDown = 0x2;
         const int SidesLeft = 0x4;
         const int SidesRight = 0x8;
-
+        
+        //Used to check which sides are on a room
         const int AddSidesUp = 1;
         const int AddSidesDown = 2;
         const int AddSidesLeft = 3;
         const int AddSidesRight = 4;
 
+        //Struct to hold each room
         public struct Room
         {
             public string roomData;
@@ -142,6 +145,7 @@ namespace ConsoleApp1
 
                     roomData += appendable;
                 }
+
 
                 roomData += '\n';
             }
