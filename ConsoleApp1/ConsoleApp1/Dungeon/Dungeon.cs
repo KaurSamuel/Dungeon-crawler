@@ -12,6 +12,7 @@ namespace ConsoleApp1
         List<Room> MapArray = new List<Room>();
         Vector2 CurPos = new Vector2(0.0f, 0.0f);
         Room CurRoom;
+        Random rnd = new Random();
 
         //Every side of a room
         const int SidesUp = 0x1;
@@ -49,7 +50,7 @@ namespace ConsoleApp1
         //Checks certain bit from a byte and returns it
         bool CheckSide(byte curSide, int bit)
         {
-            return (curSide & (1 << bit - 1)) != 0;
+            return (curSide & (1 << bit)) != 0;
         }
 
         //Replaces a letter at a certain index
@@ -69,7 +70,6 @@ namespace ConsoleApp1
             Random rnd = new Random();
             Vector2 posTopLeft = MapSize * 0.25f;
             Vector2 posBotRight = MapSize * 0.75f;
-            Vector2 newPos;
             Room room;
 
             room = GenerateRoom(CurPos, rnd.Next(0, 15));
@@ -87,13 +87,30 @@ namespace ConsoleApp1
 
             //Gets each byte from last to (last - 4) place
             if (CheckSide((byte)sides, AddSidesUp)) //Up side
-               room.roomData = ReplaceAtIndex(sideX / 2, '#', room.roomData);
+            {
+                room.roomData = ReplaceAtIndex(sideX / 2, '#', room.roomData);
+                room.sides += SidesUp;
+            }
+
             if (CheckSide((byte)sides, AddSidesDown)) //Down side
+            {
                 room.roomData = ReplaceAtIndex((sideX * sideY) - (sideX / 10), '#', room.roomData);
+                room.sides += SidesDown;
+            }
+
             if (CheckSide((byte)sides, AddSidesLeft)) //Left side
+            {
                 room.roomData = ReplaceAtIndex(((sideX * (sideY / 2))) + 3, '#', room.roomData);
+                room.sides += SidesLeft;
+            }
+
             if (CheckSide((byte)sides, AddSidesRight)) //Right side
+            {
                 room.roomData = ReplaceAtIndex((sideX * sideY) - (sideX * (sideY / 2)) + 1, '#', room.roomData);
+                room.sides += SidesRight;
+            }
+            
+                
                 
             return room;
         }
@@ -101,7 +118,6 @@ namespace ConsoleApp1
         //Generates a random room
         public Room GenerateRoom(Vector2 pos = default(Vector2), int sides = 0)
         {
-            Random rnd = new Random();
             Room room;
             string roomData = "";
             int roomWidth = rnd.Next(8, 32);
@@ -134,7 +150,7 @@ namespace ConsoleApp1
 
             room = new Room(pos, new Vector2(roomWidth, roomHeight), roomData, (byte)sides);
            
-            room = AddDoor(room, new Random().Next(1, 15));
+            room = AddDoor(room, rnd.Next(1, 15));
 
             MapArray.Add(room);
 
@@ -300,9 +316,6 @@ namespace ConsoleApp1
                     return false;
                 }
                     
-
-
-                
             }
 
            
