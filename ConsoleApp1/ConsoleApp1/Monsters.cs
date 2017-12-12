@@ -428,7 +428,7 @@ namespace ConsoleApp1
                 mobHP = "10",
                 mobMaxDMG = "8",
                 mobMinDMG = "5",
-                mobEXP = "200000"
+                mobEXP = "200001"
             };
             return (test);
         }

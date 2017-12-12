@@ -32,15 +32,17 @@ namespace ConsoleApp1
     {
         public static string Weapon_ID_to_object(string ID)
         {
-            weaponvalues new_weapon = new weaponvalues();
+           // weaponvalues new_weapon = new weaponvalues();
 
             switch (ID)
             {
                 case ("wA001"):
                     {
-                        new_weapon = weapons.wA001();
-                    }
+                        weaponvalues new_weapon = new weaponvalues();
+                        weapons.new_weapon = weapons.wA002;
 
+                    }
+                    
 
                     break;
             }

@@ -80,6 +80,8 @@ namespace ConsoleApp1
 
     public class weapons
     {
+        public static Func<weaponvalues> new_weapon { get; internal set; }
+
         //wepAtkSpd - daggers = 7-10
         //            swords = 4-6
         //            battleaxe = 1-3
@@ -94,7 +96,7 @@ namespace ConsoleApp1
         // wG - test
 
         //Tier1 weaponid algavad:
-        public weaponvalues wA001()
+        public static weaponvalues wA001()
         {
             weaponvalues bronze_dagger = new weaponvalues
             {
@@ -106,7 +108,7 @@ namespace ConsoleApp1
             };
             return (bronze_dagger);
         }
-        public weaponvalues wA002()
+        public static weaponvalues wA002()
         {
             weaponvalues iron_dagger = new weaponvalues
             {
@@ -294,7 +296,7 @@ namespace ConsoleApp1
         {
             weaponvalues adamant_sword = new weaponvalues
             {
-                wepName = "Adamant Sword",
+                wepName = "Adamantium Sword",
                 wepDesc = "A razor-sharp sword.",
                 wepMinDMG = "65",
                 wepMaxDMG = "100",
@@ -330,7 +332,7 @@ namespace ConsoleApp1
         {
             weaponvalues adamant_battleaxe = new weaponvalues
             {
-                wepName = "Adamant battleaxe",
+                wepName = "Adamantium battleaxe",
                 wepDesc = "A vicious looking axe",
                 wepMinDMG = "75",
                 wepMaxDMG = "105",
@@ -552,6 +554,10 @@ namespace ConsoleApp1
                 wepAtkSpd = "5",
             };
             return (test);
+        }
+        public static weaponvalues Uus_weapon()
+        {            
+            return (Uus_weapon);
         }
     }
 }
