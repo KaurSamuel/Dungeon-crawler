@@ -12,6 +12,7 @@ namespace ConsoleApp1
         public string wepDesc { get; set; }
         public string wepMinDMG { get; set; }
         public string wepMaxDMG { get; set; }
+        public string wepAS { get; set; }
     }
     public class HPvalues
     {
@@ -93,6 +94,7 @@ namespace ConsoleApp1
             bronze_sword.wepDesc = "A razor-sharp sword.";
             bronze_sword.wepMinDMG = "5";
             bronze_sword.wepMaxDMG = "15";
+            bronze_sword.wepAS = "5";
             return (bronze_sword);
         }
 
