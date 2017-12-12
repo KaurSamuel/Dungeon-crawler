@@ -313,10 +313,6 @@ namespace ConsoleApp1
                     Console.WriteLine("Unknown option.");
                 }
             }
-
-            
-
-            return false;
         }
 
         //Calls user options
