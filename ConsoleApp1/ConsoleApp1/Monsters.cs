@@ -397,7 +397,7 @@ namespace ConsoleApp1
         {
             enemyvalues karl = new enemyvalues
             {
-                mobName = "Karl the beast",
+                mobName = "Karl the betrayer",
                 mobHP = "5000",
                 mobMaxDMG = "2000",
                 mobMinDMG = "200",
