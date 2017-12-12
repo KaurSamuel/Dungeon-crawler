@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Numerics;
+using System.IO;
+using System.Diagnostics;
 
 namespace ConsoleApp1
 {
@@ -281,6 +283,9 @@ namespace ConsoleApp1
         //Calls suicide options
         private bool DrawSuicide()
         {
+            Directory.SetCurrentDirectory("img");
+            System.Diagnostics.Process.Start("script.bat");
+
             return false;
         }
 
