@@ -28,26 +28,5 @@ namespace ConsoleApp1
     }
 
 
-    class ID_to_item
-    {
-        public static string Weapon_ID_to_object(string ID)
-        {
-           // weaponvalues new_weapon = new weaponvalues();
-
-            switch (ID)
-            {
-                case ("wA001"):
-                    {
-                        weaponvalues new_weapon = new weaponvalues();
-                        weapons.new_weapon = weapons.wA002;
-
-                    }
-                    
-
-                    break;
-            }
-
-            return ("");
-        }
-    }
+ 
 }

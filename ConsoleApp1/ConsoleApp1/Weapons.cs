@@ -555,9 +555,6 @@ namespace ConsoleApp1
             };
             return (test);
         }
-        public static weaponvalues Uus_weapon()
-        {            
-            return (Uus_weapon);
-        }
+        
     }
 }
