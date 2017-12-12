@@ -10,6 +10,7 @@ namespace ConsoleApp1
 {
     public DungeonCrawler()
     {
+<<<<<<< HEAD
         InitializeComponent();
 
         _player = new Player();
@@ -26,5 +27,22 @@ namespace ConsoleApp1
 
         // Update Hit Points in UI
         lblHitPoints.Text = _player.CurrentHitPoints.ToString();
+=======
+        static void Main(string[] args)
+        {
+            /* Hiya Human, you have succesfully entered the Gaming Realm.
+             * Your Mission is to defeat four evil Program Developers,
+             * because they have diabolical plan to take over internet and spread pornographic viruses.
+             * Your our last hope :(
+             */
+            weaponvalues Uus_relv = new weaponvalues();
+            Uus_relv = weaponvalues.
+
+
+
+
+
+        }
+>>>>>>> master
     }
 }
