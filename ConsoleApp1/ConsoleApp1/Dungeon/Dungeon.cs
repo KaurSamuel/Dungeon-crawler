@@ -85,12 +85,6 @@ namespace ConsoleApp1
             return room;
         }
 
-        public Room SetDoors(Room room, byte side)
-        {
-            room.sides = side;
-            return room;
-        }
-
         //Adds door to a side of a room 
         public Room AddDoors(Room room, byte sides)
         {
@@ -207,28 +201,28 @@ namespace ConsoleApp1
             {
                 count++;
                 sideUp = count;
-                Console.WriteLine(count + ". " + '\u25B2');
+                Console.WriteLine(count + ". " + '\u2191');//\u25B2
             }
             
             if (CheckSide(CurRoom.sides, AddSidesDown))
             {
                 count++;
                 sideDown = count;
-                Console.WriteLine(count + ". " + '\u25BA');
+                Console.WriteLine(count + ". " + '\u2193');//\u25BA
             }
             
             if (CheckSide(CurRoom.sides, AddSidesLeft))
             {
                 count++;
                 sideLeft = count;
-                Console.WriteLine(count + ". " + '\u25BC');
+                Console.WriteLine(count + ". " + '\u2190');//\u25BC
             }
             
             if (CheckSide(CurRoom.sides, AddSidesRight))
             {
                 count++;
                 sideRight = count;
-                Console.WriteLine(count + ". " + '\u25C4');
+                Console.WriteLine(count + ". " + '\u2192');//\u25C4'
             }
 
             count++;
@@ -262,7 +256,7 @@ namespace ConsoleApp1
                     break;
                 }
 
-                else if (userInput == sideLeft.ToString())
+                else if (userInput == sideRight.ToString())
                 {
                     CurPos.X++;
                     MoveToRoom(sideRight);
