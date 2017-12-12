@@ -96,7 +96,7 @@ namespace ConsoleApp1
         // wG - test
 
         //Tier1 weaponid algavad:
-        public static weaponvalues wA001()
+        public weaponvalues wA001()
         {
             weaponvalues bronze_dagger = new weaponvalues
             {
@@ -108,7 +108,7 @@ namespace ConsoleApp1
             };
             return (bronze_dagger);
         }
-        public static weaponvalues wA002()
+        public weaponvalues wA002()
         {
             weaponvalues iron_dagger = new weaponvalues
             {
