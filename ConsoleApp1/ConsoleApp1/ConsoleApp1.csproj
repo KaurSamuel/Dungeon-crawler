@@ -43,14 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Chest.cs" />
-    <Compile Include="exporter.cs" />
-    <Compile Include="Player Values.cs" />
-    <Compile Include="Weapons.cs" />
-    <Compile Include="Monsters.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Objects.cs" />
     <Compile Include="Dungeon\Dungeon.cs" />
   </ItemGroup>
   <ItemGroup>
