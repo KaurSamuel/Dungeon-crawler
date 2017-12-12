@@ -1,5 +1,3 @@
-me_{_get;_set; sc_{_get;_set; MG { get; set; MG { get; set; pd { get; set; 
- = 7-1
 wA001 Bronze_Dagger Short_but_pointy. 5 15 7
 wA002 Iron_Dagger Short_but_pointy. 10 25 8
 wA003 Steel_Dagger Short_but_pointy. 7 29 9
@@ -35,5 +33,4 @@ wCC01 Chaotic_rapier A_razor-sharp_rapier. 300 500 10
 wCC02 Tetsi_wakizashi A_razor-sharp_sword_designed_by_the_Gu_masters_of_Wushanko. 350 550 6
 wCC03 Flameburst_Defender A_fiery_weapon. 450 700 3
 wCC04 Knockout_cannon Better_watchout! 500 1000 1
-D001 You_win! You_have_won_the_game,_here's_a_reward! 1337 9001 10
 wG001 test test 100 200 5"

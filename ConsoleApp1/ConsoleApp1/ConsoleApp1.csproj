@@ -45,7 +45,6 @@
   <ItemGroup>
     <Compile Include="Chest.cs" />
     <Compile Include="Convertor2.cs" />
-    <Compile Include="exporter.cs" />
     <Compile Include="Player Values.cs" />
     <Compile Include="Weapons.cs" />
     <Compile Include="Monsters.cs" />

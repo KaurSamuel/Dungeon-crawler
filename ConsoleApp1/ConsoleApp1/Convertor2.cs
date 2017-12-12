@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    class Convertor2
+    class Convertor
     {
         public static string export_mon(string ID, string whatvalue)
         {
@@ -37,11 +37,11 @@ namespace ConsoleApp1
             }
 
             string DirectoryPath = "monsters.txt";
-            foreach(string line in System.IO.File.ReadAllLines(DirectoryPath))
+            foreach (string line in System.IO.File.ReadAllLines(DirectoryPath))
             {
                 string id = line.Substring(0, 5);
 
-                if(id == ID)
+                if (id == ID)
                 {
                     string[] allWords = line.Split();
                     return (allWords[int.Parse(ValueType)]);
@@ -49,6 +49,51 @@ namespace ConsoleApp1
             }
 
             return "error";
+        }
+        /*weapon name =          wep_name
+         *weapon description =   wep_desc
+         *weapon minium damage = wep_min_dmg
+         *weapon maximum damage= wep_max_dmg
+         *weapon attack speed =  wep_Atk_spd
+         */
+        public static string exporter_wep(string ID, string whatvalue)//esimesena peab andma relva ID ja teisena mida sa tahad kätte saada
+        {
+            string ValueType = "0";
+            if (whatvalue == "wep_name")
+            {
+                ValueType = "1";
+            }
+            if (whatvalue == "wep_desc")
+            {
+                ValueType = "2";
+            }
+            if (whatvalue == "wep_min_dmg")
+            {
+                ValueType = "3";
+            }
+            if (whatvalue == "wep_max_dmg")
+            {
+                ValueType = "4";
+            }
+            if (whatvalue == "wep_Atk_spd")
+            {
+                ValueType = "5";
+            }
+
+
+            string Directorypath = "weapons.txt";
+            foreach (string line in System.IO.File.ReadAllLines(Directorypath))
+            {
+
+
+                string id = line.Substring(0, 5);
+                if (id == ID)
+                {
+                    string[] allWords = line.Split();
+                    return (allWords[int.Parse(ValueType)]);
+
+                }
+            }            return "error";
         }
     }
 }
