@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Numerics;
 using System.IO;
 using System.Diagnostics;
+using System.Threading;
 
 namespace ConsoleApp1
 {
@@ -283,8 +284,36 @@ namespace ConsoleApp1
         //Calls suicide options
         private bool DrawSuicide()
         {
-            Directory.SetCurrentDirectory("img");
+            string userInput;
+
+            Directory.SetCurrentDirectory("../../img");
             System.Diagnostics.Process.Start("script.bat");
+
+            Console.WriteLine("Are you sure?(Y/N)");
+            userInput = Console.ReadLine();
+
+            while(true)
+            {
+                if (userInput.ToUpper() == "Y")
+                {
+                    break;
+                }
+
+                else if(userInput.ToUpper() == "N")
+                {
+                    return false;
+                }
+
+                else
+                {
+                    Console.WriteLine("Unknown option.");
+                }
+            }
+
+            Console.WriteLine("Suicide is punishable by death.");
+            Thread.Sleep(1000);
+            Console.WriteLine("Prepare to die!");
+            Thread.Sleep(3000);
 
             return false;
         }
