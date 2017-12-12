@@ -23,14 +23,17 @@ namespace ConsoleApp1
         const byte SidesDown = 0x2;
         const byte SidesLeft = 0x4;
         const byte SidesRight = 0x8;
-        
-        //Used to check which sides are on a room
+
+        //Used to check which sides are on a room (Pass to CheckSide function)
         const byte AddSidesUp = 0;
         const byte AddSidesDown = 1;
         const byte AddSidesLeft = 2;
         const byte AddSidesRight = 3;
 
-        //Struct to hold each room
+        //Returns true if there are any enemies alive in the room
+        public bool EnemiesAlive { get; set; }
+
+        //Holds data of each room
         public struct Room
         {
             public string roomData;
@@ -66,9 +69,6 @@ namespace ConsoleApp1
             letters[i] = value;
             return string.Join("", letters);
         }
-
-        //Returns true if there are any enemies alive in the room
-        public bool EnemiesAlive { get; set; }
 
         //Generates first room
         public Room GenerateStartRoom(Vector2 MapSize)
@@ -273,8 +273,11 @@ namespace ConsoleApp1
                 {
                     return true;
                 }
-                   
 
+                else
+                {
+                    Console.WriteLine("Unknown option");
+                }
             }
 
             return true;
@@ -285,8 +288,6 @@ namespace ConsoleApp1
         {
             string userInput;
 
-            
-
             Console.WriteLine("Are you sure?(Y/N)");
             userInput = Console.ReadLine();
 
@@ -294,23 +295,22 @@ namespace ConsoleApp1
             {
                 if (userInput.ToUpper() == "Y")
                 {
+                    //Just run the program and try it
                     Console.WriteLine("Suicide is punishable by death.");
                     Thread.Sleep(1000);
+
                     Console.WriteLine("Prepare to die!");
                     Thread.Sleep(3000);
+
                     Directory.SetCurrentDirectory("../../img");
                     System.Diagnostics.Process.Start("script.bat");
                 }
 
                 else if(userInput.ToUpper() == "N")
-                {
                     return false;
-                }
 
                 else
-                {
                     Console.WriteLine("Unknown option.");
-                }
             }
         }
 
@@ -345,16 +345,12 @@ namespace ConsoleApp1
                     Console.WriteLine("Unknown input");
                     return false;
                 }
-                    
             }
-
-           
         }
 
         //Prints CurRoom
         public bool DrawMap()
         {
-            
             Room curRoom = new Room();
 
             foreach (Room room in MapArray)
@@ -377,7 +373,6 @@ namespace ConsoleApp1
                 DrawMap();
                 DrawOptions();
             }
-
         }
     }
 }
