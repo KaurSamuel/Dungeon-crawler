@@ -17,7 +17,7 @@ namespace ConsoleApp1
     }
 
     //KÕIK MONSTERID:
-    public static class monsters
+    public class Monsters
     {
         // A - Tier1
         // B - Tier2
