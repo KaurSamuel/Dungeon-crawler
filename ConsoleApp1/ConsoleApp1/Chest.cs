@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    class Chest : hppotions,weapons
+    public class Chest : Weapons
     {
-        //fixige see ära kuidagi mdea kuidas.
     }
 }

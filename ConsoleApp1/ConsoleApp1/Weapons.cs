@@ -78,7 +78,7 @@ namespace ConsoleApp1
     }
 
 
-    public class weapons
+    public class Weapons
     {
         //wepAtkSpd - daggers = 7-10
         //            swords = 4-6
