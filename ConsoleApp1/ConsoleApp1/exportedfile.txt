@@ -1,3 +1,5 @@
+me_{_get;_set; sc_{_get;_set; MG { get; set; MG { get; set; pd { get; set; 
+ = 7-1
 wA001 Bronze_Dagger Short_but_pointy. 5 15 7
 wA002 Iron_Dagger Short_but_pointy. 10 25 8
 wA003 Steel_Dagger Short_but_pointy. 7 29 9
@@ -12,7 +14,7 @@ wAA02 Black_halberd A_black_halberd 30 80 5
 wB001 Black_Dagger Short_but_pointy. 35 55 8
 wB002 Mithril_Dagger Short_but_pointy. 45 65 9
 wB003 Adamant_dagger Short_but_pointy. 55 85 10
-wB004 Black_Sword A_razor-sharp_sword. 55 85 5
+wB004 Black_Sword A_razor-sharp_sword. 55 85 5"
 wB005 Mihtril_Sword A_razor-sharp_sword. 60 90 6
 wB006 Adamantium_Sword A_razor-sharp_sword. 65 100 7
 wB007 Black_battleaxe A_vicious_looking_axe 65 100 1
@@ -33,5 +35,5 @@ wCC01 Chaotic_rapier A_razor-sharp_rapier. 300 500 10
 wCC02 Tetsi_wakizashi A_razor-sharp_sword_designed_by_the_Gu_masters_of_Wushanko. 350 550 6
 wCC03 Flameburst_Defender A_fiery_weapon. 450 700 3
 wCC04 Knockout_cannon Better_watchout! 500 1000 1
-wD001 You_win! You_have_won_the_game,_here's_a_reward! 1337 9001 10
-wG001 test test 100 200 5
+D001 You_win! You_have_won_the_game,_here's_a_reward! 1337 9001 10
+wG001 test test 100 200 5"
