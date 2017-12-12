@@ -13,25 +13,37 @@ namespace ConsoleApp1
         public string Player_block_chance { get; set; }
         public string Player_rooms_cleared { get; set; }
         public string Player_monsters_killed { get; set; }
-        public static List<weapons> Weapons_Inventory = new List<weapons>();
+        public static List<weaponvalues> Weapons_Inventory = new List<weaponvalues>();
     }
 
 
-    class Player_Inventory
+    class Player_Inventory : Player_Values
     {
-
-
-
-
-
-
-        public static String Add_to_inventory(string Item)
+        public static weaponvalues Add_to_inventory(weaponvalues Item)
         {
+            Weapons_Inventory.Add(Item);
+            return (Item);
+            
+        }
+    }
 
 
-               
+    class ID_to_item
+    {
+        public static string Weapon_ID_to_object(string ID)
+        {
+            weaponvalues new_weapon = new weaponvalues();
+
+            switch (ID)
+            {
+                case ("wA001"):
+                    {
+                        new_weapon = weapons.wA001();
+                    }
 
 
+                    break;
+            }
 
             return ("");
         }

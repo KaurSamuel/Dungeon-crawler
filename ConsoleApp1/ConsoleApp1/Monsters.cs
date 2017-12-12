@@ -17,7 +17,7 @@ namespace ConsoleApp1
     }
 
     //KÕIK MONSTERID:
-    public class monsters
+    public static class monsters
     {
         // A - Tier1
         // B - Tier2
@@ -29,7 +29,7 @@ namespace ConsoleApp1
         // G - test
 
         //Tier1 enemyd algavad
-        public enemyvalues A001()
+        public static enemyvalues A001()
         {
             enemyvalues green_slime = new enemyvalues
             {
@@ -42,7 +42,7 @@ namespace ConsoleApp1
             return (green_slime);
         }
 
-        public enemyvalues A002()
+        public static enemyvalues A002()
         {
             enemyvalues blue_slime = new enemyvalues
             {
@@ -55,7 +55,7 @@ namespace ConsoleApp1
             return (blue_slime);
         }
 
-        public enemyvalues A003()
+        public static enemyvalues A003()
         {
             enemyvalues rat = new enemyvalues
             {
@@ -67,7 +67,7 @@ namespace ConsoleApp1
             };
             return (rat);
         }
-        public enemyvalues A004()
+        public static enemyvalues A004()
         {
             enemyvalues chicken = new enemyvalues
             {
@@ -79,7 +79,7 @@ namespace ConsoleApp1
             };
             return (chicken);
         }
-        public enemyvalues A005()
+        public static enemyvalues A005()
         {
             enemyvalues snake = new enemyvalues
             {
@@ -91,7 +91,7 @@ namespace ConsoleApp1
             };
             return (snake);
         }
-        public enemyvalues A006()
+        public static enemyvalues A006()
         {
             enemyvalues imp = new enemyvalues
             {
@@ -104,7 +104,7 @@ namespace ConsoleApp1
             return (imp);
         }
 
-        public enemyvalues AA01()
+        public static enemyvalues AA01()
         {
             enemyvalues king_slime = new enemyvalues
             {
@@ -116,7 +116,7 @@ namespace ConsoleApp1
             };
             return (king_slime);
         }
-        public enemyvalues AA02()
+        public static enemyvalues AA02()
         {
             enemyvalues giant_rat = new enemyvalues
             {
@@ -128,7 +128,7 @@ namespace ConsoleApp1
             };
             return (giant_rat);
         }
-        public enemyvalues AA03()
+        public static enemyvalues AA03()
         {
             enemyvalues rogue = new enemyvalues
             {
@@ -143,7 +143,7 @@ namespace ConsoleApp1
         //Tier1 enemyd lõppevad
 
         //Tier2 enemyd algavad
-        public enemyvalues B001()
+        public static enemyvalues B001()
         {
             enemyvalues zombie = new enemyvalues()
             {
@@ -155,7 +155,7 @@ namespace ConsoleApp1
             };
             return (zombie);
         }
-        public enemyvalues B002()
+        public static enemyvalues B002()
         {
             enemyvalues poison_spider = new enemyvalues()
             {
@@ -167,7 +167,7 @@ namespace ConsoleApp1
             };
             return (poison_spider);
         }
-        public enemyvalues B003()
+        public static enemyvalues B003()
         {
             enemyvalues wolf = new enemyvalues()
             {
@@ -179,7 +179,7 @@ namespace ConsoleApp1
             };
             return (wolf);
         }
-        public enemyvalues B004()
+        public static enemyvalues B004()
         {
             enemyvalues black_bear = new enemyvalues()
             {
@@ -191,7 +191,7 @@ namespace ConsoleApp1
             };
             return (black_bear);
         }
-        public enemyvalues B005()
+        public static enemyvalues B005()
         {
             enemyvalues scorpion = new enemyvalues()
             {
@@ -203,7 +203,7 @@ namespace ConsoleApp1
             };
             return (scorpion);
         }
-        public enemyvalues B006()
+        public static enemyvalues B006()
         {
             enemyvalues ghost = new enemyvalues()
             {
@@ -216,7 +216,7 @@ namespace ConsoleApp1
             return (ghost);
         }
         
-        public enemyvalues BB01()
+        public static enemyvalues BB01()
         {
             enemyvalues dungeon_rat = new enemyvalues()
             {
@@ -228,7 +228,7 @@ namespace ConsoleApp1
             };
             return (dungeon_rat);
         }
-        public enemyvalues BB02()
+        public static enemyvalues BB02()
         {
             enemyvalues giant = new enemyvalues()
             {
@@ -240,7 +240,7 @@ namespace ConsoleApp1
             };
             return (giant);
         }
-        public enemyvalues BB03()
+        public static enemyvalues BB03()
         {
             enemyvalues black_knight = new enemyvalues()
             {
@@ -255,7 +255,7 @@ namespace ConsoleApp1
         //Tier2 enemyd lõppevad
 
         //Tier3 enemyd algavad
-        public enemyvalues C001()
+        public static enemyvalues C001()
         {
             enemyvalues pirate = new enemyvalues()
             {
@@ -267,7 +267,7 @@ namespace ConsoleApp1
             };
             return (pirate);
         }
-        public enemyvalues C002()
+        public static enemyvalues C002()
         {
             enemyvalues head_thief = new enemyvalues()
             {
@@ -279,7 +279,7 @@ namespace ConsoleApp1
             };
             return (head_thief);
         }
-        public enemyvalues C003()
+        public static enemyvalues C003()
         {
             enemyvalues archer = new enemyvalues()
             {
@@ -291,7 +291,7 @@ namespace ConsoleApp1
             };
             return (archer);
         }
-        public enemyvalues C004()
+        public static enemyvalues C004()
         {
             enemyvalues skeleton = new enemyvalues()
             {
@@ -303,7 +303,7 @@ namespace ConsoleApp1
             };
             return (skeleton);
         }
-        public enemyvalues C005()
+        public static enemyvalues C005()
         {
             enemyvalues minotaur = new enemyvalues()
             {
@@ -315,7 +315,7 @@ namespace ConsoleApp1
             };
             return (minotaur);
         }
-        public enemyvalues C006() //peaks olema suht rare
+        public static enemyvalues C006() //peaks olema suht rare
         {
             enemyvalues gnome = new enemyvalues()
             {
@@ -328,7 +328,7 @@ namespace ConsoleApp1
             return (gnome);
         }
 
-        public enemyvalues CC01()
+        public static enemyvalues CC01()
         {
             enemyvalues unicow = new enemyvalues()
             {
@@ -340,7 +340,7 @@ namespace ConsoleApp1
             };
             return (unicow);
         }
-        public enemyvalues CC02()
+        public static enemyvalues CC02()
         {
             enemyvalues wizard = new enemyvalues()
             {
@@ -352,7 +352,7 @@ namespace ConsoleApp1
             };
             return (wizard);
         }
-        public enemyvalues CC03()
+        public static enemyvalues CC03()
         {
             enemyvalues summoner = new enemyvalues()
             {
@@ -367,7 +367,7 @@ namespace ConsoleApp1
         //Tier3 enemyd lõppevad
 
         //Final bossid:
-        public enemyvalues D01()
+        public static enemyvalues D01()
         {
             enemyvalues hindrek = new enemyvalues
             {
@@ -380,7 +380,7 @@ namespace ConsoleApp1
             return (hindrek);
         }
 
-        public enemyvalues D02()
+        public static enemyvalues D02()
         {
             enemyvalues kaur = new enemyvalues
             {
@@ -393,7 +393,7 @@ namespace ConsoleApp1
             return (kaur);
         }
         
-        public enemyvalues D03()
+        public static enemyvalues D03()
         {
             enemyvalues karl = new enemyvalues
             {
@@ -405,7 +405,7 @@ namespace ConsoleApp1
             };
             return (karl);
         }
-        public enemyvalues D04()
+        public static enemyvalues D04()
         {
             enemyvalues jaan = new enemyvalues
             {
@@ -420,7 +420,7 @@ namespace ConsoleApp1
         //final bossid lõppevad
 
         //test:
-        public enemyvalues G01()
+        public static enemyvalues G01()
         {
             enemyvalues test = new enemyvalues
             {
