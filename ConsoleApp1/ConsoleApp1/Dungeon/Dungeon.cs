@@ -10,14 +10,19 @@ namespace ConsoleApp1
     class Dungeon
     {
         List<Room> MapArray = new List<Room>();
-        Vector2 CurPos;
+        Vector2 CurPos = new Vector2(0.0f, 0.0f);
         Room CurRoom;
 
         //Every side of a room
-        int SidesUp = 0;
-        int SidesDown = 1;
-        int SidesLeft = 2;
-        int SidesRight = 4;
+        const int SidesUp = 0x1;
+        const int SidesDown = 0x2;
+        const int SidesLeft = 0x4;
+        const int SidesRight = 0x8;
+
+        const int AddSidesUp = 1;
+        const int AddSidesDown = 2;
+        const int AddSidesLeft = 3;
+        const int AddSidesRight = 4;
 
         public struct Room
         {
@@ -44,7 +49,7 @@ namespace ConsoleApp1
         //Checks certain bit from a byte and returns it
         bool CheckSide(byte curSide, int bit)
         {
-            return (curSide & (1 << bit)) != 0;
+            return (curSide & (1 << bit - 1)) != 0;
         }
 
         //Replaces a letter at a certain index
@@ -67,14 +72,9 @@ namespace ConsoleApp1
             Vector2 newPos;
             Room room;
 
-            newPos.X = rnd.Next((int)posTopLeft.X, (int)posBotRight.X);
-            newPos.Y = rnd.Next((int)posTopLeft.Y, (int)posBotRight.Y);
-
-            room = GenerateRoom(newPos, (int)rnd.Next(1, 16));
+            room = GenerateRoom(CurPos, rnd.Next(0, 15));
 
             CurPos = room.pos;
-
-            room = AddDoor(room, SidesUp);
 
             return room;
         }
@@ -82,17 +82,19 @@ namespace ConsoleApp1
         //Adds door to a side of a room 
         public Room AddDoor(Room room, int sides)
         {
-            
+            int sideX = (int)room.size.X;
+            int sideY = (int)room.size.Y;
 
-           /* if (CheckSide((byte)room.sides, SidesUp)) //Up side
-               room.roomData = ReplaceAtIndex((int)room.size.X / 2, '#', room.roomData);
-          */  if (CheckSide((byte)room.sides, SidesDown)) //Down side
-                room.roomData = ReplaceAtIndex((int)((room.size.X * room.size.Y) - (room.size.X/ 2)), '#', room.roomData);
-          /*  if (CheckSide((byte)room.sides, SidesLeft)) //Left side
-                room.roomData = ReplaceAtIndex((int)((room.size.Y / 2) * room.size.X / 2), '#', room.roomData);
-            if (CheckSide((byte)room.sides, SidesRight)) //Right side
-                room.roomData = ReplaceAtIndex((int)(((room.size.X) / 2) * room.size.Y), '#', room.roomData);
-                */
+            //Gets each byte from last to (last - 4) place
+            if (CheckSide((byte)sides, AddSidesUp)) //Up side
+               room.roomData = ReplaceAtIndex(sideX / 2, '#', room.roomData);
+            if (CheckSide((byte)sides, AddSidesDown)) //Down side
+                room.roomData = ReplaceAtIndex((sideX * sideY) - (sideX / 10), '#', room.roomData);
+            if (CheckSide((byte)sides, AddSidesLeft)) //Left side
+                room.roomData = ReplaceAtIndex(((sideX * (sideY / 2))) + 3, '#', room.roomData);
+            if (CheckSide((byte)sides, AddSidesRight)) //Right side
+                room.roomData = ReplaceAtIndex((sideX * sideY) - (sideX * (sideY / 2)) + 1, '#', room.roomData);
+                
             return room;
         }
 
@@ -104,6 +106,8 @@ namespace ConsoleApp1
             string roomData = "";
             int roomWidth = rnd.Next(8, 32);
             int roomHeight = rnd.Next(8, 16);
+
+            pos = CurPos;
 
             for (int cur_height = 0; cur_height < roomHeight; cur_height++)
             {
@@ -129,8 +133,8 @@ namespace ConsoleApp1
             //roomData = ReplaceAtIndex(roomHeight)
 
             room = new Room(pos, new Vector2(roomWidth, roomHeight), roomData, (byte)sides);
-
-            room = AddDoor(room, rnd.Next(1, 15));
+           
+            room = AddDoor(room, new Random().Next(1, 15));
 
             MapArray.Add(room);
 
@@ -145,16 +149,19 @@ namespace ConsoleApp1
             return true;
         }
 
-        //If room exist sets CurRoom to that, else generates new
+        //If room exist sets CurRoom to that, otherwise generates new
         private void MoveToRoom(int EnteredSide)
         {
             foreach (Room room in MapArray)
             {
                 if (room.pos == CurPos)
+                {
                     CurRoom = room;
-                else
-                    CurRoom = GenerateRoom(CurPos, EnteredSide);
+                    return;
+                }
             }
+
+            CurRoom = GenerateRoom(CurPos, EnteredSide);
         }
 
         //Calls fight scene
@@ -218,24 +225,28 @@ namespace ConsoleApp1
 
                 if (userInput == sideUp.ToString())
                 {
+                    CurPos.Y++;
                     MoveToRoom(sideUp);
                     break;
                 }
 
                 else if (userInput == sideDown.ToString())
                 {
+                    CurPos.Y--;
                     MoveToRoom(sideDown);
                     break;
                 }
 
                 else if (userInput == sideLeft.ToString())
                 {
+                    CurPos.X--;
                     MoveToRoom(sideLeft);
                     break;
                 }
 
                 else if (userInput == sideLeft.ToString())
                 {
+                    CurPos.X++;
                     MoveToRoom(sideRight);
                     break;
                 }
@@ -323,7 +334,6 @@ namespace ConsoleApp1
                 DrawMap();
                 DrawOptions();
             }
-
 
         }
     }
