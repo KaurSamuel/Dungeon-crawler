@@ -48,7 +48,7 @@ namespace ConsoleApp1
                 }
             }
 
-            return "";
+            return "error";
         }
     }
 }
