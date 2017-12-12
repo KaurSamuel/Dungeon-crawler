@@ -19,16 +19,16 @@ namespace ConsoleApp1
 
         //Every side of a room
         //Used to show which sides are on a room
-        const int SidesUp = 0x1;
-        const int SidesDown = 0x2;
-        const int SidesLeft = 0x4;
-        const int SidesRight = 0x8;
+        const byte SidesUp = 0x1;
+        const byte SidesDown = 0x2;
+        const byte SidesLeft = 0x4;
+        const byte SidesRight = 0x8;
         
         //Used to check which sides are on a room
-        const int AddSidesUp = 1;
-        const int AddSidesDown = 2;
-        const int AddSidesLeft = 3;
-        const int AddSidesRight = 4;
+        const byte AddSidesUp = 0;
+        const byte AddSidesDown = 1;
+        const byte AddSidesLeft = 2;
+        const byte AddSidesRight = 3;
 
         //Struct to hold each room
         public struct Room
@@ -85,39 +85,33 @@ namespace ConsoleApp1
             return room;
         }
 
+        public Room SetDoors(Room room, byte side)
+        {
+            room.sides = side;
+            return room;
+        }
+
         //Adds door to a side of a room 
-        public Room AddDoor(Room room, int sides)
+        public Room AddDoors(Room room, byte sides)
         {
             int sideX = (int)room.size.X;
             int sideY = (int)room.size.Y;
 
-            //Gets each byte from last to (last - 4) place
-            if (CheckSide((byte)sides, AddSidesUp)) //Up side
-            {
+            //Checks each bit and if 1 adds a # to roomData
+            if (CheckSide(sides, AddSidesUp)) //Up side
                 room.roomData = ReplaceAtIndex(sideX / 2, '#', room.roomData);
-                room.sides += SidesUp;
-            }
 
-            if (CheckSide((byte)sides, AddSidesDown)) //Down side
-            {
-                room.roomData = ReplaceAtIndex((sideX * sideY) - (sideX / 10), '#', room.roomData);
-                room.sides += SidesDown;
-            }
+            if (CheckSide(sides, AddSidesDown)) //Down side
+                room.roomData = ReplaceAtIndex((sideX * sideY) - ((sideX + 1) / 2), '#', room.roomData);
 
-            if (CheckSide((byte)sides, AddSidesLeft)) //Left side
-            {
-                room.roomData = ReplaceAtIndex(((sideX * (sideY / 2))) + 3, '#', room.roomData);
-                room.sides += SidesLeft;
-            }
+            if (CheckSide(sides, AddSidesLeft)) //Left side
+                room.roomData = ReplaceAtIndex(((sideX * (sideY / 2))), '#', room.roomData);
 
-            if (CheckSide((byte)sides, AddSidesRight)) //Right side
-            {
-                room.roomData = ReplaceAtIndex((sideX * sideY) - (sideX * (sideY / 2)) + 1, '#', room.roomData);
-                room.sides += SidesRight;
-            }
+            if (CheckSide(sides, AddSidesRight)) //Right side
+                room.roomData = ReplaceAtIndex((sideX * (sideY / 2)) + sideX - 2, '#', room.roomData);
+
+            room.sides = sides;
             
-                
-                
             return room;
         }
 
@@ -138,10 +132,10 @@ namespace ConsoleApp1
                     char appendable = ' ';
 
                     if (cur_width == 0 || cur_width == roomWidth - 1)
-                        appendable = '|';
+                        appendable = '\u2502';
 
                     if (cur_height == 0 || cur_height == roomHeight - 1)
-                        appendable = '-';
+                        appendable = '\u2500';
 
                     roomData += appendable;
                 }
@@ -151,13 +145,14 @@ namespace ConsoleApp1
             }
 
             //Adds a corners to a room
-            roomData = ReplaceAtIndex(0, '\u231C', roomData);
-            roomData = ReplaceAtIndex(roomWidth - 1, '\u231C', roomData);
-            //roomData = ReplaceAtIndex(roomHeight)
+            roomData = ReplaceAtIndex(0, '\u250C', roomData);
+            roomData = ReplaceAtIndex(roomWidth - 1, '\u2510', roomData);
+            roomData = ReplaceAtIndex((++roomWidth * roomHeight) - roomWidth, '\u2514', roomData);
+            roomData = ReplaceAtIndex(roomData.Length - 2, '\u2518', roomData);
 
             room = new Room(pos, new Vector2(roomWidth, roomHeight), roomData, (byte)sides);
            
-            room = AddDoor(room, rnd.Next(1, 15));
+            room = AddDoors(room, (byte)rnd.Next(1, 15));
 
             MapArray.Add(room);
 
@@ -208,28 +203,28 @@ namespace ConsoleApp1
             int sideLeft = 0;
             int sideRight = 0;
 
-            if (CheckSide(CurRoom.sides, SidesUp))
+            if (CheckSide(CurRoom.sides, AddSidesUp))
             {
                 count++;
                 sideUp = count;
                 Console.WriteLine(count + ". " + '\u25B2');
             }
             
-            if (CheckSide(CurRoom.sides, SidesDown))
+            if (CheckSide(CurRoom.sides, AddSidesDown))
             {
                 count++;
                 sideDown = count;
                 Console.WriteLine(count + ". " + '\u25BA');
             }
             
-            if (CheckSide(CurRoom.sides, SidesLeft))
+            if (CheckSide(CurRoom.sides, AddSidesLeft))
             {
                 count++;
                 sideLeft = count;
                 Console.WriteLine(count + ". " + '\u25BC');
             }
             
-            if (CheckSide(CurRoom.sides, SidesRight))
+            if (CheckSide(CurRoom.sides, AddSidesRight))
             {
                 count++;
                 sideRight = count;
