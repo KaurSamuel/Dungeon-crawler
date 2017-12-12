@@ -16,6 +16,7 @@ namespace ConsoleApp1
         Vector2 CurPos = new Vector2(0.0f, 0.0f);
         Room CurRoom;
         Random rnd = new Random();
+        char doorSign = '\u0126';
 
         //Every side of a room
         //Used to show which sides are on a room
@@ -93,16 +94,16 @@ namespace ConsoleApp1
 
             //Checks each bit and if 1 adds a # to roomData
             if (CheckSide(sides, AddSidesUp)) //Up side
-                room.roomData = ReplaceAtIndex(sideX / 2, '#', room.roomData);
+                room.roomData = ReplaceAtIndex(sideX / 2, doorSign, room.roomData);
 
             if (CheckSide(sides, AddSidesDown)) //Down side
-                room.roomData = ReplaceAtIndex((sideX * sideY) - ((sideX + 1) / 2), '#', room.roomData);
+                room.roomData = ReplaceAtIndex((sideX * sideY) - ((sideX + 1) / 2), doorSign, room.roomData);
 
             if (CheckSide(sides, AddSidesLeft)) //Left side
-                room.roomData = ReplaceAtIndex(((sideX * (sideY / 2))), '#', room.roomData);
+                room.roomData = ReplaceAtIndex(((sideX * (sideY / 2))), doorSign, room.roomData);
 
             if (CheckSide(sides, AddSidesRight)) //Right side
-                room.roomData = ReplaceAtIndex((sideX * (sideY / 2)) + sideX - 2, '#', room.roomData);
+                room.roomData = ReplaceAtIndex((sideX * (sideY / 2)) + sideX - 2, doorSign, room.roomData);
 
             room.sides = sides;
             
