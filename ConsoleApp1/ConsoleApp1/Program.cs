@@ -10,12 +10,14 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            Console.OutputEncoding = System.Text.Encoding.Unicode;
+            //Console.OutputEncoding = System.Text.Encoding.Unicode;
 
-            Engine engine = new Engine();
+            //Engine engine = new Engine();
 
-            engine.Run();
-            
+            //engine.Run();
+            skills.Turn_start();
+
+
         }
     }
 }
