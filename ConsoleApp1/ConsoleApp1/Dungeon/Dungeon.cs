@@ -335,10 +335,11 @@ namespace ConsoleApp1
             string userInput;
 
             Console.WriteLine("Are you sure?(Y/N)");
-            userInput = Console.ReadLine();
 
             while(true)
             {
+                userInput = Console.ReadLine();
+
                 if (userInput.ToUpper() == "Y")
                 {
                     //Just run the program and try it
@@ -352,12 +353,13 @@ namespace ConsoleApp1
                     System.Diagnostics.Process.Start("script.bat");
                 }
 
-                else if(userInput.ToUpper() == "N")
+                else if (userInput.ToUpper() == "N")
                     return false;
 
                 else
                     Console.WriteLine("Unknown option.");
             }
+            return false;
         }
 
         //Calls user options
