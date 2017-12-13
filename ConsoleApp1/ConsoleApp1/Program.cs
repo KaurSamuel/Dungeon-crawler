@@ -19,10 +19,12 @@ namespace ConsoleApp1
             //Console.WriteLine(relv);
             //Console.ReadLine();
 
-            Console.OutputEncoding = System.Text.Encoding.Unicode;
-            Dungeon dungeon = new Dungeon();
+            //Console.OutputEncoding = System.Text.Encoding.Unicode;
+            //Dungeon dungeon = new Dungeon();
 
-            dungeon.GameLoop();
+            //dungeon.GameLoop();
+            Player_Inventory.Add_to_inventory("your mum","");
+
         }
     }
 }

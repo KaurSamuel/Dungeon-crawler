@@ -62,7 +62,7 @@ namespace ConsoleApp1
             if (CheckSide(room.sides, side))
                 return room;
             else
-                room.sides |= 1 << side;
+                //room.sides |= 1 << side;
 
             return room;
         }

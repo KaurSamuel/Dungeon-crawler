@@ -13,17 +13,24 @@ namespace ConsoleApp1
         public string Player_block_chance { get; set; }
         public string Player_rooms_cleared { get; set; }
         public string Player_monsters_killed { get; set; }
-        public static List<weaponvalues> Weapons_Inventory = new List<weaponvalues>();
+        public static List<string> Weapons_Inventory = new List<string>();
     }
 
 
     class Player_Inventory : Player_Values
     {
-        public static weaponvalues Add_to_inventory(weaponvalues Item)
+        public static string Add_to_inventory(string Whatitem,string ID)
         {
-            Weapons_Inventory.Add(Item);
-            return (Item);
-            
+            Weapons_Inventory.Add(ID);
+            return ("");
+        }
+        public static string Drawinventory()
+        {
+            foreach (var item in Weapons_Inventory)
+            {
+                Console.WriteLine(item);
+            }
+            return ("");
         }
     }
 
