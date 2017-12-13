@@ -57,6 +57,16 @@ namespace ConsoleApp1
             GenerateMap();
         }
 
+        Room AddDoor(Room room, int side) //USE AddSides* in int side
+        {
+            if (CheckSide(room.sides, side))
+                return room;
+            else
+                room.sides |= 1 << side;
+
+            return room;
+        }
+
         //Checks certain bit from a byte and returns it
         bool CheckSide(byte curSide, int bit)
         {
