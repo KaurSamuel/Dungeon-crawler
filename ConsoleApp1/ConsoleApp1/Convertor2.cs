@@ -13,42 +13,42 @@ namespace ConsoleApp1
             string ValueType = "0";
             if (whatvalue == "mob_Name")
             {
-                ValueType = "0";
+                ValueType = "1";
             }
 
             else if (whatvalue == "mob_hp")
             {
-                ValueType = "1";
+                ValueType = "2";
             }
 
             else if (whatvalue == "mob_max_dmg")
             {
-                ValueType = "2";
+                ValueType = "3";
             }
 
             else if (whatvalue == "mob_min_dmg")
             {
-                ValueType = "3";
+                ValueType = "4";
             }
 
             else if (whatvalue == "mob_exp")
             {
-                ValueType = "4";
+                ValueType = "5";
             }
 
             string DirectoryPath = "../../monsters.txt";
             foreach (string line in System.IO.File.ReadAllLines(DirectoryPath))
             {
-                string id = line.Substring(0, 5);
-
-                if (id == ID)
+                string id = line.Substring(0, 4);
+                
+                if (id == ID)  
                 {
                     string[] allWords = line.Split();
                     return (allWords[int.Parse(ValueType)]);
                 }
             }
 
-            return "error";
+            return "Feature working as intended";
         }
         /*weapon name =          wep_name
          *weapon description =   wep_desc
