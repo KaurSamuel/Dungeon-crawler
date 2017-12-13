@@ -1,0 +1,13 @@
+
+
+
+Hindrek:
+FIX: When entered random doors don't remember
+Spawn random mobs
+Different tier rooms
+
+Kaur:
+Combat system
+
+Jaan:
+Teha inspect option
