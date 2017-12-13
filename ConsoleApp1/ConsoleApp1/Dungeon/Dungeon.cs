@@ -11,7 +11,7 @@ using System.Collections;
 
 namespace ConsoleApp1
 {
-    public class Dungeon
+    class Dungeon
     {
         List<Room> MapArray = new List<Room>();
         Vector2 CurPos = new Vector2(0.0f, 0.0f);
@@ -33,10 +33,8 @@ namespace ConsoleApp1
         const byte AddSidesLeft = 2;
         const byte AddSidesRight = 3;
 
-        public static bool check { get; protected set; }
-
         //Returns true if there are any enemies alive in the room
-        public static bool EnemiesAlive { get; set; }
+        public bool EnemiesAlive { get; set; }
 
         //Holds data of each room
         public struct Room
