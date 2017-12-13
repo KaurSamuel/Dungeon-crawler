@@ -309,7 +309,7 @@ namespace ConsoleApp1
                     Console.WriteLine(objects.Obj06());
                     break;
             }
-            return false;
+            return true;
         }
 
         //Calls user options
