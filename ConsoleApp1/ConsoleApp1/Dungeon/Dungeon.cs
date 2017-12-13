@@ -59,6 +59,7 @@ namespace ConsoleApp1
             GenerateMap();
         }
 
+<<<<<<< HEAD
         Room AddDoorToPrevRoom(Room newRoom)
         {
             Vector2 pos = PrevPos - CurPos;
@@ -86,6 +87,15 @@ namespace ConsoleApp1
 
             return newRoom;
 
+=======
+        Room CheckNearRooms(Room room)
+        {
+            Room[] rooms = new Room[4];
+            int count = 0;
+
+
+            return room;
+>>>>>>> test
         }
 
         //Checks certain bit from a byte and returns it
@@ -233,6 +243,7 @@ namespace ConsoleApp1
             room = new Room(pos, new Vector2(roomWidth, roomHeight), roomData);
 
             room = AddDoors(room, (byte)rnd.Next(1, 15));
+            room = CheckNearRooms(room);
 
             room = AddDoorToPrevRoom(room);
 
@@ -263,6 +274,21 @@ namespace ConsoleApp1
             }
 
             CurRoom = GenerateRoom(CurPos, (byte)EnteredSide);
+<<<<<<< HEAD
+=======
+        }
+
+        //Calls fight scene
+        private bool DrawFight()
+        {
+            return false;
+        }
+
+        //Calls inventory scene
+        private bool DrawInventory()
+        {
+            return false;
+>>>>>>> test
         }
 
         //Prints Moving options
