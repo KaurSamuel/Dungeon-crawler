@@ -13,16 +13,16 @@ namespace ConsoleApp1
             string[] Enemys = ID.Split(' ');
             int enemynb = 1;
             Console.WriteLine("what enemy would you like to fight?");
-
+            Random rnd = new Random();
+            int enemy_AS = rnd.Next(1, 10);
             foreach (var enemy in Enemys)
             {
-
                 Console.WriteLine(enemynb + ". " + Convertor.export_mon(enemy, "mob_Name"));
                 enemynb++;
             }
             string playerChoise = Console.ReadLine();
             return ("");
-            //xd
+           
         }
     }
 }
