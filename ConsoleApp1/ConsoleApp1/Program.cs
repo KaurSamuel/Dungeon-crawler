@@ -13,7 +13,8 @@ namespace ConsoleApp1
             Console.OutputEncoding = System.Text.Encoding.Unicode;
             Dungeon dungeon = new Dungeon();
 
-            dungeon.GameLoop();
+            dungeon.DrawMap();
+            dungeon.DrawMove();
         }
     }
 }

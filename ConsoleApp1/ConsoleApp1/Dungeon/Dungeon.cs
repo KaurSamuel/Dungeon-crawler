@@ -102,10 +102,35 @@ namespace ConsoleApp1
             return string.Join("", letters);
         }
 
-        //Generates random events to a room(mobs, chests, weapons)
-        private bool AddEvents()
+        private Room AddMobs(Room room)
         {
+            string id = "A000";
+            int mobCount = rnd.Next(0, 2);
 
+            for (int i = 0; i < mobCount; i++)
+            {
+                id = ReplaceAtIndex(3, (char)rnd.Next(48, 54), id); // Generates a number between 1 and 6 and assigns it to 4th pos
+                
+            }
+
+            room
+
+            return room;
+        }
+
+        private Room AddObjects(Room room)
+        {
+            string xd = "xd";
+
+
+            return room;
+        }
+
+        //Generates random events to a room(mobs, chests, weapons)
+        private bool AddEvents(Room room)
+        {
+            room = AddMobs(room);
+            room = AddObjects(room);
 
 
             return true;
