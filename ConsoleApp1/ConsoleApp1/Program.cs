@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    class Program
+    class Program : Player_Values
     {
         static void Main(string[] args)
         {
@@ -19,10 +19,11 @@ namespace ConsoleApp1
             //Console.WriteLine(relv);
             //Console.ReadLine();
 
-            Console.OutputEncoding = System.Text.Encoding.Unicode;
-            Dungeon dungeon = new Dungeon();
+            //Console.OutputEncoding = System.Text.Encoding.Unicode;
+            //Dungeon dungeon = new Dungeon();
 
-            dungeon.GameLoop();
+            //dungeon.GameLoop();
+            
         }
     }
 }

@@ -36,7 +36,7 @@ namespace ConsoleApp1
                 ValueType = "4";
             }
 
-            string DirectoryPath = "monsters.txt";
+            string DirectoryPath = "../../monsters.txt";
             foreach (string line in System.IO.File.ReadAllLines(DirectoryPath))
             {
                 string id = line.Substring(0, 5);
@@ -81,7 +81,7 @@ namespace ConsoleApp1
             }
 
 
-            string Directorypath = "weapons.txt";
+            string Directorypath = "../../weapons.txt";
             foreach (string line in System.IO.File.ReadAllLines(Directorypath))
             {
 
