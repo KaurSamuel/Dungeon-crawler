@@ -284,6 +284,34 @@ namespace ConsoleApp1
             return false;
         }
 
+        private bool InspectOption()
+        {
+            objects objects = new objects();
+            int _objects = (new Random()).Next(0, 6);
+            switch(_objects)
+            {
+                case 1:
+                    Console.WriteLine(objects.Obj01());
+                    break;
+                case 2:
+                    Console.WriteLine(objects.Obj02());
+                    break;
+                case 3:
+                    Console.WriteLine(objects.Obj03());
+                    break;
+                case 4:
+                    Console.WriteLine(objects.Obj04());
+                    break;
+                case 5:
+                    Console.WriteLine(objects.Obj05());
+                    break;
+                case 6:
+                    Console.WriteLine(objects.Obj06());
+                    break;
+            }
+            return false;
+        }
+
         //Calls user options
         private bool DrawOptions()
         {
@@ -295,6 +323,7 @@ namespace ConsoleApp1
                 Console.WriteLine("2. Inventory");
                 Console.WriteLine("3. Move");
                 Console.WriteLine("4. Suicide");
+                Console.WriteLine("5. Inspect");
 
                 userInput = Console.ReadLine();
 
@@ -309,6 +338,9 @@ namespace ConsoleApp1
 
                 else if (userInput == "4")
                     return DrawSuicide();
+
+                else if (userInput == "5")
+                    return InspectOption();
 
                 else
                 {
