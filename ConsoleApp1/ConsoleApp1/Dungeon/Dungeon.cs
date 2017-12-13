@@ -59,15 +59,6 @@ namespace ConsoleApp1
             GenerateMap();
         }
 
-<<<<<<< HEAD
-        Room CheckNearRooms(Room room)
-        {
-            Room[] rooms = new Room[4];
-            int count = 0;
-
-
-            return room;
-=======
         Room AddDoorToPrevRoom(Room newRoom)
         {
             Vector2 pos = PrevPos - CurPos;
@@ -94,7 +85,7 @@ namespace ConsoleApp1
                     return AddDoors(newRoom, SidesRight);
 
             return newRoom;
->>>>>>> rooms
+
         }
 
         //Checks certain bit from a byte and returns it
@@ -208,11 +199,9 @@ namespace ConsoleApp1
             room = new Room(pos, new Vector2(roomWidth, roomHeight), roomData);
            
             room = AddDoors(room, (byte)rnd.Next(1, 15));
-<<<<<<< HEAD
-            room = CheckNearRooms(room);
-=======
+
             room = AddDoorToPrevRoom(room);
->>>>>>> rooms
+
 
             MapArray.Add(room);
 
@@ -242,20 +231,8 @@ namespace ConsoleApp1
             CurRoom = GenerateRoom(CurPos, (byte)EnteredSide);
         }
 
-        //Calls fight scene
-        private bool DrawFight()
-        {
-            return false;
-        }
-
-        //Calls inventory scene
-        private bool DrawInventory()
-        {
-            return false;
-        }
-
         //Prints Moving options
-        private bool DrawMove()
+        public bool DrawMove()
         {
             int count = 0;
             int sideUp = 0;
@@ -343,71 +320,6 @@ namespace ConsoleApp1
             return true;
         }
 
-        //Calls suicide options
-        private bool DrawSuicide()
-        {
-            string userInput;
-
-            Console.WriteLine("Are you sure?(Y/N)");
-            userInput = Console.ReadLine();
-
-            while(true)
-            {
-                if (userInput.ToUpper() == "Y")
-                {
-                    //Just run the program and try it
-                    Console.WriteLine("Suicide is punishable by death.");
-                    Thread.Sleep(1000);
-
-                    Console.WriteLine("Prepare to die!");
-                    Thread.Sleep(3000);
-
-                    Directory.SetCurrentDirectory("../../img");
-                    System.Diagnostics.Process.Start("script.bat");
-                }
-
-                else if(userInput.ToUpper() == "N")
-                    return false;
-
-                else
-                    Console.WriteLine("Unknown option.");
-            }
-        }
-
-        //Calls user options
-        private bool DrawOptions()
-        {
-            string userInput;
-
-            while(true)
-            {
-                Console.WriteLine("1. Fight");
-                Console.WriteLine("2. Inventory");
-                Console.WriteLine("3. Move");
-                Console.WriteLine("4. Suicide");
-
-                userInput = Console.ReadLine();
-
-                if (userInput == "1")
-                    return DrawFight();
-
-                else if (userInput == "2")
-                    return DrawInventory();
-
-                else if (userInput == "3")
-                    return DrawMove();
-
-                else if (userInput == "4")
-                    return DrawSuicide();
-
-                else
-                {
-                    Console.WriteLine("Unknown input");
-                    return false;
-                }
-            }
-        }
-
         //Prints CurRoom
         public bool DrawMap()
         {
@@ -424,16 +336,9 @@ namespace ConsoleApp1
             return true;
         }
 
-        //Main loop
-        public void GameLoop()
+        public bool Frame()
         {
-            while(true)
-            {
-                Console.Clear();
-                DrawMap();
-                DrawOptions();
-                PrevPos = CurPos;
-            }
+            return DrawMap();
         }
     }
 }

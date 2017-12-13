@@ -19,10 +19,11 @@ namespace ConsoleApp1
             //Console.WriteLine(relv);
             //Console.ReadLine();
 
-            //Console.OutputEncoding = System.Text.Encoding.Unicode;
-            //Dungeon dungeon = new Dungeon();
+            Console.OutputEncoding = System.Text.Encoding.Unicode;
 
-            //dungeon.GameLoop();
+            Engine engine = new Engine();
+
+            engine.Run();
             
         }
     }

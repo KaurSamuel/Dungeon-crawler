@@ -6,21 +6,27 @@ namespace ConsoleApp1
 {
     class Engine
     {
+        Dungeon dungeon;
+
+        public Engine()
+        {
+            dungeon = new Dungeon();
+        }
 
         //Calls fight scene
-        private bool DrawFight()
+        private bool Fight()
         {
             return false;
         }
 
         //Calls inventory scene
-        private bool DrawInventory()
+        private bool Inventory()
         {
             return false;
         }
 
         //Calls suicide options
-        private bool DrawSuicide()
+        private bool Suicide()
         {
             string userInput;
 
@@ -51,7 +57,7 @@ namespace ConsoleApp1
         }
 
         //Calls user options
-        private bool DrawOptions()
+        private bool Options()
         {
             string userInput;
 
@@ -65,16 +71,16 @@ namespace ConsoleApp1
                 userInput = Console.ReadLine();
 
                 if (userInput == "1")
-                    return DrawFight();
+                    return Fight();
 
                 else if (userInput == "2")
-                    return DrawInventory();
+                    return Inventory();
 
                 else if (userInput == "3")
-                    return DrawMove();
+                    return dungeon.DrawMove();
 
                 else if (userInput == "4")
-                    return DrawSuicide();
+                    return Suicide();
 
                 else
                 {
@@ -85,14 +91,16 @@ namespace ConsoleApp1
         }
 
         //Main loop
-        public void GameLoop()
+        public void Run()
         {
+
             while (true)
             {
                 Console.Clear();
-                DrawMap();
-                DrawOptions();
+                dungeon.DrawMap();
+                Options();
             }
         }
+
     }
 }
