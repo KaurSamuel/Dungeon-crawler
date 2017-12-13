@@ -12,7 +12,7 @@ namespace ConsoleApp1
         {
             if (Dungeon.EnemiesAlive == false)
             {
-                Tuple.Create(0.5, (Weapons.Inventory.Add) new Weapons(wA001));
+                Tuple.Create(0.5, (Weapons.Inventory.Add) new Weapons(A001));
 
             }
         }

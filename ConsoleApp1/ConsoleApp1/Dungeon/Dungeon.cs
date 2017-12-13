@@ -34,7 +34,7 @@ namespace ConsoleApp1
         const byte AddSidesRight = 3;
 
         //Returns true if there are any enemies alive in the room
-        public bool EnemiesAlive { get; set; } //TODO
+        public static bool EnemiesAlive { get; set; } //TODO
 
         //Holds data of each room
         public struct Room
