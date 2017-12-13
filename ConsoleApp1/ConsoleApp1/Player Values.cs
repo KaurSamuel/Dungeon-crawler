@@ -16,6 +16,7 @@ namespace ConsoleApp1
         public static List<string> Weapons_Inventory = new List<string>();
         public static string currently_equiped { get; set; }
     }
+
     class Player_Inventory : Player_Values
     {
         public static string Add_to_inventory(string Whatitem,string ID)

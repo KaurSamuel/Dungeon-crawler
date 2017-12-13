@@ -23,7 +23,8 @@ namespace ConsoleApp1
             //Dungeon dungeon = new Dungeon();
 
             //dungeon.GameLoop();
-            
+            combat.Combat_phase_start("A001 A004 G001", "3");
+
         }
     }
 }
