@@ -78,7 +78,7 @@ namespace ConsoleApp1
     }
 
 
-    public class weapons
+    public class Weapons
     {
         public static Func<weaponvalues> new_weapon { get; internal set; }
 
