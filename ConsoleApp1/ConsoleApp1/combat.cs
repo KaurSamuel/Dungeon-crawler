@@ -22,6 +22,7 @@ namespace ConsoleApp1
             }
             string playerChoise = Console.ReadLine();
             return ("");
+            //xd
         }
     }
 }
