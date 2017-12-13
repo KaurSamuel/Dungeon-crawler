@@ -16,7 +16,7 @@ namespace ConsoleApp1
         List<Room> MapArray = new List<Room>();
         Vector2 CurPos = new Vector2(0.0f, 0.0f);
         Vector2 PrevPos = new Vector2(0.0f, 0.0f);
-        Room CurRoom;
+        public Room CurRoom;
         Random rnd = new Random();
         char doorSign = '\u0126';
 
@@ -34,7 +34,14 @@ namespace ConsoleApp1
         const byte AddSidesRight = 3;
 
         //Returns true if there are any enemies alive in the room
-        public static bool EnemiesAlive { get; set; } //TODO
+
+        public static bool EnemiesAlive(Room room) //Pass CurRoom on default
+        {
+            if (room.Enemies.Count > 0)
+                return true;
+            else
+                return false;
+        }
 
         //Holds data of each room
         public struct Room
@@ -43,6 +50,7 @@ namespace ConsoleApp1
             public Vector2 pos;
             public Vector2 size;
             public byte sides;
+            public List<enemyvalues> Enemies;
 
             public Room(Vector2 Pos, Vector2 Size, string RoomData, byte Sides = 0)
             {
@@ -50,6 +58,7 @@ namespace ConsoleApp1
                 pos = Pos;
                 size = Size;
                 sides = Sides;
+                Enemies = new List<enemyvalues>();
             }
         }
 
@@ -59,7 +68,7 @@ namespace ConsoleApp1
             GenerateMap();
         }
 
-<<<<<<< HEAD
+
         Room AddDoorToPrevRoom(Room newRoom)
         {
             Vector2 pos = PrevPos - CurPos;
@@ -86,16 +95,6 @@ namespace ConsoleApp1
                     return AddDoors(newRoom, SidesRight);
 
             return newRoom;
-
-=======
-        Room CheckNearRooms(Room room)
-        {
-            Room[] rooms = new Room[4];
-            int count = 0;
-
-
-            return room;
->>>>>>> test
         }
 
         //Checks certain bit from a byte and returns it
@@ -120,10 +119,8 @@ namespace ConsoleApp1
             for (int i = 0; i < mobCount; i++)
             {
                 id = ReplaceAtIndex(3, (char)rnd.Next(48, 54), id); // Generates a number between 1 and 6 and assigns it to 4th pos
-                
+                room.Enemies.Add(Convertor.ImportMonster(id));
             }
-
-            room
 
             return room;
         }
@@ -137,13 +134,13 @@ namespace ConsoleApp1
         }
 
         //Generates random events to a room(mobs, chests, weapons)
-        private bool AddEvents(Room room)
+        private Room AddEvents(Room room)
         {
             room = AddMobs(room);
             room = AddObjects(room);
 
 
-            return true;
+            return room;
         }
 
         //Generates first room
@@ -154,7 +151,7 @@ namespace ConsoleApp1
             Vector2 posBotRight = MapSize * 0.75f;
             Room room;
 
-            room = GenerateRoom(CurPos, (byte)rnd.Next(0, 15));
+            room = GenerateRoom(CurPos, (byte)rnd.Next(0, 15), false);
 
             CurPos = room.pos;
 
@@ -206,7 +203,7 @@ namespace ConsoleApp1
         }
 
         //Generates a random room
-        public Room GenerateRoom(Vector2 pos = default(Vector2), byte sides = 0)
+        public Room GenerateRoom(Vector2 pos = default(Vector2), byte sides = 0, bool events = true)
         {
             Room room;
             string roomData = "";
@@ -214,6 +211,8 @@ namespace ConsoleApp1
             int roomHeight = rnd.Next(8, 16);
 
             pos = CurPos;
+
+
 
             for (int cur_height = 0; cur_height < roomHeight; cur_height++)
             {
@@ -243,10 +242,11 @@ namespace ConsoleApp1
             room = new Room(pos, new Vector2(roomWidth, roomHeight), roomData);
 
             room = AddDoors(room, (byte)rnd.Next(1, 15));
-            room = CheckNearRooms(room);
 
             room = AddDoorToPrevRoom(room);
 
+            if (events)
+                room = AddEvents(room);
 
             MapArray.Add(room);
 
@@ -274,8 +274,7 @@ namespace ConsoleApp1
             }
 
             CurRoom = GenerateRoom(CurPos, (byte)EnteredSide);
-<<<<<<< HEAD
-=======
+
         }
 
         //Calls fight scene
@@ -288,7 +287,6 @@ namespace ConsoleApp1
         private bool DrawInventory()
         {
             return false;
->>>>>>> test
         }
 
         //Prints Moving options
