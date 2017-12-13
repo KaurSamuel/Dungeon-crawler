@@ -34,7 +34,7 @@ namespace ConsoleApp1
         const byte AddSidesRight = 3;
 
         //Returns true if there are any enemies alive in the room
-        public bool EnemiesAlive { get; set; }
+        public bool EnemiesAlive { get; set; } //TODO
 
         //Holds data of each room
         public struct Room
@@ -44,7 +44,7 @@ namespace ConsoleApp1
             public Vector2 size;
             public byte sides;
             
-            public Room(Vector2 Pos, Vector2 Size, string RoomData, byte Sides)
+            public Room(Vector2 Pos, Vector2 Size, string RoomData, byte Sides = 0)
             {
                 roomData = RoomData;
                 pos = Pos;
@@ -59,6 +59,7 @@ namespace ConsoleApp1
             GenerateMap();
         }
 
+<<<<<<< HEAD
         Room CheckNearRooms(Room room)
         {
             Room[] rooms = new Room[4];
@@ -66,6 +67,34 @@ namespace ConsoleApp1
 
 
             return room;
+=======
+        Room AddDoorToPrevRoom(Room newRoom)
+        {
+            Vector2 pos = PrevPos - CurPos;
+            Room lRoom = new Room();
+
+            foreach (Room cRoom in MapArray)
+                if (cRoom.pos == PrevPos)
+                    lRoom = cRoom;
+            
+            if (pos.X == 0 && pos.Y == 1) //UP
+                if (CheckSide(lRoom.sides, AddSidesDown))
+                    return AddDoors(newRoom, SidesUp);
+
+            if (pos.X == 0 && pos.Y == -1) //DOWN
+                if (CheckSide(lRoom.sides, AddSidesUp))
+                    return AddDoors(newRoom, SidesDown);
+
+            if (pos.X == -1 && pos.Y == 0) //LEFT
+                if (CheckSide(lRoom.sides, AddSidesRight))
+                    return AddDoors(newRoom, SidesUp);
+
+            if (pos.X == 1 && pos.Y == 0) //RIGHT
+                if (CheckSide(lRoom.sides, AddSidesLeft))
+                    return AddDoors(newRoom, SidesRight);
+
+            return newRoom;
+>>>>>>> rooms
         }
 
         //Checks certain bit from a byte and returns it
@@ -102,21 +131,41 @@ namespace ConsoleApp1
         {
             int sideX = (int)room.size.X;
             int sideY = (int)room.size.Y;
+            byte finalSides = 0;
 
             //Checks each bit and if 1 adds a # to roomData
             if (CheckSide(sides, AddSidesUp)) //Up side
+            {
                 room.roomData = ReplaceAtIndex(sideX / 2, doorSign, room.roomData);
-
+            }
+                
             if (CheckSide(sides, AddSidesDown)) //Down side
+            {
                 room.roomData = ReplaceAtIndex((sideX * sideY) - ((sideX + 1) / 2), doorSign, room.roomData);
+            }
 
-            if (CheckSide(sides, AddSidesLeft)) //Left side
+            if(CheckSide(sides, AddSidesLeft)) //Left side
+            {
                 room.roomData = ReplaceAtIndex(((sideX * (sideY / 2))), doorSign, room.roomData);
-
+            }
+                
             if (CheckSide(sides, AddSidesRight)) //Right side
+            {
                 room.roomData = ReplaceAtIndex((sideX * (sideY / 2)) + sideX - 2, doorSign, room.roomData);
+            }
 
-            room.sides = sides;
+            //Checks each doorsign and adds to finalsides if true
+            if (room.roomData[sideX / 2] == doorSign)
+                finalSides += SidesUp;
+            if (room.roomData[(sideX * sideY) - ((sideX + 1) / 2)] == doorSign)
+                finalSides += SidesDown;
+            if (room.roomData[(sideX * (sideY / 2))] == doorSign)
+                finalSides += SidesLeft;
+            if (room.roomData[(sideX * (sideY / 2)) + sideX - 2] == doorSign)
+                finalSides += SidesRight;
+
+
+            room.sides = finalSides;
             
             return room;
         }
@@ -156,10 +205,14 @@ namespace ConsoleApp1
             roomData = ReplaceAtIndex((++roomWidth * roomHeight) - roomWidth, '\u2514', roomData);
             roomData = ReplaceAtIndex(roomData.Length - 2, '\u2518', roomData);
 
-            room = new Room(pos, new Vector2(roomWidth, roomHeight), roomData, (byte)sides);
+            room = new Room(pos, new Vector2(roomWidth, roomHeight), roomData);
            
             room = AddDoors(room, (byte)rnd.Next(1, 15));
+<<<<<<< HEAD
             room = CheckNearRooms(room);
+=======
+            room = AddDoorToPrevRoom(room);
+>>>>>>> rooms
 
             MapArray.Add(room);
 
@@ -379,6 +432,7 @@ namespace ConsoleApp1
                 Console.Clear();
                 DrawMap();
                 DrawOptions();
+                PrevPos = CurPos;
             }
         }
     }
