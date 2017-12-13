@@ -16,7 +16,7 @@ namespace ConsoleApp1
         List<Room> MapArray = new List<Room>();
         Vector2 CurPos = new Vector2(0.0f, 0.0f);
         Vector2 PrevPos = new Vector2(0.0f, 0.0f);
-        Room CurRoom;
+        public Room CurRoom;
         Random rnd = new Random();
         char doorSign = '\u0126';
 
@@ -34,7 +34,18 @@ namespace ConsoleApp1
         const byte AddSidesRight = 3;
 
         //Returns true if there are any enemies alive in the room
+<<<<<<< HEAD
         public static bool EnemiesAlive { get; set; } //TODO
+=======
+
+        public static bool EnemiesAlive(Room room) //Pass CurRoom on default
+        {
+            if (room.Enemies.Count > 0)
+                return true;
+            else
+                return false;
+        }
+>>>>>>> rooms
 
         //Holds data of each room
         public struct Room
@@ -43,13 +54,15 @@ namespace ConsoleApp1
             public Vector2 pos;
             public Vector2 size;
             public byte sides;
-            
+            public List<enemyvalues> Enemies;
+
             public Room(Vector2 Pos, Vector2 Size, string RoomData, byte Sides = 0)
             {
                 roomData = RoomData;
                 pos = Pos;
                 size = Size;
                 sides = Sides;
+                Enemies = new List<enemyvalues>();
             }
         }
 
@@ -59,6 +72,10 @@ namespace ConsoleApp1
             GenerateMap();
         }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> rooms
         Room AddDoorToPrevRoom(Room newRoom)
         {
             Vector2 pos = PrevPos - CurPos;
@@ -67,7 +84,7 @@ namespace ConsoleApp1
             foreach (Room cRoom in MapArray)
                 if (cRoom.pos == PrevPos)
                     lRoom = cRoom;
-            
+
             if (pos.X == 0 && pos.Y == 1) //UP
                 if (CheckSide(lRoom.sides, AddSidesDown))
                     return AddDoors(newRoom, SidesUp);
@@ -85,7 +102,10 @@ namespace ConsoleApp1
                     return AddDoors(newRoom, SidesRight);
 
             return newRoom;
+<<<<<<< HEAD
 
+=======
+>>>>>>> rooms
         }
 
         //Checks certain bit from a byte and returns it
@@ -102,6 +122,38 @@ namespace ConsoleApp1
             return string.Join("", letters);
         }
 
+        private Room AddMobs(Room room)
+        {
+            string id = "A000";
+            int mobCount = rnd.Next(0, 2);
+
+            for (int i = 0; i < mobCount; i++)
+            {
+                id = ReplaceAtIndex(3, (char)rnd.Next(48, 54), id); // Generates a number between 1 and 6 and assigns it to 4th pos
+                room.Enemies.Add(Convertor.ImportMonster(id));
+            }
+
+            return room;
+        }
+
+        private Room AddObjects(Room room)
+        {
+            string xd = "xd";
+
+
+            return room;
+        }
+
+        //Generates random events to a room(mobs, chests, weapons)
+        private Room AddEvents(Room room)
+        {
+            room = AddMobs(room);
+            room = AddObjects(room);
+
+
+            return room;
+        }
+
         //Generates first room
         public Room GenerateStartRoom(Vector2 MapSize)
         {
@@ -110,7 +162,7 @@ namespace ConsoleApp1
             Vector2 posBotRight = MapSize * 0.75f;
             Room room;
 
-            room = GenerateRoom(CurPos, (byte)rnd.Next(0, 15));
+            room = GenerateRoom(CurPos, (byte)rnd.Next(0, 15), false);
 
             CurPos = room.pos;
 
@@ -129,17 +181,17 @@ namespace ConsoleApp1
             {
                 room.roomData = ReplaceAtIndex(sideX / 2, doorSign, room.roomData);
             }
-                
+
             if (CheckSide(sides, AddSidesDown)) //Down side
             {
                 room.roomData = ReplaceAtIndex((sideX * sideY) - ((sideX + 1) / 2), doorSign, room.roomData);
             }
 
-            if(CheckSide(sides, AddSidesLeft)) //Left side
+            if (CheckSide(sides, AddSidesLeft)) //Left side
             {
                 room.roomData = ReplaceAtIndex(((sideX * (sideY / 2))), doorSign, room.roomData);
             }
-                
+
             if (CheckSide(sides, AddSidesRight)) //Right side
             {
                 room.roomData = ReplaceAtIndex((sideX * (sideY / 2)) + sideX - 2, doorSign, room.roomData);
@@ -157,12 +209,12 @@ namespace ConsoleApp1
 
 
             room.sides = finalSides;
-            
+
             return room;
         }
 
         //Generates a random room
-        public Room GenerateRoom(Vector2 pos = default(Vector2), byte sides = 0)
+        public Room GenerateRoom(Vector2 pos = default(Vector2), byte sides = 0, bool events = true)
         {
             Room room;
             string roomData = "";
@@ -170,6 +222,8 @@ namespace ConsoleApp1
             int roomHeight = rnd.Next(8, 16);
 
             pos = CurPos;
+
+
 
             for (int cur_height = 0; cur_height < roomHeight; cur_height++)
             {
@@ -197,11 +251,16 @@ namespace ConsoleApp1
             roomData = ReplaceAtIndex(roomData.Length - 2, '\u2518', roomData);
 
             room = new Room(pos, new Vector2(roomWidth, roomHeight), roomData);
-           
+
             room = AddDoors(room, (byte)rnd.Next(1, 15));
 
             room = AddDoorToPrevRoom(room);
 
+<<<<<<< HEAD
+=======
+            if (events)
+                room = AddEvents(room);
+>>>>>>> rooms
 
             MapArray.Add(room);
 
@@ -229,6 +288,7 @@ namespace ConsoleApp1
             }
 
             CurRoom = GenerateRoom(CurPos, (byte)EnteredSide);
+
         }
 
         //Prints Moving options
@@ -246,21 +306,21 @@ namespace ConsoleApp1
                 sideUp = count;
                 Console.WriteLine(count + ". " + '\u2191');//\u25B2
             }
-            
+
             if (CheckSide(CurRoom.sides, AddSidesDown))
             {
                 count++;
                 sideDown = count;
                 Console.WriteLine(count + ". " + '\u2193');//\u25BA
             }
-            
+
             if (CheckSide(CurRoom.sides, AddSidesLeft))
             {
                 count++;
                 sideLeft = count;
                 Console.WriteLine(count + ". " + '\u2190');//\u25BC
             }
-            
+
             if (CheckSide(CurRoom.sides, AddSidesRight))
             {
                 count++;
@@ -272,7 +332,7 @@ namespace ConsoleApp1
 
             Console.WriteLine(count + ". Back");
 
-            while(true)
+            while (true)
             {
                 string userInput;
 
@@ -306,7 +366,7 @@ namespace ConsoleApp1
                     break;
                 }
 
-                else if(userInput == count.ToString())
+                else if (userInput == count.ToString())
                 {
                     return true;
                 }
