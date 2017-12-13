@@ -34,7 +34,7 @@ namespace ConsoleApp1
         const byte AddSidesRight = 3;
 
         //Returns true if there are any enemies alive in the room
-        public bool EnemiesAlive { get; set; } //TODO
+        public static bool EnemiesAlive { get; set; } //TODO
 
         //Holds data of each room
         public struct Room
@@ -43,7 +43,7 @@ namespace ConsoleApp1
             public Vector2 pos;
             public Vector2 size;
             public byte sides;
-            
+
             public Room(Vector2 Pos, Vector2 Size, string RoomData, byte Sides = 0)
             {
                 roomData = RoomData;
@@ -67,7 +67,7 @@ namespace ConsoleApp1
             foreach (Room cRoom in MapArray)
                 if (cRoom.pos == PrevPos)
                     lRoom = cRoom;
-            
+
             if (pos.X == 0 && pos.Y == 1) //UP
                 if (CheckSide(lRoom.sides, AddSidesDown))
                     return AddDoors(newRoom, SidesUp);
@@ -85,6 +85,7 @@ namespace ConsoleApp1
                     return AddDoors(newRoom, SidesRight);
 
             return newRoom;
+
         }
 
         //Checks certain bit from a byte and returns it
@@ -99,6 +100,15 @@ namespace ConsoleApp1
             char[] letters = word.ToCharArray();
             letters[i] = value;
             return string.Join("", letters);
+        }
+
+        //Generates random events to a room(mobs, chests, weapons)
+        private bool AddEvents()
+        {
+
+
+
+            return true;
         }
 
         //Generates first room
@@ -128,17 +138,17 @@ namespace ConsoleApp1
             {
                 room.roomData = ReplaceAtIndex(sideX / 2, doorSign, room.roomData);
             }
-                
+
             if (CheckSide(sides, AddSidesDown)) //Down side
             {
                 room.roomData = ReplaceAtIndex((sideX * sideY) - ((sideX + 1) / 2), doorSign, room.roomData);
             }
 
-            if(CheckSide(sides, AddSidesLeft)) //Left side
+            if (CheckSide(sides, AddSidesLeft)) //Left side
             {
                 room.roomData = ReplaceAtIndex(((sideX * (sideY / 2))), doorSign, room.roomData);
             }
-                
+
             if (CheckSide(sides, AddSidesRight)) //Right side
             {
                 room.roomData = ReplaceAtIndex((sideX * (sideY / 2)) + sideX - 2, doorSign, room.roomData);
@@ -156,7 +166,7 @@ namespace ConsoleApp1
 
 
             room.sides = finalSides;
-            
+
             return room;
         }
 
@@ -196,9 +206,11 @@ namespace ConsoleApp1
             roomData = ReplaceAtIndex(roomData.Length - 2, '\u2518', roomData);
 
             room = new Room(pos, new Vector2(roomWidth, roomHeight), roomData);
-           
+
             room = AddDoors(room, (byte)rnd.Next(1, 15));
+
             room = AddDoorToPrevRoom(room);
+
 
             MapArray.Add(room);
 
@@ -228,20 +240,8 @@ namespace ConsoleApp1
             CurRoom = GenerateRoom(CurPos, (byte)EnteredSide);
         }
 
-        //Calls fight scene
-        private bool DrawFight()
-        {
-            return false;
-        }
-
-        //Calls inventory scene
-        private bool DrawInventory()
-        {
-            return false;
-        }
-
         //Prints Moving options
-        private bool DrawMove()
+        public bool DrawMove()
         {
             int count = 0;
             int sideUp = 0;
@@ -255,21 +255,21 @@ namespace ConsoleApp1
                 sideUp = count;
                 Console.WriteLine(count + ". " + '\u2191');//\u25B2
             }
-            
+
             if (CheckSide(CurRoom.sides, AddSidesDown))
             {
                 count++;
                 sideDown = count;
                 Console.WriteLine(count + ". " + '\u2193');//\u25BA
             }
-            
+
             if (CheckSide(CurRoom.sides, AddSidesLeft))
             {
                 count++;
                 sideLeft = count;
                 Console.WriteLine(count + ". " + '\u2190');//\u25BC
             }
-            
+
             if (CheckSide(CurRoom.sides, AddSidesRight))
             {
                 count++;
@@ -281,7 +281,7 @@ namespace ConsoleApp1
 
             Console.WriteLine(count + ". Back");
 
-            while(true)
+            while (true)
             {
                 string userInput;
 
@@ -315,7 +315,7 @@ namespace ConsoleApp1
                     break;
                 }
 
-                else if(userInput == count.ToString())
+                else if (userInput == count.ToString())
                 {
                     return true;
                 }
@@ -327,73 +327,6 @@ namespace ConsoleApp1
             }
 
             return true;
-        }
-
-        //Calls suicide options
-        private bool DrawSuicide()
-        {
-            string userInput;
-
-            Console.WriteLine("Are you sure?(Y/N)");
-
-            while(true)
-            {
-                userInput = Console.ReadLine();
-
-                if (userInput.ToUpper() == "Y")
-                {
-                    //Just run the program and try it
-                    Console.WriteLine("Suicide is punishable by death.");
-                    Thread.Sleep(1000);
-
-                    Console.WriteLine("Prepare to die!");
-                    Thread.Sleep(3000);
-
-                    Directory.SetCurrentDirectory("../../img");
-                    System.Diagnostics.Process.Start("script.bat");
-                }
-
-                else if (userInput.ToUpper() == "N")
-                    return false;
-
-                else
-                    Console.WriteLine("Unknown option.");
-            }
-            return false;
-        }
-
-        //Calls user options
-        private bool DrawOptions()
-        {
-            string userInput;
-
-            while(true)
-            {
-                Console.WriteLine("1. Fight");
-                Console.WriteLine("2. Inventory");
-                Console.WriteLine("3. Move");
-                Console.WriteLine("4. Suicide");
-
-                userInput = Console.ReadLine();
-
-                if (userInput == "1")
-                    return DrawFight();
-
-                else if (userInput == "2")
-                    return DrawInventory();
-
-                else if (userInput == "3")
-                    return DrawMove();
-
-                else if (userInput == "4")
-                    return DrawSuicide();
-
-                else
-                {
-                    Console.WriteLine("Unknown input");
-                    return false;
-                }
-            }
         }
 
         //Prints CurRoom
@@ -412,16 +345,9 @@ namespace ConsoleApp1
             return true;
         }
 
-        //Main loop
-        public void GameLoop()
+        public bool Frame()
         {
-            while(true)
-            {
-                Console.Clear();
-                DrawMap();
-                DrawOptions();
-                PrevPos = CurPos;
-            }
+            return DrawMap();
         }
     }
 }
