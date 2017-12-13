@@ -80,6 +80,8 @@ namespace ConsoleApp1
 
     public class Weapons
     {
+        public static Func<weaponvalues> new_weapon { get; internal set; }
+
         //wepAtkSpd - daggers = 7-10
         //            swords = 4-6
         //            battleaxe = 1-3
@@ -294,7 +296,7 @@ namespace ConsoleApp1
         {
             weaponvalues adamant_sword = new weaponvalues
             {
-                wepName = "Adamant Sword",
+                wepName = "Adamantium Sword",
                 wepDesc = "A razor-sharp sword.",
                 wepMinDMG = "65",
                 wepMaxDMG = "100",
@@ -330,7 +332,7 @@ namespace ConsoleApp1
         {
             weaponvalues adamant_battleaxe = new weaponvalues
             {
-                wepName = "Adamant battleaxe",
+                wepName = "Adamantium battleaxe",
                 wepDesc = "A vicious looking axe",
                 wepMinDMG = "75",
                 wepMaxDMG = "105",
@@ -553,5 +555,6 @@ namespace ConsoleApp1
             };
             return (test);
         }
+        
     }
 }

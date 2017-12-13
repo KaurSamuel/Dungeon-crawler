@@ -15,6 +15,14 @@ namespace ConsoleApp1
              * because they have diabolical plan to take over internet and spread pornographic viruses.
              * Your our last hope :(
              */
+            //string relv = Convertor.exporter_wep("wA001","wep_desc");
+            //Console.WriteLine(relv);
+            //Console.ReadLine();
+
+            Console.OutputEncoding = System.Text.Encoding.Unicode;
+            Dungeon dungeon = new Dungeon();
+
+            dungeon.GameLoop();
         }
     }
 }
