@@ -24,8 +24,13 @@ namespace ConsoleApp1
 
             //dungeon.GameLoop();
 
-            dungeon.DrawMap();
-            dungeon.DrawMove();
+            while(true)
+            {
+                Console.Clear();
+                dungeon.DrawMap();
+            }
+
+            
         }
     }
 }
