@@ -7,6 +7,7 @@ using System.Numerics;
 using System.IO;
 using System.Diagnostics;
 using System.Threading;
+using System.Collections;
 
 namespace ConsoleApp1
 {
@@ -14,6 +15,7 @@ namespace ConsoleApp1
     {
         List<Room> MapArray = new List<Room>();
         Vector2 CurPos = new Vector2(0.0f, 0.0f);
+        Vector2 PrevPos = new Vector2(0.0f, 0.0f);
         Room CurRoom;
         Random rnd = new Random();
         char doorSign = '\u0126';
@@ -57,12 +59,11 @@ namespace ConsoleApp1
             GenerateMap();
         }
 
-        Room AddDoor(Room room, int side) //USE AddSides* in int side
+        Room CheckNearRooms(Room room)
         {
-            if (CheckSide(room.sides, side))
-                return room;
-            else
-                room.sides |= 1 << side;
+            Room[] rooms = new Room[4];
+            int count = 0;
+
 
             return room;
         }
@@ -89,7 +90,7 @@ namespace ConsoleApp1
             Vector2 posBotRight = MapSize * 0.75f;
             Room room;
 
-            room = GenerateRoom(CurPos, rnd.Next(0, 15));
+            room = GenerateRoom(CurPos, (byte)rnd.Next(0, 15));
 
             CurPos = room.pos;
 
@@ -121,7 +122,7 @@ namespace ConsoleApp1
         }
 
         //Generates a random room
-        public Room GenerateRoom(Vector2 pos = default(Vector2), int sides = 0)
+        public Room GenerateRoom(Vector2 pos = default(Vector2), byte sides = 0)
         {
             Room room;
             string roomData = "";
@@ -158,6 +159,7 @@ namespace ConsoleApp1
             room = new Room(pos, new Vector2(roomWidth, roomHeight), roomData, (byte)sides);
            
             room = AddDoors(room, (byte)rnd.Next(1, 15));
+            room = CheckNearRooms(room);
 
             MapArray.Add(room);
 
@@ -184,7 +186,7 @@ namespace ConsoleApp1
                 }
             }
 
-            CurRoom = GenerateRoom(CurPos, EnteredSide);
+            CurRoom = GenerateRoom(CurPos, (byte)EnteredSide);
         }
 
         //Calls fight scene
