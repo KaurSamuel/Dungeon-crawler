@@ -59,51 +59,32 @@ namespace ConsoleApp1
             GenerateMap();
         }
 
-        Room CheckNearRooms(Room room)
+        Room AddDoorToPrevRoom(Room newRoom)
         {
-            List<Room> rooms = new List<Room>();
+            Vector2 pos = PrevPos - CurPos;
+            Room lRoom = new Room();
 
-            //Finds each side room
-           foreach(Room lRoom in MapArray)
-            {
-                Vector2 check = room.pos - lRoom.pos;
-                if (check.X == 0 && check.Y == 1)
-                    rooms.Add(lRoom);
-                if (check.X == 0 && check.Y == -1)
-                    rooms.Add(lRoom);
-                if (check.X == -1 && check.Y == 0)
-                    rooms.Add(lRoom);
-                if (check.X == 1 && check.Y == 0)
-                    rooms.Add(lRoom);
-            }
+            foreach (Room cRoom in MapArray)
+                if (cRoom.pos == PrevPos)
+                    lRoom = cRoom;
+            
+            if (pos.X == 0 && pos.Y == 1) //UP
+                if (CheckSide(lRoom.sides, AddSidesDown))
+                    return AddDoors(newRoom, SidesUp);
 
-            foreach(Room lRoom in rooms)
-            {
-                Vector2 value;
+            if (pos.X == 0 && pos.Y == -1) //DOWN
+                if (CheckSide(lRoom.sides, AddSidesUp))
+                    return AddDoors(newRoom, SidesDown);
 
-                value = lRoom.pos - room.pos;
-                byte sideValue = 0;
+            if (pos.X == -1 && pos.Y == 0) //LEFT
+                if (CheckSide(lRoom.sides, AddSidesRight))
+                    return AddDoors(newRoom, SidesUp);
 
-                if (value.X == 0 && value.Y == 1) //UP
-                    if (CheckSide(lRoom.sides, AddSidesDown))
-                        sideValue += SidesUp;
+            if (pos.X == 1 && pos.Y == 0) //RIGHT
+                if (CheckSide(lRoom.sides, AddSidesLeft))
+                    return AddDoors(newRoom, SidesRight);
 
-                if (value.X == 0 && value.Y == -1) //DOWN
-                    if (CheckSide(lRoom.sides, AddSidesUp))
-                        sideValue += SidesDown;
-
-                if (value.X == -1 && value.Y == 0) //LEFT
-                    if (CheckSide(lRoom.sides, AddSidesRight))
-                        sideValue += SidesLeft;
-
-                if (value.X == 1 && value.Y == 0) //RIGHT
-                    if (CheckSide(lRoom.sides, AddSidesLeft))
-                        sideValue += SidesRight;
-
-                room = AddDoors(room, sideValue);
-            }
-
-            return room;
+            return newRoom;
         }
 
         //Checks certain bit from a byte and returns it
@@ -146,27 +127,34 @@ namespace ConsoleApp1
             if (CheckSide(sides, AddSidesUp)) //Up side
             {
                 room.roomData = ReplaceAtIndex(sideX / 2, doorSign, room.roomData);
-                finalSides += SidesUp;
             }
                 
             if (CheckSide(sides, AddSidesDown)) //Down side
             {
                 room.roomData = ReplaceAtIndex((sideX * sideY) - ((sideX + 1) / 2), doorSign, room.roomData);
-                finalSides += SidesDown;
             }
 
             if(CheckSide(sides, AddSidesLeft)) //Left side
             {
                 room.roomData = ReplaceAtIndex(((sideX * (sideY / 2))), doorSign, room.roomData);
-                finalSides += SidesLeft;
             }
                 
             if (CheckSide(sides, AddSidesRight)) //Right side
             {
                 room.roomData = ReplaceAtIndex((sideX * (sideY / 2)) + sideX - 2, doorSign, room.roomData);
-                finalSides += SidesRight;
             }
-                
+
+            //Checks each doorsign and adds to finalsides if true
+            if (room.roomData[sideX / 2] == doorSign)
+                finalSides += SidesUp;
+            if (room.roomData[(sideX * sideY) - ((sideX + 1) / 2)] == doorSign)
+                finalSides += SidesDown;
+            if (room.roomData[(sideX * (sideY / 2))] == doorSign)
+                finalSides += SidesLeft;
+            if (room.roomData[(sideX * (sideY / 2)) + sideX - 2] == doorSign)
+                finalSides += SidesRight;
+
+
             room.sides = finalSides;
             
             return room;
@@ -210,7 +198,7 @@ namespace ConsoleApp1
             room = new Room(pos, new Vector2(roomWidth, roomHeight), roomData);
            
             room = AddDoors(room, (byte)rnd.Next(1, 15));
-            room = CheckNearRooms(room);
+            room = AddDoorToPrevRoom(room);
 
             MapArray.Add(room);
 
@@ -430,6 +418,7 @@ namespace ConsoleApp1
                 Console.Clear();
                 DrawMap();
                 DrawOptions();
+                PrevPos = CurPos;
             }
         }
     }
