@@ -43,14 +43,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Compile Include="Chest.cs" />
     <Compile Include="Convertor2.cs" />
     <Compile Include="Player Values.cs" />
     <Compile Include="Weapons.cs" />
     <Compile Include="Monsters.cs" />
+=======
+>>>>>>> rooms
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Objects.cs" />
     <Compile Include="Dungeon\Dungeon.cs" />
   </ItemGroup>
   <ItemGroup>
