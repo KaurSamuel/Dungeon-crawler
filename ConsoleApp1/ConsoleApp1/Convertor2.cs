@@ -35,7 +35,10 @@ namespace ConsoleApp1
             {
                 ValueType = "5";
             }
-
+            else if (whatvalue== "all")
+            {
+                ValueType = "6";
+            }
             string DirectoryPath = "../../monsters.txt";
             foreach (string line in System.IO.File.ReadAllLines(DirectoryPath))
             {
@@ -43,6 +46,11 @@ namespace ConsoleApp1
                 
                 if (id == ID)  
                 {
+                    string allWordsinonestring = line;
+                    if (ValueType=="6")
+                    {
+                        return (allWordsinonestring);
+                    }
                     string[] allWords = line.Split();
                     return (allWords[int.Parse(ValueType)]);
                 }

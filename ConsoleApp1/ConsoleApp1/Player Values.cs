@@ -14,6 +14,7 @@ namespace ConsoleApp1
         public string Player_rooms_cleared { get; set; }
         public string Player_monsters_killed { get; set; }
         public static List<string> Weapons_Inventory = new List<string>();
+        public static List<string> Armor_Inventory = new List<string>();
         public static string currently_equiped { get; set; }
     }
 
@@ -26,13 +27,13 @@ namespace ConsoleApp1
         }
         public static string Draw_inventory()
         {
-            int mittukorda = 1;
+            int mitukorda = 1;
             //Console.WriteLine("--------------------");
             foreach (var item in Weapons_Inventory)
             {
                 string Name = Convertor.exporter_wep(item, "wep_name");
-                Console.WriteLine(mittukorda +". "+ Name);
-                mittukorda++;
+                Console.WriteLine(mitukorda +". "+ Name);
+                mitukorda++;
             }
             //Console.WriteLine("-------------------");
             return ("");
