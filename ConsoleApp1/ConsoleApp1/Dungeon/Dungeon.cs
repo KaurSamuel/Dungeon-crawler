@@ -105,7 +105,7 @@ namespace ConsoleApp1
         }
 
         //Replaces a letter at a certain index
-        static string ReplaceAtIndex(int i, char value, string word)
+        public static string ReplaceAtIndex(int i, char value, string word)
         {
             char[] letters = word.ToCharArray();
             letters[i] = value;
@@ -115,7 +115,7 @@ namespace ConsoleApp1
         private Room AddMobs(Room room)
         {
             string id = "A000";
-            int mobCount = rnd.Next(0, 2);
+            int mobCount = rnd.Next(0, 1);
             
 
             for (int i = 0; i < mobCount; i++)

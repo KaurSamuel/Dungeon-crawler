@@ -9,6 +9,20 @@ namespace ConsoleApp1
 {
     class Element
     {
+        public static string RemoveSpaces(string text)
+        {
+            int count = 0;
+            foreach(char i in text)
+            {
+                if (i == '_')
+                    text = Dungeon.ReplaceAtIndex(count, ' ', text);
+
+               count++;
+            }
+
+            return text;
+        }
+
         public struct ElementStruct
         {
             public string description;
@@ -36,7 +50,7 @@ namespace ConsoleApp1
 
                 if(splitLine[0] == id)
                 {
-                    elementStruct.description = splitLine[1];
+                    elementStruct.description = RemoveSpaces(splitLine[1]);
                     elementStruct.sprite = splitLine[2][0];
                     elementStruct.id = id;
                 }
