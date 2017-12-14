@@ -51,6 +51,7 @@ namespace ConsoleApp1
             public Vector2 size;
             public byte sides;
             public List<enemyvalues> Enemies;
+            public List<Object> objects;
 
             public Room(Vector2 Pos, Vector2 Size, string RoomData, byte Sides = 0)
             {
@@ -59,6 +60,7 @@ namespace ConsoleApp1
                 size = Size;
                 sides = Sides;
                 Enemies = new List<enemyvalues>();
+                objects = new List<Object>();
             }
         }
 
@@ -127,7 +129,6 @@ namespace ConsoleApp1
 
         private Room AddObjects(Room room)
         {
-            string xd = "xd";
 
 
             return room;
@@ -381,30 +382,11 @@ namespace ConsoleApp1
             return false;
         }
 
-        private bool InspectOption()
+        private bool InspectOption(Room room)
         {
-            objects objects = new objects();
-            int _objects = (new Random()).Next(0, 6);
-            switch(_objects)
+            foreach (Object obj in room.objects)
             {
-                case 1:
-                    Console.WriteLine(objects.Obj01());
-                    break;
-                case 2:
-                    Console.WriteLine(objects.Obj02());
-                    break;
-                case 3:
-                    Console.WriteLine(objects.Obj03());
-                    break;
-                case 4:
-                    Console.WriteLine(objects.Obj04());
-                    break;
-                case 5:
-                    Console.WriteLine(objects.Obj05());
-                    break;
-                case 6:
-                    Console.WriteLine(objects.Obj06());
-                    break;
+                
             }
             return true;
         }
@@ -437,7 +419,7 @@ namespace ConsoleApp1
                     return DrawSuicide();
 
                 else if (userInput == "5")
-                    return InspectOption();
+                    return InspectOption(CurRoom);
 
                 else
                 {
