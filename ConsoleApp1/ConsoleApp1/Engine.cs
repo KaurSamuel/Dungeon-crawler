@@ -16,26 +16,11 @@ namespace ConsoleApp1
         //Calls fight scene
         private bool Fight()
         {
-            if(Dungeon.EnemiesAlive(dungeon.CurRoom))
-            {
-                Console.WriteLine("There are no enemies");
-                Console.ReadKey();
-                return false;
-            }
+            string fullEnemies = "";
+            foreach (string enemy in dungeon.CurRoom.Enemies)
+                fullEnemies += enemy;
 
-            int count = 0;
-            foreach(enemyvalues enemy in dungeon.CurRoom.Enemies)
-            {
-                Console.WriteLine(count + ". " + enemy.mobName);
-                count++;
-            }
-
-            while (true)
-            {
-                string userInput = Console.ReadLine();
-
-                skills.Combat_start(dungeon.CurRoom.Enemies[])
-            }
+            skills.Combat_start(fullEnemies);
 
             
 

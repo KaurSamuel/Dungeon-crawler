@@ -50,7 +50,7 @@ namespace ConsoleApp1
             public Vector2 pos;
             public Vector2 size;
             public byte sides;
-            public List<enemyvalues> Enemies;
+            public List<string> Enemies;
             public List<Object> objects;
 
             public Room(Vector2 Pos, Vector2 Size, string RoomData, byte Sides = 0)
@@ -59,7 +59,7 @@ namespace ConsoleApp1
                 pos = Pos;
                 size = Size;
                 sides = Sides;
-                Enemies = new List<enemyvalues>();
+                Enemies = new List<string>();
                 objects = new List<Object>();
             }
         }
@@ -121,7 +121,6 @@ namespace ConsoleApp1
             for (int i = 0; i < mobCount; i++)
             {
                 id = ReplaceAtIndex(3, (char)rnd.Next(48, 54), id); // Generates a number between 1 and 6 and assigns it to 4th pos
-                enemyvalues enemy = Convertor.ImportMonster(id);
                 
                 while(true)
                 {
@@ -130,7 +129,7 @@ namespace ConsoleApp1
                         continue;
 
                     room.roomData = ReplaceAtIndex(position, '?', room.roomData);
-                    room.Enemies.Add(enemy);
+                    room.Enemies.Add(id);
 
                     break;
                 }
@@ -315,8 +314,8 @@ namespace ConsoleApp1
             Console.WriteLine("There is: ");
             foreach (Element.ElementStruct ele in CurRoom.objects)
                 Console.WriteLine(ele.description);
-            foreach (enemyvalues enemy in CurRoom.Enemies)
-                Console.WriteLine(enemy.mobName);
+            foreach (string enemy in CurRoom.Enemies)
+                Console.WriteLine(enemy);
 
             Console.ReadKey();
 
