@@ -68,13 +68,6 @@ namespace ConsoleApp1
             huge_hp.healingAmount = "150";
             return (huge_hp);
         }
-        public HPvalues hh1()
-        {
-            HPvalues max_hp = new HPvalues();
-            max_hp.potName = "Coca Cola";
-            max_hp.healingAmount = ""; //karl lisab selle funktsiooni et healib kasutaja max eludeni
-            return (max_hp);
-        }
     }
 
 
