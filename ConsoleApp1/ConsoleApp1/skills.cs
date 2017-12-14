@@ -76,7 +76,7 @@ namespace ConsoleApp1
         public static string Enemy_turn()
         {
             Random rng = new Random();
-            Console.WriteLine("Enemys turn!");
+            Console.WriteLine("Enemies turn!");
             Thread.Sleep(1000);
             int Is_gona_block = rng.Next(0,100);
             if (Is_gona_block < Player_block_chance)
