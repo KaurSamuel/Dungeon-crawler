@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
+<<<<<<< HEAD
     class Chest : weapons
     {
+=======
+    public class Chest : Weapons
+    {
+
+>>>>>>> rooms
     }
 }

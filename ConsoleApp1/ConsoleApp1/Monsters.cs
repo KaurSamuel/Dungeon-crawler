@@ -13,7 +13,7 @@ namespace ConsoleApp1
         public string mobMaxDMG { get; set; }
         public string mobMinDMG { get; set; }
         public string mobEXP { get; set; }
-        public string ChestLoot { get; set; }   
+        public string ChestLoot { get; set; }
     }
 
     //KÕIK MONSTERID:
