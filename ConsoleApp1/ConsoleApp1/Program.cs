@@ -10,7 +10,9 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            Console.OutputEncoding = System.Text.Encoding.Unicode;
+            Currently_equiped = "wA001";
+
+            Console.OutputEncoding = Encoding.Unicode;
 
 
             Engine engine = new Engine();

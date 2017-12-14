@@ -14,7 +14,7 @@ namespace ConsoleApp1
         public string Player_rooms_cleared { get; set; }
         public string Player_monsters_killed { get; set; }
         public static List<string> Weapons_Inventory = new List<string>();
-        public static string currently_equiped { get; set; }
+        public static string Currently_equiped { get; set; }
     }
 
     class Player_Inventory : Player_Values
@@ -44,8 +44,8 @@ namespace ConsoleApp1
             int What_item = 0;
             What_item = int.Parse(Console.ReadLine());
             What_item--;
-            currently_equiped = Weapons_Inventory[What_item];
-            Console.WriteLine("you have equipped the "+ Convertor.exporter_wep(currently_equiped,"wep_name"));
+            Currently_equiped = Weapons_Inventory[What_item];
+            Console.WriteLine("you have equipped the "+ Convertor.exporter_wep(Currently_equiped,"wep_name"));
             return ("");
         }
     }
