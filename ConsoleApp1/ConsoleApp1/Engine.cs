@@ -16,7 +16,13 @@ namespace ConsoleApp1
         //Calls fight scene
         private bool Fight()
         {
-            
+            if(Dungeon.EnemiesAlive(dungeon.CurRoom))
+            {
+                Console.WriteLine("There are no enemies");
+                Console.ReadKey();
+                return false;
+            }
+
             return false;
         }
 

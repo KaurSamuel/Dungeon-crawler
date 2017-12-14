@@ -116,11 +116,24 @@ namespace ConsoleApp1
         {
             string id = "A000";
             int mobCount = rnd.Next(0, 2);
+            
 
             for (int i = 0; i < mobCount; i++)
             {
                 id = ReplaceAtIndex(3, (char)rnd.Next(48, 54), id); // Generates a number between 1 and 6 and assigns it to 4th pos
-                room.Enemies.Add(Convertor.ImportMonster(id));
+                enemyvalues enemy = Convertor.ImportMonster(id);
+                
+                while(true)
+                {
+                    int position = rnd.Next(5, (int)(room.size.X * room.size.Y) - rnd.Next(0, 5));
+                    if (room.roomData[position] != ' ')
+                        continue;
+
+                    room.roomData = ReplaceAtIndex(position, '?', room.roomData);
+                    room.Enemies.Add(enemy);
+
+                    break;
+                }
             }
 
             return room;
@@ -139,7 +152,6 @@ namespace ConsoleApp1
                 while (true)
                 {
                     int position = rnd.Next(5, (int)(room.size.X * room.size.Y) - 5);
-                    Console.WriteLine("A: " + room.roomData[position]);
                     if (room.roomData[position] != ' ')
                         continue;
 
@@ -303,6 +315,8 @@ namespace ConsoleApp1
             Console.WriteLine("There is: ");
             foreach (Element.ElementStruct ele in CurRoom.objects)
                 Console.WriteLine(ele.description);
+            foreach (enemyvalues enemy in CurRoom.Enemies)
+                Console.WriteLine(enemy.mobName);
 
             Console.ReadKey();
 
