@@ -28,6 +28,7 @@ namespace ConsoleApp1
         //Calls inventory scene
         private bool Inventory()
         {
+            Player_Inventory.Equip_weapon();
             return false;
         }
 

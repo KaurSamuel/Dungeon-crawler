@@ -8,9 +8,9 @@ namespace ConsoleApp1
 {
     class Convertor
     {
-        public static Enemyvalues ImportMonster(string ID)
+        public static enemyvalues ImportMonster(string ID)
         {
-            Enemyvalues enemy = new Enemyvalues();
+            enemyvalues enemy = new enemyvalues();
 
             enemy.MobName = export_mon(ID, "mob_Name");
             enemy.MobHP = export_mon(ID, "mob_hp");
