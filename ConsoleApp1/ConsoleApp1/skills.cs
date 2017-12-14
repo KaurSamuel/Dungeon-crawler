@@ -57,9 +57,9 @@ namespace ConsoleApp1
         public static string Normal_attack(int HP, string enemy)
         {
             Random rng = new Random();
-            Console.WriteLine("You attack with your equipped weapon:");
+            Console.WriteLine("You attack with your equipped weapon");
             Thread.Sleep(1000);
-            int DMG = rng.Next(int.Parse(Convertor.exporter_wep(Currently_equiped, "wep_min_dmg")), int.Parse(Convertor.exporter_wep(Currently_equiped, "wep_max_dmg")));
+            int DMG = rng.Next(int.Parse(Convertor.exporter_wep(Currently_equipped, "wep_min_dmg")), int.Parse(Convertor.exporter_wep(Currently_equipped, "wep_max_dmg")));
             Console.WriteLine("You hit your enemy and dealt "+DMG+" damage");
             HP = HP - DMG;
             Console.WriteLine("Enemy now has " + HP + " hitpoints");
@@ -74,12 +74,12 @@ namespace ConsoleApp1
         public static string Enemy_turn(string enemy, int enemy_HP)
         {
             Random rng = new Random();
-            Console.WriteLine("Enemies turn:");
+            Console.WriteLine("Enemies turn!");
             Thread.Sleep(1000);
             int DMG = rng.Next(int.Parse(Convertor.export_mon(enemy, "mob_min_dmg")), int.Parse(Convertor.export_mon(enemy, "mob_max_dmg")));
             Console.WriteLine("Enemy attacked and dealt " + DMG + " to you");
             Player_current_HP = Player_current_HP - DMG;
-            Console.WriteLine("You now have "+Player_current_HP+ " hitpoints.");
+            Console.WriteLine("you now have "+Player_current_HP+ " hitpoints");
             Turn_start(enemy, enemy_HP);
             return ("");
         }
