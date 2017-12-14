@@ -368,7 +368,6 @@ namespace ConsoleApp1
                 {
                     return true;
                 }
-<<<<<<< HEAD
                    
 
             }
@@ -436,8 +435,6 @@ namespace ConsoleApp1
 
                 else if (userInput == "4")
                     return DrawSuicide();
-=======
->>>>>>> rooms
 
                 else if (userInput == "5")
                     return InspectOption();

@@ -44,14 +44,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Chest.cs" />
-<<<<<<< HEAD
-    <Compile Include="exporter.cs" />
     <Compile Include="Player.cs" />
-=======
     <Compile Include="Combat.cs" />
     <Compile Include="Convertor2.cs" />
     <Compile Include="Player Values.cs" />
->>>>>>> rooms
     <Compile Include="Weapons.cs" />
     <Compile Include="Monsters.cs" />
     <Compile Include="Program.cs" />
