@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Media;
 
 namespace ConsoleApp1
 {
@@ -10,6 +11,11 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
+            SoundPlayer music = new SoundPlayer
+            {
+                SoundLocation = AppDomain.CurrentDomain.BaseDirectory + "\\music.wav"
+            };
+            music.Play();
             Currently_equiped = "wA001";
 
             Console.OutputEncoding = Encoding.Unicode;
