@@ -8,16 +8,15 @@ namespace ConsoleApp1
 {
     public class enemyvalues
     {
-        public string mobName { get; set; }
-        public string mobHP { get; set; }
-        public string mobMaxDMG { get; set; }
-        public string mobMinDMG { get; set; }
-        public string mobEXP { get; set; }
-        public string ChestLoot { get; set; }
+        public string MobName { get; set; }
+        public string MobHP { get; set; }
+        public string MobMaxDMG { get; set; }
+        public string MobMinDMG { get; set; }
+        public string MobEXP { get; set; }
     }
 
     //KÕIK MONSTERID:
-    public static class monsters
+    public static class Monsters
     {
         // A - Tier1
         // B - Tier2
@@ -33,11 +32,11 @@ namespace ConsoleApp1
         {
             enemyvalues green_slime = new enemyvalues
             {
-                mobName = "Green Slime",
-                mobHP = "15",
-                mobMaxDMG = "15",
-                mobMinDMG = "5",
-                mobEXP = "30"
+                MobName = "Green Slime",
+                MobHP = "15",
+                MobMaxDMG = "15",
+                MobMinDMG = "5",
+                MobEXP = "30"
             };
             return (green_slime);
         }
@@ -46,11 +45,11 @@ namespace ConsoleApp1
         {
             enemyvalues blue_slime = new enemyvalues
             {
-                mobName = "Blue Slime",
-                mobHP = "20",
-                mobMaxDMG = "20",
-                mobMinDMG = "5",
-                mobEXP = "35"
+                MobName = "Blue Slime",
+                MobHP = "20",
+                MobMaxDMG = "20",
+                MobMinDMG = "5",
+                MobEXP = "35"
             };
             return (blue_slime);
         }
@@ -59,11 +58,11 @@ namespace ConsoleApp1
         {
             enemyvalues rat = new enemyvalues
             {
-                mobName = "Rat",
-                mobHP = "25",
-                mobMaxDMG = "25",
-                mobMinDMG = "7",
-                mobEXP = "40"
+                MobName = "Rat",
+                MobHP = "25",
+                MobMaxDMG = "25",
+                MobMinDMG = "7",
+                MobEXP = "40"
             };
             return (rat);
         }
@@ -71,11 +70,11 @@ namespace ConsoleApp1
         {
             enemyvalues chicken = new enemyvalues
             {
-                mobName = "Chicken",
-                mobHP = "20",
-                mobMaxDMG = "15",
-                mobMinDMG = "7",
-                mobEXP = "26"
+                MobName = "Chicken",
+                MobHP = "20",
+                MobMaxDMG = "15",
+                MobMinDMG = "7",
+                MobEXP = "26"
             };
             return (chicken);
         }
@@ -83,11 +82,11 @@ namespace ConsoleApp1
         {
             enemyvalues snake = new enemyvalues
             {
-                mobName = "Snake",
-                mobHP = "40",
-                mobMaxDMG = "30",
-                mobMinDMG = "10",
-                mobEXP = "35"
+                MobName = "Snake",
+                MobHP = "40",
+                MobMaxDMG = "30",
+                MobMinDMG = "10",
+                MobEXP = "35"
             };
             return (snake);
         }
@@ -95,11 +94,11 @@ namespace ConsoleApp1
         {
             enemyvalues imp = new enemyvalues
             {
-                mobName = "Imp",
-                mobHP = "35",
-                mobMaxDMG = "26",
-                mobMinDMG = "8",
-                mobEXP = "32"
+                MobName = "Imp",
+                MobHP = "35",
+                MobMaxDMG = "26",
+                MobMinDMG = "8",
+                MobEXP = "32"
             };
             return (imp);
         }
@@ -108,11 +107,11 @@ namespace ConsoleApp1
         {
             enemyvalues king_slime = new enemyvalues
             {
-                mobName = "King Slime",
-                mobHP = "150",
-                mobMaxDMG = "40",
-                mobMinDMG = "10",
-                mobEXP = "200"
+                MobName = "King Slime",
+                MobHP = "150",
+                MobMaxDMG = "40",
+                MobMinDMG = "10",
+                MobEXP = "200"
             };
             return (king_slime);
         }
@@ -120,11 +119,11 @@ namespace ConsoleApp1
         {
             enemyvalues giant_rat = new enemyvalues
             {
-                mobName = "Giant Rat",
-                mobHP = "200",
-                mobMaxDMG = "32",
-                mobMinDMG = "18",
-                mobEXP = "200"
+                MobName = "Giant Rat",
+                MobHP = "200",
+                MobMaxDMG = "32",
+                MobMinDMG = "18",
+                MobEXP = "200"
             };
             return (giant_rat);
         }
@@ -132,11 +131,11 @@ namespace ConsoleApp1
         {
             enemyvalues rogue = new enemyvalues
             {
-                mobName = "Rogue",
-                mobHP = "350",
-                mobMaxDMG = "42",
-                mobMinDMG = "4",
-                mobEXP = "200"
+                MobName = "Rogue",
+                MobHP = "350",
+                MobMaxDMG = "42",
+                MobMinDMG = "4",
+                MobEXP = "200"
             };
             return (rogue);
         }
@@ -147,11 +146,11 @@ namespace ConsoleApp1
         {
             enemyvalues zombie = new enemyvalues()
             {
-                mobName = "Zombie",
-                mobHP = "235",
-                mobMaxDMG = "30",
-                mobMinDMG = "15",
-                mobEXP = "105"
+                MobName = "Zombie",
+                MobHP = "235",
+                MobMaxDMG = "30",
+                MobMinDMG = "15",
+                MobEXP = "105"
             };
             return (zombie);
         }
@@ -159,11 +158,11 @@ namespace ConsoleApp1
         {
             enemyvalues poison_spider = new enemyvalues()
             {
-                mobName = "Poison Spider",
-                mobHP = "285",
-                mobMaxDMG = "34",
-                mobMinDMG = "14",
-                mobEXP = "121"
+                MobName = "Poison Spider",
+                MobHP = "285",
+                MobMaxDMG = "34",
+                MobMinDMG = "14",
+                MobEXP = "121"
             };
             return (poison_spider);
         }
@@ -171,11 +170,11 @@ namespace ConsoleApp1
         {
             enemyvalues wolf = new enemyvalues()
             {
-                mobName = "Wolf",
-                mobHP = "268",
-                mobMaxDMG = "32",
-                mobMinDMG = "24",
-                mobEXP = "110"
+                MobName = "Wolf",
+                MobHP = "268",
+                MobMaxDMG = "32",
+                MobMinDMG = "24",
+                MobEXP = "110"
             };
             return (wolf);
         }
@@ -183,11 +182,11 @@ namespace ConsoleApp1
         {
             enemyvalues black_bear = new enemyvalues()
             {
-                mobName = "Black Bear",
-                mobHP = "308",
-                mobMaxDMG = "30",
-                mobMinDMG = "18",
-                mobEXP = "108"
+                MobName = "Black Bear",
+                MobHP = "308",
+                MobMaxDMG = "30",
+                MobMinDMG = "18",
+                MobEXP = "108"
             };
             return (black_bear);
         }
@@ -195,11 +194,11 @@ namespace ConsoleApp1
         {
             enemyvalues scorpion = new enemyvalues()
             {
-                mobName = "Scorpion",
-                mobHP = "256",
-                mobMaxDMG = "42",
-                mobMinDMG = "13",
-                mobEXP = "97"
+                MobName = "Scorpion",
+                MobHP = "256",
+                MobMaxDMG = "42",
+                MobMinDMG = "13",
+                MobEXP = "97"
             };
             return (scorpion);
         }
@@ -207,11 +206,11 @@ namespace ConsoleApp1
         {
             enemyvalues ghost = new enemyvalues()
             {
-                mobName = "Ghost",
-                mobHP = "288",
-                mobMaxDMG = "32",
-                mobMinDMG = "18",
-                mobEXP = "101"
+                MobName = "Ghost",
+                MobHP = "288",
+                MobMaxDMG = "32",
+                MobMinDMG = "18",
+                MobEXP = "101"
             };
             return (ghost);
         }
@@ -220,11 +219,11 @@ namespace ConsoleApp1
         {
             enemyvalues dungeon_rat = new enemyvalues()
             {
-                mobName = "Dungeon Rat",
-                mobHP = "582",
-                mobMaxDMG = "86",
-                mobMinDMG = "32",
-                mobEXP = "1000",
+                MobName = "Dungeon Rat",
+                MobHP = "582",
+                MobMaxDMG = "86",
+                MobMinDMG = "32",
+                MobEXP = "1000",
             };
             return (dungeon_rat);
         }
@@ -232,11 +231,11 @@ namespace ConsoleApp1
         {
             enemyvalues giant = new enemyvalues()
             {
-                mobName = "Giant",
-                mobHP = "750",
-                mobMaxDMG = "56",
-                mobMinDMG = "22",
-                mobEXP = "1000"
+                MobName = "Giant",
+                MobHP = "750",
+                MobMaxDMG = "56",
+                MobMinDMG = "22",
+                MobEXP = "1000"
             };
             return (giant);
         }
@@ -244,11 +243,11 @@ namespace ConsoleApp1
         {
             enemyvalues black_knight = new enemyvalues()
             {
-                mobName = "Black Knight",
-                mobHP = "674",
-                mobMaxDMG = "48",
-                mobMinDMG = "40",
-                mobEXP = "1000"
+                MobName = "Black Knight",
+                MobHP = "674",
+                MobMaxDMG = "48",
+                MobMinDMG = "40",
+                MobEXP = "1000"
             };
             return (black_knight);
         }
@@ -259,11 +258,11 @@ namespace ConsoleApp1
         {
             enemyvalues pirate = new enemyvalues()
             {
-                mobName = "Pirate",
-                mobHP = "740",
-                mobMaxDMG = "64",
-                mobMinDMG = "38",
-                mobEXP = "400"
+                MobName = "Pirate",
+                MobHP = "740",
+                MobMaxDMG = "64",
+                MobMinDMG = "38",
+                MobEXP = "400"
             };
             return (pirate);
         }
@@ -271,11 +270,11 @@ namespace ConsoleApp1
         {
             enemyvalues head_thief = new enemyvalues()
             {
-                mobName = "Head thief",
-                mobHP = "950",
-                mobMaxDMG = "86",
-                mobMinDMG = "40",
-                mobEXP = "452"
+                MobName = "Head thief",
+                MobHP = "950",
+                MobMaxDMG = "86",
+                MobMinDMG = "40",
+                MobEXP = "452"
             };
             return (head_thief);
         }
@@ -283,11 +282,11 @@ namespace ConsoleApp1
         {
             enemyvalues archer = new enemyvalues()
             {
-                mobName = "Archer",
-                mobHP = "1050",
-                mobMaxDMG = "70",
-                mobMinDMG = "30",
-                mobEXP = "430"
+                MobName = "Archer",
+                MobHP = "1050",
+                MobMaxDMG = "70",
+                MobMinDMG = "30",
+                MobEXP = "430"
             };
             return (archer);
         }
@@ -295,11 +294,11 @@ namespace ConsoleApp1
         {
             enemyvalues skeleton = new enemyvalues()
             {
-                mobName = "Skeleton",
-                mobHP = "820",
-                mobMaxDMG = "52",
-                mobMinDMG = "45",
-                mobEXP = "482"
+                MobName = "Skeleton",
+                MobHP = "820",
+                MobMaxDMG = "52",
+                MobMinDMG = "45",
+                MobEXP = "482"
             };
             return (skeleton);
         }
@@ -307,11 +306,11 @@ namespace ConsoleApp1
         {
             enemyvalues minotaur = new enemyvalues()
             {
-                mobName = "Minotaur",
-                mobHP = "1082",
-                mobMaxDMG = "73",
-                mobMinDMG = "52",
-                mobEXP = "500"
+                MobName = "Minotaur",
+                MobHP = "1082",
+                MobMaxDMG = "73",
+                MobMinDMG = "52",
+                MobEXP = "500"
             };
             return (minotaur);
         }
@@ -319,11 +318,11 @@ namespace ConsoleApp1
         {
             enemyvalues gnome = new enemyvalues()
             {
-                mobName = "Gnome",
-                mobHP = "4000",
-                mobMaxDMG = "40",
-                mobMinDMG = "20",
-                mobEXP = "2500"
+                MobName = "Gnome",
+                MobHP = "4000",
+                MobMaxDMG = "40",
+                MobMinDMG = "20",
+                MobEXP = "2500"
             };
             return (gnome);
         }
@@ -332,11 +331,11 @@ namespace ConsoleApp1
         {
             enemyvalues unicow = new enemyvalues()
             {
-                mobName = "Unicow",
-                mobHP = "2840",
-                mobMaxDMG = "102",
-                mobMinDMG = "52",
-                mobEXP = "2500"
+                MobName = "Unicow",
+                MobHP = "2840",
+                MobMaxDMG = "102",
+                MobMinDMG = "52",
+                MobEXP = "2500"
             };
             return (unicow);
         }
@@ -344,11 +343,11 @@ namespace ConsoleApp1
         {
             enemyvalues wizard = new enemyvalues()
             {
-                mobName = "Wizard",
-                mobHP = "2520",
-                mobMaxDMG = "92",
-                mobMinDMG = "58",
-                mobEXP = "2500",
+                MobName = "Wizard",
+                MobHP = "2520",
+                MobMaxDMG = "92",
+                MobMinDMG = "58",
+                MobEXP = "2500",
             };
             return (wizard);
         }
@@ -356,11 +355,11 @@ namespace ConsoleApp1
         {
             enemyvalues summoner = new enemyvalues()
             {
-                mobName = "Summoner",
-                mobHP = "2300",
-                mobMaxDMG = "110",
-                mobMinDMG = "70",
-                mobEXP = "2500"
+                MobName = "Summoner",
+                MobHP = "2300",
+                MobMaxDMG = "110",
+                MobMinDMG = "70",
+                MobEXP = "2500"
             };
             return (summoner);
         }
@@ -371,11 +370,11 @@ namespace ConsoleApp1
         {
             enemyvalues hindrek = new enemyvalues
             {
-                mobName = "Hindrek the genius",
-                mobHP = "5000",
-                mobMaxDMG = "2000",
-                mobMinDMG = "200",
-                mobEXP = "10000"
+                MobName = "Hindrek the genius",
+                MobHP = "5000",
+                MobMaxDMG = "2000",
+                MobMinDMG = "200",
+                MobEXP = "10000"
             };
             return (hindrek);
         }
@@ -384,11 +383,11 @@ namespace ConsoleApp1
         {
             enemyvalues kaur = new enemyvalues
             {
-                mobName = "Kaur the mastermind",
-                mobHP = "5000",
-                mobMaxDMG = "2000",
-                mobMinDMG = "200",
-                mobEXP = "10000"
+                MobName = "Kaur the mastermind",
+                MobHP = "5000",
+                MobMaxDMG = "2000",
+                MobMinDMG = "200",
+                MobEXP = "10000"
             };
             return (kaur);
         }
@@ -397,11 +396,11 @@ namespace ConsoleApp1
         {
             enemyvalues karl = new enemyvalues
             {
-                mobName = "Karl the betrayer",
-                mobHP = "5",
-                mobMaxDMG = "2000",
-                mobMinDMG = "200",
-                mobEXP = "10000"
+                MobName = "Karl the betrayer",
+                MobHP = "5",
+                MobMaxDMG = "2000",
+                MobMinDMG = "200",
+                MobEXP = "10000"
             };
             return (karl);
         }
@@ -409,11 +408,11 @@ namespace ConsoleApp1
         {
             enemyvalues jaan = new enemyvalues
             {
-                mobName = "Jaan the nerd",
-                mobHP = "5000",
-                mobMaxDMG = "2000",
-                mobMinDMG = "200",
-                mobEXP = "10000"
+                MobName = "Jaan the nerd",
+                MobHP = "5000",
+                MobMaxDMG = "2000",
+                MobMinDMG = "200",
+                MobEXP = "10000"
             };
             return (jaan);
         }
@@ -424,11 +423,11 @@ namespace ConsoleApp1
         {
             enemyvalues test = new enemyvalues
             {
-                mobName = "Test mob",
-                mobHP = "10",
-                mobMaxDMG = "8",
-                mobMinDMG = "5",
-                mobEXP = "200001"
+                MobName = "Test mob",
+                MobHP = "10",
+                MobMaxDMG = "8",
+                MobMinDMG = "5",
+                MobEXP = "200001"
             };
             return (test);
         }
