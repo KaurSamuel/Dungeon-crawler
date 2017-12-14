@@ -12,10 +12,11 @@ namespace ConsoleApp1
         {
             Console.OutputEncoding = System.Text.Encoding.Unicode;
 
+
             Engine engine = new Engine();
 
             engine.Run();
-            
+
         }
     }
 }

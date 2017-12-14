@@ -34,10 +34,6 @@ namespace ConsoleApp1
         const byte AddSidesRight = 3;
 
         //Returns true if there are any enemies alive in the room
-<<<<<<< HEAD
-        public static bool EnemiesAlive { get; set; } //TODO
-=======
-
         public static bool EnemiesAlive(Room room) //Pass CurRoom on default
         {
             if (room.Enemies.Count > 0)
@@ -45,7 +41,7 @@ namespace ConsoleApp1
             else
                 return false;
         }
->>>>>>> rooms
+
 
         //Holds data of each room
         public struct Room
@@ -72,10 +68,6 @@ namespace ConsoleApp1
             GenerateMap();
         }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> rooms
         Room AddDoorToPrevRoom(Room newRoom)
         {
             Vector2 pos = PrevPos - CurPos;
@@ -102,10 +94,6 @@ namespace ConsoleApp1
                     return AddDoors(newRoom, SidesRight);
 
             return newRoom;
-<<<<<<< HEAD
-
-=======
->>>>>>> rooms
         }
 
         //Checks certain bit from a byte and returns it
@@ -256,11 +244,9 @@ namespace ConsoleApp1
 
             room = AddDoorToPrevRoom(room);
 
-<<<<<<< HEAD
-=======
+
             if (events)
                 room = AddEvents(room);
->>>>>>> rooms
 
             MapArray.Add(room);
 

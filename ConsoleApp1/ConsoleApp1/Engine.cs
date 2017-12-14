@@ -16,6 +16,7 @@ namespace ConsoleApp1
         //Calls fight scene
         private bool Fight()
         {
+            
             return false;
         }
 
