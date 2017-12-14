@@ -59,7 +59,7 @@ namespace ConsoleApp1
             Random rng = new Random();
             Console.WriteLine("You attack with your equiped weapon");
             Thread.Sleep(1000);
-            int DMG = rng.Next(int.Parse(Convertor.exporter_wep(currently_equiped, "wep_min_dmg")), int.Parse(Convertor.exporter_wep(currently_equiped, "wep_max_dmg")));
+            int DMG = rng.Next(int.Parse(Convertor.exporter_wep(Currently_equiped, "wep_min_dmg")), int.Parse(Convertor.exporter_wep(Currently_equiped, "wep_max_dmg")));
             Console.WriteLine("You hit your enemy and deal "+DMG+" damage");
             HP = HP - DMG;
             Console.WriteLine("the enemy now has " + HP + " hitpoints");

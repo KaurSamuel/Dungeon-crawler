@@ -23,6 +23,23 @@ namespace ConsoleApp1
                 return false;
             }
 
+            int count = 0;
+            foreach(enemyvalues enemy in dungeon.CurRoom.Enemies)
+            {
+                Console.WriteLine(count + ". " + enemy.mobName);
+                count++;
+            }
+
+            while (true)
+            {
+                string userInput = Console.ReadLine();
+
+                skills.Combat_start(dungeon.CurRoom.Enemies[])
+            }
+
+            
+
+
             return false;
         }
 
