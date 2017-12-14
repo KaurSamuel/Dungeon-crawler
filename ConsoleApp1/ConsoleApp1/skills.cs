@@ -13,10 +13,10 @@ namespace ConsoleApp1
         public static string Combat_start(string ID)
         {
             Currently_figting_enemy = ID;
-            string[] Enemys = ID.Split(' ');
+            string[] Enemies = ID.Split(' ');
             int enemynb = 1;
             Console.WriteLine("Which enemy would you like to fight?");            
-            foreach (var enemy in Enemys)
+            foreach (var enemy in Enemies)
             {
                 Console.WriteLine(enemynb + ". " + Convertor.export_mon(enemy, "mob_Name"));
                 enemynb++;
@@ -24,7 +24,7 @@ namespace ConsoleApp1
             int playerChoice = int.Parse(Console.ReadLine());
             playerChoice--;
 
-            Turn_start(Enemys[playerChoice],int.Parse(Convertor.export_mon(Enemys[playerChoice], "mob_hp")));
+            Turn_start(Enemies[playerChoice],int.Parse(Convertor.export_mon(Enemies[playerChoice], "mob_hp")));
             return ("");
         }
         public static string Turn_start(string enemy, int enemyHP)
@@ -60,7 +60,7 @@ namespace ConsoleApp1
             Console.WriteLine("You attack with your equipped weapon");
             Thread.Sleep(1000);
             int DMG = rng.Next(int.Parse(Convertor.exporter_wep(Currently_equipped, "wep_min_dmg")), int.Parse(Convertor.exporter_wep(Currently_equipped, "wep_max_dmg")));
-            Console.WriteLine("You hit your enemy and dealt "+DMG+" damage");
+            Console.WriteLine("You hit your enemy and dealt "+ DMG +" damage");
             HP = HP - DMG;
             Console.WriteLine("Enemy now has " + HP + " hitpoints");
             if (HP<=0)
