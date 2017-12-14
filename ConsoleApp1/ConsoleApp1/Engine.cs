@@ -22,10 +22,7 @@ namespace ConsoleApp1
 
             skills.Combat_start(fullEnemies);
 
-            
-
-
-            return false;
+            return true;
         }
 
         //Calls inventory scene

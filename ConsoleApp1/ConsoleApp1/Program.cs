@@ -19,7 +19,7 @@ namespace ConsoleApp1
 
 
             Player_current_HP = 100;
-            Currently_equiped = "wA001";
+            Currently_equipped = "wA001";
 
             Console.OutputEncoding = Encoding.Unicode;
 

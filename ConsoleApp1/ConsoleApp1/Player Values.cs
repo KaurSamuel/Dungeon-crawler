@@ -42,7 +42,7 @@ namespace ConsoleApp1
         public static string Equip_weapon()
         {
             Draw_inventory();
-            Console.WriteLine("What item would you like to equip?(write the number)");
+            Console.WriteLine("What item would you like to equip?(number)");
             int What_item = 0;
             What_item = int.Parse(Console.ReadLine());
             What_item--;

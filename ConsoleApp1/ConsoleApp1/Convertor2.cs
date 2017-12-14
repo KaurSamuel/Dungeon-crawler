@@ -8,15 +8,15 @@ namespace ConsoleApp1
 {
     class Convertor
     {
-        public static enemyvalues ImportMonster(string ID)
+        public static Enemyvalues ImportMonster(string ID)
         {
-            enemyvalues enemy = new enemyvalues();
+            Enemyvalues enemy = new Enemyvalues();
 
-            enemy.mobName = export_mon(ID, "mob_Name");
-            enemy.mobHP = export_mon(ID, "mob_hp");
-            enemy.mobMaxDMG = export_mon(ID, "mob_max_dmg");
-            enemy.mobMinDMG = export_mon(ID, "mob_min_dmg");
-            enemy.mobEXP = export_mon(ID, "mob_min_dmg");
+            enemy.MobName = export_mon(ID, "mob_Name");
+            enemy.MobHP = export_mon(ID, "mob_hp");
+            enemy.MobMaxDMG = export_mon(ID, "mob_max_dmg");
+            enemy.MobMinDMG = export_mon(ID, "mob_min_dmg");
+            enemy.MobEXP = export_mon(ID, "mob_min_dmg");
 
             return enemy;
         }
