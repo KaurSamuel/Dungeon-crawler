@@ -46,6 +46,7 @@
     <Compile Include="Chest.cs" />
     <Compile Include="Combat.cs" />
     <Compile Include="Convertor2.cs" />
+    <Compile Include="Element.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="Player Values.cs" />
     <Compile Include="Weapons.cs" />

@@ -51,6 +51,7 @@ namespace ConsoleApp1
             public Vector2 size;
             public byte sides;
             public List<enemyvalues> Enemies;
+            public List<Object> objects;
 
             public Room(Vector2 Pos, Vector2 Size, string RoomData, byte Sides = 0)
             {
@@ -59,6 +60,7 @@ namespace ConsoleApp1
                 size = Size;
                 sides = Sides;
                 Enemies = new List<enemyvalues>();
+                objects = new List<Object>();
             }
         }
 
@@ -126,8 +128,26 @@ namespace ConsoleApp1
 
         private Room AddObjects(Room room)
         {
-            string xd = "xd";
+            int numObjects = rnd.Next(0, 4);
 
+            for (int i = 0; i < numObjects; i++)
+            {
+                Element.ElementStruct element;
+
+                element = Element.LoadElementFromFile(rnd.Next(0, 10).ToString());
+
+                while (true)
+                {
+                    int position = rnd.Next(5, (int)(room.size.X * room.size.Y) - 5);
+                    Console.WriteLine("A: " + room.roomData[position]);
+                    if (room.roomData[position] != ' ')
+                        continue;
+
+                    room.roomData = ReplaceAtIndex(position, element.sprite, room.roomData);
+                    room.objects.Add(element);
+                    break;
+                }
+            }
 
             return room;
         }
@@ -275,6 +295,18 @@ namespace ConsoleApp1
 
             CurRoom = GenerateRoom(CurPos, (byte)EnteredSide);
 
+        }
+
+        //Inspects room
+        public bool InspectRoom()
+        {
+            Console.WriteLine("There is: ");
+            foreach (Element.ElementStruct ele in CurRoom.objects)
+                Console.WriteLine(ele.description);
+
+            Console.ReadKey();
+
+            return true;
         }
 
         //Prints Moving options

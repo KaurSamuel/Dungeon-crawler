@@ -68,6 +68,7 @@ namespace ConsoleApp1
                 Console.WriteLine("2. Inventory");
                 Console.WriteLine("3. Move");
                 Console.WriteLine("4. Suicide");
+                Console.WriteLine("5. Inspect room");
 
                 userInput = Console.ReadLine();
 
@@ -82,6 +83,9 @@ namespace ConsoleApp1
 
                 else if (userInput == "4")
                     return Suicide();
+
+                else if (userInput == "5")
+                    return dungeon.InspectRoom();
 
                 else
                 {
