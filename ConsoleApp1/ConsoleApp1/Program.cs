@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Media;
 
 namespace ConsoleApp1
 {
@@ -10,26 +11,19 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-<<<<<<< HEAD
+            SoundPlayer music = new SoundPlayer
+            {
+                SoundLocation = AppDomain.CurrentDomain.BaseDirectory + "\\music.wav"
+            };
+            music.PlayLooping();
+
             Currently_equiped = "wA001";
 
             Console.OutputEncoding = Encoding.Unicode;
-
-=======
-            //Console.OutputEncoding = System.Text.Encoding.Unicode;
-
-            //Engine engine = new Engine();
-
-            //engine.Run();
+            Engine engine = new Engine();
             skills.Turn_start();
->>>>>>> combat-system
-
-
-<<<<<<< HEAD
             engine.Run();
 
-=======
->>>>>>> combat-system
         }
     }
 }
