@@ -63,6 +63,10 @@ namespace ConsoleApp1
             Console.WriteLine("You hit your enemy and deal "+DMG+" damage");
             HP = HP - DMG;
             Console.WriteLine("the enemy now has " + HP + " hitpoints");
+            if (HP<=0)
+            {
+                Turn_start(enemy,HP);
+            }
             Enemy_turn(enemy,HP);
             Turn_start(enemy, HP);
             return ("");
