@@ -17,7 +17,7 @@ namespace ConsoleApp1
             };
             music.PlayLooping();
 
-
+            Player_Max_HP = 100;
             Player_current_HP = 100;
             Currently_equipped = "wA001";
 
