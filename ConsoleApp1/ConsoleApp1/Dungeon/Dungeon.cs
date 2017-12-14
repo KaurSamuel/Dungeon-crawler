@@ -7,6 +7,7 @@ using System.Numerics;
 using System.IO;
 using System.Diagnostics;
 using System.Threading;
+using System.Collections;
 
 namespace ConsoleApp1
 {
@@ -14,7 +15,8 @@ namespace ConsoleApp1
     {
         List<Room> MapArray = new List<Room>();
         Vector2 CurPos = new Vector2(0.0f, 0.0f);
-        Room CurRoom;
+        Vector2 PrevPos = new Vector2(0.0f, 0.0f);
+        public Room CurRoom;
         Random rnd = new Random();
         char doorSign = '\u0126';
 
@@ -32,7 +34,14 @@ namespace ConsoleApp1
         const byte AddSidesRight = 3;
 
         //Returns true if there are any enemies alive in the room
-        public bool EnemiesAlive { get; set; }
+        public static bool EnemiesAlive(Room room) //Pass CurRoom on default
+        {
+            if (room.Enemies.Count > 0)
+                return true;
+            else
+                return false;
+        }
+
 
         //Holds data of each room
         public struct Room
@@ -41,13 +50,17 @@ namespace ConsoleApp1
             public Vector2 pos;
             public Vector2 size;
             public byte sides;
-            
-            public Room(Vector2 Pos, Vector2 Size, string RoomData, byte Sides)
+            public List<string> Enemies;
+            public List<Object> objects;
+
+            public Room(Vector2 Pos, Vector2 Size, string RoomData, byte Sides = 0)
             {
                 roomData = RoomData;
                 pos = Pos;
                 size = Size;
                 sides = Sides;
+                Enemies = new List<string>();
+                objects = new List<Object>();
             }
         }
 
@@ -57,14 +70,32 @@ namespace ConsoleApp1
             GenerateMap();
         }
 
-        Room AddDoor(Room room, int side) //USE AddSides* in int side
+        Room AddDoorToPrevRoom(Room newRoom)
         {
-            if (CheckSide(room.sides, side))
-                return room;
-            else
-                room.sides |= 1 << side;
+            Vector2 pos = PrevPos - CurPos;
+            Room lRoom = new Room();
 
-            return room;
+            foreach (Room cRoom in MapArray)
+                if (cRoom.pos == PrevPos)
+                    lRoom = cRoom;
+
+            if (pos.X == 0 && pos.Y == 1) //UP
+                if (CheckSide(lRoom.sides, AddSidesDown))
+                    return AddDoors(newRoom, SidesUp);
+
+            if (pos.X == 0 && pos.Y == -1) //DOWN
+                if (CheckSide(lRoom.sides, AddSidesUp))
+                    return AddDoors(newRoom, SidesDown);
+
+            if (pos.X == -1 && pos.Y == 0) //LEFT
+                if (CheckSide(lRoom.sides, AddSidesRight))
+                    return AddDoors(newRoom, SidesUp);
+
+            if (pos.X == 1 && pos.Y == 0) //RIGHT
+                if (CheckSide(lRoom.sides, AddSidesLeft))
+                    return AddDoors(newRoom, SidesRight);
+
+            return newRoom;
         }
 
         //Checks certain bit from a byte and returns it
@@ -81,6 +112,67 @@ namespace ConsoleApp1
             return string.Join("", letters);
         }
 
+        private Room AddMobs(Room room)
+        {
+            string id = "A000";
+            int mobCount = rnd.Next(0, 2);
+            
+
+            for (int i = 0; i < mobCount; i++)
+            {
+                id = ReplaceAtIndex(3, (char)rnd.Next(48, 54), id); // Generates a number between 1 and 6 and assigns it to 4th pos
+                
+                while(true)
+                {
+                    int position = rnd.Next(5, (int)(room.size.X * room.size.Y) - rnd.Next(0, 5));
+                    if (room.roomData[position] != ' ')
+                        continue;
+
+                    room.roomData = ReplaceAtIndex(position, '?', room.roomData);
+                    room.Enemies.Add(id);
+
+                    break;
+                }
+            }
+
+            return room;
+        }
+
+        private Room AddObjects(Room room)
+        {
+            int numObjects = rnd.Next(0, 4);
+
+            for (int i = 0; i < numObjects; i++)
+            {
+                Element.ElementStruct element;
+
+                element = Element.LoadElementFromFile(rnd.Next(0, 10).ToString());
+
+                while (true)
+                {
+                    int position = rnd.Next(5, (int)(room.size.X * room.size.Y) - 5);
+                    if (room.roomData[position] != ' ')
+                        continue;
+
+                    room.roomData = ReplaceAtIndex(position, element.sprite, room.roomData);
+                    room.objects.Add(element);
+                    break;
+                }
+            }
+
+            return room;
+        }
+
+        //Generates random events to a room(mobs, chests, weapons)
+        private Room AddEvents(Room room)
+        {
+            room = AddMobs(room);
+            room = AddObjects(room);
+
+
+            return room;
+        }
+
         //Generates first room
         public Room GenerateStartRoom(Vector2 MapSize)
         {
@@ -89,7 +181,7 @@ namespace ConsoleApp1
             Vector2 posBotRight = MapSize * 0.75f;
             Room room;
 
-            room = GenerateRoom(CurPos, rnd.Next(0, 15));
+            room = GenerateRoom(CurPos, (byte)rnd.Next(0, 15), false);
 
             CurPos = room.pos;
 
@@ -101,27 +193,47 @@ namespace ConsoleApp1
         {
             int sideX = (int)room.size.X;
             int sideY = (int)room.size.Y;
+            byte finalSides = 0;
 
             //Checks each bit and if 1 adds a # to roomData
             if (CheckSide(sides, AddSidesUp)) //Up side
+            {
                 room.roomData = ReplaceAtIndex(sideX / 2, doorSign, room.roomData);
+            }
 
             if (CheckSide(sides, AddSidesDown)) //Down side
+            {
                 room.roomData = ReplaceAtIndex((sideX * sideY) - ((sideX + 1) / 2), doorSign, room.roomData);
+            }
 
             if (CheckSide(sides, AddSidesLeft)) //Left side
+            {
                 room.roomData = ReplaceAtIndex(((sideX * (sideY / 2))), doorSign, room.roomData);
+            }
 
             if (CheckSide(sides, AddSidesRight)) //Right side
+            {
                 room.roomData = ReplaceAtIndex((sideX * (sideY / 2)) + sideX - 2, doorSign, room.roomData);
+            }
 
-            room.sides = sides;
-            
+            //Checks each doorsign and adds to finalsides if true
+            if (room.roomData[sideX / 2] == doorSign)
+                finalSides += SidesUp;
+            if (room.roomData[(sideX * sideY) - ((sideX + 1) / 2)] == doorSign)
+                finalSides += SidesDown;
+            if (room.roomData[(sideX * (sideY / 2))] == doorSign)
+                finalSides += SidesLeft;
+            if (room.roomData[(sideX * (sideY / 2)) + sideX - 2] == doorSign)
+                finalSides += SidesRight;
+
+
+            room.sides = finalSides;
+
             return room;
         }
 
         //Generates a random room
-        public Room GenerateRoom(Vector2 pos = default(Vector2), int sides = 0)
+        public Room GenerateRoom(Vector2 pos = default(Vector2), byte sides = 0, bool events = true)
         {
             Room room;
             string roomData = "";
@@ -129,6 +241,8 @@ namespace ConsoleApp1
             int roomHeight = rnd.Next(8, 16);
 
             pos = CurPos;
+
+
 
             for (int cur_height = 0; cur_height < roomHeight; cur_height++)
             {
@@ -155,9 +269,15 @@ namespace ConsoleApp1
             roomData = ReplaceAtIndex((++roomWidth * roomHeight) - roomWidth, '\u2514', roomData);
             roomData = ReplaceAtIndex(roomData.Length - 2, '\u2518', roomData);
 
-            room = new Room(pos, new Vector2(roomWidth, roomHeight), roomData, (byte)sides);
-           
+            room = new Room(pos, new Vector2(roomWidth, roomHeight), roomData);
+
             room = AddDoors(room, (byte)rnd.Next(1, 15));
+
+            room = AddDoorToPrevRoom(room);
+
+
+            if (events)
+                room = AddEvents(room);
 
             MapArray.Add(room);
 
@@ -184,23 +304,26 @@ namespace ConsoleApp1
                 }
             }
 
-            CurRoom = GenerateRoom(CurPos, EnteredSide);
+            CurRoom = GenerateRoom(CurPos, (byte)EnteredSide);
+
         }
 
-        //Calls fight scene
-        private bool DrawFight()
+        //Inspects room
+        public bool InspectRoom()
         {
-            return false;
-        }
+            Console.WriteLine("There is: ");
+            foreach (Element.ElementStruct ele in CurRoom.objects)
+                Console.WriteLine(ele.description);
+            foreach (string enemy in CurRoom.Enemies)
+                Console.WriteLine(enemy);
 
-        //Calls inventory scene
-        private bool DrawInventory()
-        {
-            return false;
+            Console.ReadKey();
+
+            return true;
         }
 
         //Prints Moving options
-        private bool DrawMove()
+        public bool DrawMove()
         {
             int count = 0;
             int sideUp = 0;
@@ -214,21 +337,21 @@ namespace ConsoleApp1
                 sideUp = count;
                 Console.WriteLine(count + ". " + '\u2191');//\u25B2
             }
-            
+
             if (CheckSide(CurRoom.sides, AddSidesDown))
             {
                 count++;
                 sideDown = count;
                 Console.WriteLine(count + ". " + '\u2193');//\u25BA
             }
-            
+
             if (CheckSide(CurRoom.sides, AddSidesLeft))
             {
                 count++;
                 sideLeft = count;
                 Console.WriteLine(count + ". " + '\u2190');//\u25BC
             }
-            
+
             if (CheckSide(CurRoom.sides, AddSidesRight))
             {
                 count++;
@@ -240,7 +363,7 @@ namespace ConsoleApp1
 
             Console.WriteLine(count + ". Back");
 
-            while(true)
+            while (true)
             {
                 string userInput;
 
@@ -274,7 +397,7 @@ namespace ConsoleApp1
                     break;
                 }
 
-                else if(userInput == count.ToString())
+                else if (userInput == count.ToString())
                 {
                     return true;
                 }
@@ -286,71 +409,6 @@ namespace ConsoleApp1
             }
 
             return true;
-        }
-
-        //Calls suicide options
-        private bool DrawSuicide()
-        {
-            string userInput;
-
-            Console.WriteLine("Are you sure?(Y/N)");
-            userInput = Console.ReadLine();
-
-            while(true)
-            {
-                if (userInput.ToUpper() == "Y")
-                {
-                    //Just run the program and try it
-                    Console.WriteLine("Suicide is punishable by death.");
-                    Thread.Sleep(1000);
-
-                    Console.WriteLine("Prepare to die!");
-                    Thread.Sleep(3000);
-
-                    Directory.SetCurrentDirectory("../../img");
-                    System.Diagnostics.Process.Start("script.bat");
-                }
-
-                else if(userInput.ToUpper() == "N")
-                    return false;
-
-                else
-                    Console.WriteLine("Unknown option.");
-            }
-        }
-
-        //Calls user options
-        private bool DrawOptions()
-        {
-            string userInput;
-
-            while(true)
-            {
-                Console.WriteLine("1. Fight");
-                Console.WriteLine("2. Inventory");
-                Console.WriteLine("3. Move");
-                Console.WriteLine("4. Suicide");
-
-                userInput = Console.ReadLine();
-
-                if (userInput == "1")
-                    return DrawFight();
-
-                else if (userInput == "2")
-                    return DrawInventory();
-
-                else if (userInput == "3")
-                    return DrawMove();
-
-                else if (userInput == "4")
-                    return DrawSuicide();
-
-                else
-                {
-                    Console.WriteLine("Unknown input");
-                    return false;
-                }
-            }
         }
 
         //Prints CurRoom
@@ -369,15 +427,9 @@ namespace ConsoleApp1
             return true;
         }
 
-        //Main loop
-        public void GameLoop()
+        public bool Frame()
         {
-            while(true)
-            {
-                Console.Clear();
-                DrawMap();
-                DrawOptions();
-            }
+            return DrawMap();
         }
     }
 }

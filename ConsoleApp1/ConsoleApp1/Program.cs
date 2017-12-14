@@ -3,26 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Media;
 
 namespace ConsoleApp1
 {
-    class Program
+    class Program : Player_Values
     {
         static void Main(string[] args)
         {
-            /* Hiya Human, you have succesfully entered the Gaming Realm.
-             * Your Mission is to defeat four evil Program Developers,
-             * because they have diabolical plan to take over internet and spread pornographic viruses.
-             * Your our last hope :(
-             */
-            //string relv = Convertor.exporter_wep("wA001","wep_desc");
-            //Console.WriteLine(relv);
-            //Console.ReadLine();
+            SoundPlayer music = new SoundPlayer
+            {
+                SoundLocation = AppDomain.CurrentDomain.BaseDirectory + "\\music.wav"
+            };
+            music.PlayLooping();
 
-            Console.OutputEncoding = System.Text.Encoding.Unicode;
-            Dungeon dungeon = new Dungeon();
 
-            dungeon.GameLoop();
+            Player_current_HP = 100;
+            Currently_equiped = "wA001";
+
+            Console.OutputEncoding = Encoding.Unicode;
+
+            Engine engine = new Engine();
+
+            engine.Run();
+
         }
     }
 }

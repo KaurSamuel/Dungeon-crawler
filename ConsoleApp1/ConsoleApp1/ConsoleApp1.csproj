@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -45,7 +46,10 @@
   <ItemGroup>
     <Compile Include="Chest.cs" />
     <Compile Include="Convertor2.cs" />
+    <Compile Include="Element.cs" />
+    <Compile Include="Engine.cs" />
     <Compile Include="Player Values.cs" />
+    <Compile Include="skills.cs" />
     <Compile Include="Weapons.cs" />
     <Compile Include="Monsters.cs" />
     <Compile Include="Program.cs" />
@@ -55,6 +59,10 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="music.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
