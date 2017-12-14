@@ -11,18 +11,19 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
+            SoundPlayer music = new SoundPlayer
+            {
+                SoundLocation = AppDomain.CurrentDomain.BaseDirectory + "\\music.wav"
+            };
+            music.PlayLooping();
+
+
             Player_current_HP = 100;
             Currently_equiped = "wA001";
 
             Console.OutputEncoding = Encoding.Unicode;
 
             Engine engine = new Engine();
-
-            SoundPlayer music = new SoundPlayer
-            {
-                SoundLocation = AppDomain.CurrentDomain.BaseDirectory + "\\music.wav"
-            };
-            music.PlayLooping();
 
             engine.Run();
 
