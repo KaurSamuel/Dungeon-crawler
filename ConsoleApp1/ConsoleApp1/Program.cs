@@ -28,6 +28,7 @@ namespace ConsoleApp1
             {
                 Console.Clear();
                 dungeon.DrawMap();
+                dungeon.DrawMove();
             }
 
             
