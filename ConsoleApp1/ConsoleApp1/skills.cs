@@ -26,20 +26,21 @@ namespace ConsoleApp1
                 enemynb ++;
             }
 
+
             string userInput = "";
             while (true)
             {
                 userInput = Console.ReadLine();
 
                 if (int.Parse(userInput) > 0)
-                    if (int.Parse(userInput) < Currently_figting_enemys.Count())
+                    if (int.Parse(userInput) < Currently_fighting_enemys.Count())
                         break;
 
                 else
                     Console.WriteLine("Incorrect input");
             }
 
-            Currently_fighting_enemy_ID = Currently_figting_enemys[int.Parse(userInput) - 1];
+            Currently_fighting_enemy_ID = Currently_fighting_enemys[int.Parse(userInput) - 1];
             current_enemy_HP = int.Parse(Convertor.export_mon(Currently_fighting_enemy_ID, "mob_hp"));
 
             //Console.Clear();
@@ -53,10 +54,6 @@ namespace ConsoleApp1
 
                   
             return true;
-            int playerchoise = int.Parse(Console.ReadLine());
-            Currently_fighting_enemy_ID = Currently_fighting_enemys[playerchoise];
-            Turn_start();          
-            return ("");
         }
         public static bool Turn_start()
         {
