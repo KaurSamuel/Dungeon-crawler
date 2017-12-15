@@ -113,7 +113,7 @@ namespace ConsoleApp1
                         if (int.Parse(userInput) < Weapons_Inventory.Count() + 1)
                         {
                             Currently_equipped = Weapons_Inventory[int.Parse(userInput) - 1];
-                            Console.WriteLine("You've equipped a/an " + Convertor.exporter_wep(Currently_equipped, "wep_name" + "."));
+                            Console.WriteLine("You've equipped a/an " + Convertor.exporter_wep(Currently_equipped, "wep_name"));
                             Console.ReadKey();
                             return "";
                         }
