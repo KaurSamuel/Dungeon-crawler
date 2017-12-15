@@ -132,7 +132,7 @@ namespace ConsoleApp1
         }
         public static string shield_attack()
         {
-            /*
+            
             Random rng = new Random();
             int Gonna_miss_or_nah = rng.Next(0, 100);
             if (Gonna_miss_or_nah<60)
@@ -165,7 +165,7 @@ namespace ConsoleApp1
             {
                 Console.WriteLine("You missed,you bad");
             }
-            */
+            
             return ("");
         }
         public static string Enemy_turn()
