@@ -55,10 +55,10 @@ namespace ConsoleApp1
 
             if (Dropped_item != "")
             {
-<<<<<<< HEAD
+
                 Console.WriteLine("The enemy dropped a " + Convertor.exporter_wep(Dropped_item, "wep_name"));
                 Player_Inventory.Add_to_inventory("", Dropped_item);
-=======
+
                 Console.WriteLine("The enemy dropped a " + Dropped_item);
                 if (shield_or_nah==false)
                 {
@@ -72,7 +72,7 @@ namespace ConsoleApp1
                 {
                     Player_Inventory.Add_to_inventory("shield", Dropped_item);
                 }
->>>>>>> f7c9901691e1772857b2c4cc26fb7954550ea000
+
             }
 
             Dungeon.CurRoom = Dungeon.RemoveMob(Currently_fighting_enemy_ID, Dungeon.CurRoom);

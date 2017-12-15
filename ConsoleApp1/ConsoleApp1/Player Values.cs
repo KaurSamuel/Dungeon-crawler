@@ -62,27 +62,23 @@ namespace ConsoleApp1
         public static string Draw_inventory(bool pause = true)
         {
             int mitukorda = 1;
-<<<<<<< HEAD
             Console.WriteLine("Do you wish to see your weapons or shields inventory");
             string valik = Console.ReadLine();
-            Console.WriteLine("--------------------");
+
             if (valik == "weapons")
-=======
+
             Console.WriteLine("--------------------");
             if (Weapons_Inventory.Count == 0)
                 Console.WriteLine("There are no items");
 
             foreach (var item in Weapons_Inventory)
->>>>>>> e7a43872f2707e897fdf3a27dc10677dd1c86b4c
             {
-                foreach (var item in Weapons_Inventory)
-                {
-                    string Name = Convertor.exporter_wep(item, "wep_name");
-                    Console.WriteLine(mitukorda + ". " + Name);
-                    mitukorda++;
-                }
-                Console.WriteLine("-------------------");
+                string Name = Convertor.exporter_wep(item, "wep_name");
+                Console.WriteLine(mitukorda + ". " + Name);
+                mitukorda++;
             }
+            Console.WriteLine("-------------------");
+
             if (valik == "shields")
             {
                 Console.WriteLine("--------------------");
@@ -94,21 +90,18 @@ namespace ConsoleApp1
                 }
                 Console.WriteLine("--------------------");
             }
-<<<<<<< HEAD
-=======
+
             Console.WriteLine("--------------------");
 
-<<<<<<< HEAD
+
             if (pause)
                 Console.ReadKey();
-=======
-            Console.ReadKey();
->>>>>>> e7a43872f2707e897fdf3a27dc10677dd1c86b4c
->>>>>>> f7c9901691e1772857b2c4cc26fb7954550ea000
+
             return ("");
         }
         public static string Equip_weapon()
         {
+            string userInput = "";
             Console.WriteLine("do you want to equip a weapon or a shield");
             string valik = Console.ReadLine();
             if (valik == "weapon")
@@ -120,22 +113,14 @@ namespace ConsoleApp1
                     return "";
                 }
 
-<<<<<<< HEAD
-            Draw_inventory(false);
-            Console.WriteLine((Weapons_Inventory.Count + 1) + ". Back");
-            Console.WriteLine("What item would you like to equip?(number)");
-            
-            while(true)
-            {
-                string userInput = Console.ReadLine();
-=======
-                Draw_inventory();
+
+                Draw_inventory(false);
+                Console.WriteLine((Weapons_Inventory.Count + 1) + ". Back");
                 Console.WriteLine("What item would you like to equip?(number)");
->>>>>>> f7c9901691e1772857b2c4cc26fb7954550ea000
 
                 while (true)
                 {
-                    string userInput = Console.ReadLine();
+                    userInput = Console.ReadLine();
 
                     if (int.Parse(userInput) > 0)
                     {
@@ -151,59 +136,60 @@ namespace ConsoleApp1
                     else
                     {
                         Console.WriteLine("Unknown item");
-                    }
-                }
-            }
-            if (valik == "shield")
-            {
-                if (Shields_Inventory.Count() == 0)
-                {
-                    Console.WriteLine("You dont have any shields to equip");
-                    Console.ReadKey();
-                    return "";
-                }
-
-<<<<<<< HEAD
-                if(int.Parse(userInput) == (Weapons_Inventory.Count + 1))
-                {
-                    return "";
-                }
-
-                else
-=======
-                Draw_inventory();
-                Console.WriteLine("What item would you like to equip?(number)");
-
-                while (true)
->>>>>>> f7c9901691e1772857b2c4cc26fb7954550ea000
-                {
-                    string userInput = Console.ReadLine();
-
-                    if (int.Parse(userInput) > 0)
-                    {
-                        if (int.Parse(userInput) <= Shields_Inventory.Count())
-                        {
-                            Currently_equipped_shield = Shields_Inventory[int.Parse(userInput) - 1];
-                            Console.WriteLine("You've equipped a/an " + Convertor.exporter_shield(Currently_equipped, "shield_name" + "."));
-                            Player_block_chance = int.Parse(Convertor.exporter_shield(Currently_equipped_shield, "shield_block_chance"));
-                            Console.ReadKey();
-                            return "";
-                        }
-                    }
-
-                    else
-                    {
-                        Console.WriteLine("Unknown item");
-                        
+                        return "";
                     }
                 }
                 
 
-<<<<<<< HEAD
-=======
+                if (valik == "shield")
+                {
+                    if (Shields_Inventory.Count() == 0)
+                    {
+                        Console.WriteLine("You dont have any shields to equip");
+                        Console.ReadKey();
+                        return "";
+                    }
+
+
+                    if (int.Parse(userInput) == (Weapons_Inventory.Count + 1))
+                    {
+                        return "";
+                    }
+
+                    else
+                        Draw_inventory();
+
+                    Console.WriteLine("What item would you like to equip?(number)");
+
+                    while (true)
+
+                    {
+                        userInput = Console.ReadLine();
+
+                        if (int.Parse(userInput) > 0)
+                        {
+                            if (int.Parse(userInput) <= Shields_Inventory.Count())
+                            {
+                                Currently_equipped_shield = Shields_Inventory[int.Parse(userInput) - 1];
+                                Console.WriteLine("You've equipped a/an " + Convertor.exporter_shield(Currently_equipped, "shield_name" + "."));
+                                Player_block_chance = int.Parse(Convertor.exporter_shield(Currently_equipped_shield, "shield_block_chance"));
+                                Console.ReadKey();
+                                return "";
+                            }
+                        }
+
+                        else
+                        {
+                            Console.WriteLine("Unknown item");
+                        }
+                    }
+
+
+
+                }
+                return ("");
             }
             return ("");
->>>>>>> f7c9901691e1772857b2c4cc26fb7954550ea000
         }
     }
 }
