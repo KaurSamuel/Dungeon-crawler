@@ -115,7 +115,7 @@ namespace ConsoleApp1
         private Room AddMobs(Room room)
         {
             string id = "A000";
-            int mobCount = rnd.Next(0, 1);
+            int mobCount = rnd.Next(0, 2);
             
 
             for (int i = 0; i < mobCount; i++)

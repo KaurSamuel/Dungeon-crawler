@@ -26,6 +26,7 @@ namespace ConsoleApp1
             Console.WriteLine("What would you like to do?");
             Console.WriteLine("1. view inventory");
             Console.WriteLine("2. equip weapon");
+            Console.WriteLine("3. Back");
             int PlayerChoice = int.Parse(Console.ReadLine());
             if (PlayerChoice == 1)
             {
@@ -35,6 +36,12 @@ namespace ConsoleApp1
             {
                 Equip_weapon();
             }
+
+            else if(PlayerChoice == 3)
+            {
+                return false;
+            }
+
             return (true);
         }
         public static string Add_to_inventory(string Whatitem,string ID)
