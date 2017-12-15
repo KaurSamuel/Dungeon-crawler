@@ -64,13 +64,33 @@ namespace ConsoleApp1
         }
         public static string Equip_weapon()
         {
+            
+
+            if (Weapons_Inventory.Count() == 0)
+            {
+                Console.WriteLine("You dont have any weapons to equip");
+                Console.ReadKey();
+                return "";
+            }
+
             Draw_inventory();
             Console.WriteLine("What item would you like to equip?(number)");
-            int What_item = 0;
-            What_item = int.Parse(Console.ReadLine());
-            What_item--;
-            Currently_equipped = Weapons_Inventory[What_item];
-            Console.WriteLine("You've equipped a/an "+ Convertor.exporter_wep(Currently_equipped,"wep_name" + "."));
+            
+            while(true)
+            {
+                string userInput = Console.ReadLine();
+
+                if (int.Parse(userInput) > 0)
+                    if(int.Parse(userInput) < Weapons_Inventory.Count())
+                    {
+                        Currently_equipped = Weapons_Inventory[int.Parse(userInput)];
+                        Console.WriteLine("You've equipped a/an " + Convertor.exporter_wep(Currently_equipped, "wep_name" + "."));
+                        Console.ReadKey();
+                        return "";
+                    }
+            }
+
+            
             return ("");
         }
     }
