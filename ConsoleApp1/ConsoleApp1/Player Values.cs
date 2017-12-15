@@ -49,7 +49,7 @@ namespace ConsoleApp1
             Weapons_Inventory.Add(ID);
             return ("");            
         }
-        public static string Draw_inventory()
+        public static string Draw_inventory(bool pause = true)
         {
             int mitukorda = 1;
             Console.WriteLine("--------------------");
@@ -64,7 +64,8 @@ namespace ConsoleApp1
             }
             Console.WriteLine("--------------------");
 
-            Console.ReadKey();
+            if (pause)
+                Console.ReadKey();
             return ("");
         }
         public static string Equip_weapon()
@@ -78,7 +79,8 @@ namespace ConsoleApp1
                 return "";
             }
 
-            Draw_inventory();
+            Draw_inventory(false);
+            Console.WriteLine((Weapons_Inventory.Count + 1) + ". Back");
             Console.WriteLine("What item would you like to equip?(number)");
             
             while(true)
@@ -96,14 +98,17 @@ namespace ConsoleApp1
                     }
                 }
 
+                if(int.Parse(userInput) == (Weapons_Inventory.Count + 1))
+                {
+                    return "";
+                }
+
                 else
                 {
                     Console.WriteLine("Unknown item");
                 }
             }
 
-            
-            return ("");
         }
     }
 

@@ -54,8 +54,16 @@ namespace ConsoleApp1
 
             if (Dropped_item != "")
             {
-                Console.WriteLine("The enemy dropped a " + Dropped_item);
+                Console.WriteLine("The enemy dropped a " + Convertor.exporter_wep(Dropped_item, "wep_name"));
                 Player_Inventory.Add_to_inventory("", Dropped_item);
+            }
+
+            Dungeon.CurRoom = Dungeon.RemoveMob(Currently_fighting_enemy_ID, Dungeon.CurRoom);
+
+            for(int i = 0; i < Dungeon.MapArray.Count; i++)
+            {
+                if (Dungeon.MapArray[i].pos == Dungeon.CurRoom.pos)
+                    Dungeon.MapArray[i] = Dungeon.CurRoom;
             }
 
             Console.ReadLine();
