@@ -53,6 +53,7 @@ namespace ConsoleApp1
                 if (userInput.ToUpper() == "Y")
                 {
                     //Just run the program and try it
+                    //Prepare to close the game more like.
                     Console.WriteLine("Suicide is punishable by death.");
                     Thread.Sleep(1000);
 
