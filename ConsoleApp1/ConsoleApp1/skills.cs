@@ -11,16 +11,16 @@ namespace ConsoleApp1
     class skills : Player_Values
     {
         public static int current_enemy_HP { get; set; }
-        public static string[] Currently_figting_enemys { get; set; }
+        public static string[] Currently_fighting_enemys { get; set; }
         public static string Currently_fighting_enemy_ID { get; set; }
 
         public static bool Combat_start(string ID)
         {
-            Currently_figting_enemys = ID.Split(' ');
+            Currently_fighting_enemys = ID.Split(' ');
             
             int enemynb = 1;
             Console.WriteLine("Which enemy would you like to fight?");
-            foreach (var item in Currently_figting_enemys)
+            foreach (var item in Currently_fighting_enemys)
             {
                 Console.WriteLine(enemynb+". "+item);
                 enemynb ++;
@@ -53,6 +53,10 @@ namespace ConsoleApp1
 
                   
             return true;
+            int playerchoise = int.Parse(Console.ReadLine());
+            Currently_fighting_enemy_ID = Currently_fighting_enemys[playerchoise];
+            Turn_start();          
+            return ("");
         }
         public static bool Turn_start()
         {
@@ -132,8 +136,25 @@ namespace ConsoleApp1
         }
         public static string Randon_drop_chance()
         {
+            string weapon = "wA000";
+            string shield = "sA000";
             Random rng = new Random();
-
+            int weapon_or_shield = rng.Next(0, 100);
+            int IS_gonna_drop = rng.Next(0, 100);
+            if (IS_gonna_drop<30)
+            {
+                if (weapon_or_shield<50)
+                {
+                    weapon = Dungeon.ReplaceAtIndex(4, (char)rng.Next(48, 58), weapon); //Generates a number between 1 and 9 and assigns it to 4th pos
+                    return (weapon);
+                }
+                else
+                {
+                    shield = Dungeon.ReplaceAtIndex(4, (char)rng.Next(48, 58), shield); //Generates a number between 1 and 9 and assigns it to 4th pos
+                    return (shield);
+                } 
+                
+            }
 
             return ("");
         }

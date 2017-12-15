@@ -20,7 +20,7 @@ namespace ConsoleApp1
             Player_Max_HP = 100;
             Player_current_HP = 100;
             Currently_equipped = "wA001";
-
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.OutputEncoding = Encoding.Unicode;
 
             Engine engine = new Engine();
