@@ -14,6 +14,7 @@ namespace ConsoleApp1
         public static string[] Currently_figting_enemys { get; set; }
         public static string Currently_fighting_enemy_ID { get; set; }
         public static string Combat_start(string ID)
+         
         {
             Currently_figting_enemys = ID.Split(' ');
             
@@ -93,5 +94,13 @@ namespace ConsoleApp1
             }
             return ("");
         }
+        public static string Randon_drop_chance()
+        {
+            Random rng = new Random();
+
+
+            return ("");
+        }
+
     }
 }
