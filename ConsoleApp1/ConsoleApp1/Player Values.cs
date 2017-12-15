@@ -21,6 +21,29 @@ namespace ConsoleApp1
 
     class Player_Inventory : Player_Values
     {
+        public static bool Inventory_start()
+        {
+            Console.WriteLine("What would you like to do?");
+            Console.WriteLine("1. view inventory");
+            Console.WriteLine("2. equip weapon");
+            Console.WriteLine("3. Back");
+            int PlayerChoice = int.Parse(Console.ReadLine());
+            if (PlayerChoice == 1)
+            {
+                Draw_inventory();
+            }
+            else if (PlayerChoice== 2)
+            {
+                Equip_weapon();
+            }
+
+            else if(PlayerChoice == 3)
+            {
+                return false;
+            }
+
+            return (true);
+        }
         public static string Add_to_inventory(string Whatitem,string ID)
         {
             Weapons_Inventory.Add(ID);
