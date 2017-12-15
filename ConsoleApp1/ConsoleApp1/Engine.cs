@@ -30,6 +30,11 @@ namespace ConsoleApp1
             fullEnemies = fullEnemies.Remove(fullEnemies.Length - 1);
             skills.Combat_start(fullEnemies);
 
+            if(Dungeon.CurRoom.Enemies.Count == 0)
+            {
+                Player_Values.Player_current_HP += 50;
+            }
+
             return true;
         }
 
