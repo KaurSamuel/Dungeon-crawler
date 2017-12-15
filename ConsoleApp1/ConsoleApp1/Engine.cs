@@ -81,7 +81,7 @@ namespace ConsoleApp1
         //Calls user options
         private bool Options()
         {
-            int userInput;
+            string userInput;
 
             while (true)
             {
@@ -94,24 +94,24 @@ namespace ConsoleApp1
 
 
 
-                userInput = int.Parse(Console.ReadLine());
+                userInput = Console.ReadLine();
 
                 if (userInput == "")
                     return false;
 
-                if (userInput == 1)
+                if (userInput == "1")
                     return Fight();
 
-                else if (userInput == 2)
+                else if (userInput == "2")
                     return(Player_Inventory.Inventory_start());
 
-                else if (userInput == 3)
+                else if (userInput =="3")
                     return dungeon.DrawMove();
 
-                else if (userInput == 4)
+                else if (userInput == "4")
                     return dungeon.InspectRoom();
 
-                else if (userInput == 5)
+                else if (userInput == "5")
                     return Suicide();
 
                 else

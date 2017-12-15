@@ -13,7 +13,7 @@ namespace ConsoleApp1
         {
 
             Console.WriteLine("Welcome to Swords and Shields(and potions if you pay for the potions DLC(4,99€))");
-            Console.WriteLine("Tutorial: you will be healed to max HP if you clear a room from enemys");
+            Console.WriteLine("Tutorial: you will be healed to max HP if you clear a room from enemys, equiping shields gives you a chance to block an attack");
             Console.WriteLine("Credits:");
             Console.WriteLine("Hindrek Hannus: graphic designer");
             Console.WriteLine("Kaur Samuel Kannel: Game Designer,Boss");
