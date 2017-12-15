@@ -96,8 +96,14 @@ namespace ConsoleApp1
         }
         public static string Randon_drop_chance()
         {
+            string weapon = "wA000";
             Random rng = new Random();
-
+            int IS_gonna_drop = rng.Next(0, 100);
+            if (IS_gonna_drop<30)
+            {
+                weapon = Dungeon.ReplaceAtIndex(4, (char)rng.Next(48, 58), weapon); //Generates a number between 1 and 9 and assigns it to 4th pos
+                return (weapon);
+            }
 
             return ("");
         }
