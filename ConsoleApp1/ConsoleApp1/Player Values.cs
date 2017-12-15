@@ -62,10 +62,18 @@ namespace ConsoleApp1
         public static string Draw_inventory()
         {
             int mitukorda = 1;
+<<<<<<< HEAD
             Console.WriteLine("Do you wish to see your weapons or shields inventory");
             string valik = Console.ReadLine();
             Console.WriteLine("--------------------");
             if (valik == "weapons")
+=======
+            Console.WriteLine("--------------------");
+            if (Weapons_Inventory.Count == 0)
+                Console.WriteLine("There are no items");
+
+            foreach (var item in Weapons_Inventory)
+>>>>>>> e7a43872f2707e897fdf3a27dc10677dd1c86b4c
             {
                 foreach (var item in Weapons_Inventory)
                 {
@@ -86,6 +94,12 @@ namespace ConsoleApp1
                 }
                 Console.WriteLine("--------------------");
             }
+<<<<<<< HEAD
+=======
+            Console.WriteLine("--------------------");
+
+            Console.ReadKey();
+>>>>>>> e7a43872f2707e897fdf3a27dc10677dd1c86b4c
             return ("");
         }
         public static string Equip_weapon()

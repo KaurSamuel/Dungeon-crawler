@@ -27,6 +27,7 @@ namespace ConsoleApp1
             foreach (string enemy in dungeon.CurRoom.Enemies)
                 fullEnemies += enemy + " ";
 
+            fullEnemies = fullEnemies.Remove(fullEnemies.Length - 1);
             skills.Combat_start(fullEnemies);
 
             return true;
