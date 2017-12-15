@@ -44,7 +44,7 @@ namespace ConsoleApp1
 
             Currently_fighting_enemy_ID = Currently_fighting_enemys[int.Parse(userInput) - 1];
             current_enemy_HP = int.Parse(Convertor.export_mon(Currently_fighting_enemy_ID, "mob_hp"));
-
+            
             while (true)
             {
                 if (!Turn_start())
