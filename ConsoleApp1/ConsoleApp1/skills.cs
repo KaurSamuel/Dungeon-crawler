@@ -17,6 +17,7 @@ namespace ConsoleApp1
 
         public static bool Combat_start(string ID)
         {
+            Console.ForegroundColor = ConsoleColor.Red;
             Currently_fighting_enemys = ID.Split(' ');
             
             int enemynb = 1;
@@ -78,7 +79,7 @@ namespace ConsoleApp1
             
             Console.WriteLine("Your turn, choose your action!");
             Console.WriteLine("1. Normal attack");
-
+            Console.WriteLine("2. Shield attack");
             while(true)
             {
                 string userInput = Console.ReadLine();
@@ -86,6 +87,11 @@ namespace ConsoleApp1
                 if (userInput == "1")
                 {
                     Normal_attack();
+                    break;
+                }
+                if (userInput=="2")
+                {
+                    shield_attack();
                     break;
                 }
 
@@ -110,6 +116,43 @@ namespace ConsoleApp1
             {
                 Turn_start();
             }            
+            return ("");
+        }
+        public static string shield_attack()
+        {
+            Random rng = new Random();
+            int Gonna_miss_or_nah = rng.Next(0, 100);
+            if (Gonna_miss_or_nah<70)
+            {
+                Console.WriteLine("you hit your enemy");
+                Console.WriteLine("The enemy is stunned!");
+                for (int i = 0; i < 2; i++)
+                {
+                    Console.WriteLine("Your turn, choose your action!");
+                    Console.WriteLine("1. Normal attack");
+
+                    while (true)
+                    {
+                        string userInput = Console.ReadLine();
+
+                        if (userInput == "1")
+                        {
+                            Normal_attack();
+                            break;
+                        }
+
+                        else
+                        {
+                            Console.WriteLine("Unknown command");
+                        }
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("You missed,you bad");
+            }
+
             return ("");
         }
         public static string Enemy_turn()
