@@ -94,6 +94,7 @@ namespace ConsoleApp1
                 Console.WriteLine("You have died.");
                 Console.ReadKey();
                 Environment.Exit(0);
+
                 return false;
             }
 
@@ -168,6 +169,10 @@ namespace ConsoleApp1
                 Console.WriteLine("The enemy is stunned!");
                 for (int i = 0; i < 2; i++)
                 {
+                    if (current_enemy_HP<=0)
+                    {
+                        return ("");
+                    }
                     Console.WriteLine("Your turn, choose your action!");
                     Console.WriteLine("1. Normal attack");
 
