@@ -77,6 +77,7 @@ namespace ConsoleApp1
 
             while (true)
             {
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("1. Fight");
                 Console.WriteLine("2. Inventory");
                 Console.WriteLine("3. Move");
