@@ -92,6 +92,8 @@ namespace ConsoleApp1
             if (Player_current_HP <= 0)
             {
                 Console.WriteLine("You have died.");
+                Console.ReadKey();
+                Environment.Exit(0);
                 return false;
             }
 
