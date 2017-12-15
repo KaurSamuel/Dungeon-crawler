@@ -51,7 +51,6 @@ namespace ConsoleApp1
             string userInput;
 
             Console.WriteLine("Are you sure?(Y/N)");
-            userInput = Console.ReadLine();
 
             while (true)
             { 
