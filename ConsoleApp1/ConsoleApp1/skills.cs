@@ -10,6 +10,7 @@ namespace ConsoleApp1
 {
     class skills : Player_Values
     {
+        public static bool shield_or_nah { get; set; }
         public static int current_enemy_HP { get; set; }
         public static string[] Currently_fighting_enemys { get; set; }
         public static string Currently_fighting_enemy_ID { get; set; }
@@ -54,7 +55,14 @@ namespace ConsoleApp1
             if (Dropped_item != "")
             {
                 Console.WriteLine("The enemy dropped a " + Dropped_item);
-                Player_Inventory.Add_to_inventory("", Dropped_item);
+                if (shield_or_nah==false)
+                {
+                    Player_Inventory.Add_to_inventory("weapon", Dropped_item);
+                }
+                else
+                {
+                    Player_Inventory.Add_to_inventory("shield", Dropped_item);
+                }
             }
 
             Console.ReadLine();
@@ -188,12 +196,16 @@ namespace ConsoleApp1
                 if (weapon_or_shield<50)
                 {
                     weapon = Dungeon.ReplaceAtIndex(4, (char)rng.Next(49, 58), weapon); //Generates a number between 1 and 9 and assigns it to 4th pos
+                    shield_or_nah = false; 
                     return (weapon);
                 }
                 else
                 {
                     shield = Dungeon.ReplaceAtIndex(4, (char)rng.Next(49, 58), shield); //Generates a number between 1 and 9 and assigns it to 4th pos
+                    shield_or_nah = true;
                     return (shield);
+
+
                 } 
                 
             }

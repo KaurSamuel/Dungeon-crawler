@@ -108,5 +108,31 @@ namespace ConsoleApp1
                 }
             }            return "error";
         }
+        public static string exporter_shield(string ID, string whatvalue)
+        {
+            string ValueType = "0";
+            if (whatvalue == "shield_name")
+            {
+                ValueType = "1";
+            }
+            if (whatvalue== "shield_block_chance")
+            {
+                ValueType = "3";
+            }
+            string Directorypath = "../../armor.txt";
+            foreach (string line in System.IO.File.ReadAllLines(Directorypath))
+            {
+
+
+                string id = line.Substring(0, 5);
+                if (id == ID)
+                {
+                    string[] allWords = line.Split();
+                    return (allWords[int.Parse(ValueType)]);
+
+                }
+            }
+            return "error";
+        }
     }
 }
