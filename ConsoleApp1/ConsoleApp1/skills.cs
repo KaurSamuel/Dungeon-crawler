@@ -56,18 +56,21 @@ namespace ConsoleApp1
             if (Dropped_item != "")
             {
 
-                Console.WriteLine("The enemy dropped a " + Dropped_item);
+                Console.Write("The enemy dropped a ");
                 if (shield_or_nah==false)
                 {
                     Player_Inventory.Add_to_inventory("weapon", Dropped_item);
+                    Console.WriteLine(Convertor.exporter_wep(Dropped_item, "wep_name"));
                 }
                 else if (shield_or_nah==false)
                 {
                     Player_Inventory.Add_to_inventory("hppots", Dropped_item);
+                    Console.Write("Pot(TODO)");
                 }
                 else
                 {
                     Player_Inventory.Add_to_inventory("shield", Dropped_item);
+                    Console.WriteLine(Convertor.exporter_shield(Dropped_item, "shield_name"));
                 }
 
             }
