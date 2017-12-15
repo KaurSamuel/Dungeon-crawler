@@ -235,7 +235,7 @@ namespace ConsoleApp1
                 }                                                                 
                 else
                 {
-                    shield = Dungeon.ReplaceAtIndex(4, (char)rng.Next(49, 58), shield); //Generates a number between 1 and 9 and assigns it to 4th pos
+                    shield = Dungeon.ReplaceAtIndex(4, (char)rng.Next(49, 53), shield); //Generates a number between 1 and 9 and assigns it to 4th pos
                     shield_or_nah = true;
                     return (shield);
                 } 
