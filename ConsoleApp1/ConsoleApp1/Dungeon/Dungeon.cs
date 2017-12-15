@@ -335,7 +335,7 @@ namespace ConsoleApp1
             foreach (Element.ElementStruct ele in CurRoom.objects)
                 Console.WriteLine(ele.description);
             foreach (string enemy in CurRoom.Enemies)
-                Console.WriteLine(enemy);
+                Console.WriteLine(Convertor.export_mon(enemy, "mob_Name"));
 
             Console.ReadKey();
 
