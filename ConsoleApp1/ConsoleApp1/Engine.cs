@@ -18,7 +18,7 @@ namespace ConsoleApp1
         {
             string fullEnemies = "";
             foreach (string enemy in dungeon.CurRoom.Enemies)
-                fullEnemies += enemy;
+                fullEnemies += enemy + " ";
 
             skills.Combat_start(fullEnemies);
 

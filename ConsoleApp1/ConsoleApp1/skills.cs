@@ -13,8 +13,8 @@ namespace ConsoleApp1
         public static int current_enemy_HP { get; set; }
         public static string[] Currently_figting_enemys { get; set; }
         public static string Currently_fighting_enemy_ID { get; set; }
-        public static string Combat_start(string ID)
-         
+
+        public static bool Combat_start(string ID)
         {
             Currently_figting_enemys = ID.Split(' ');
             
@@ -22,42 +22,78 @@ namespace ConsoleApp1
             Console.WriteLine("Which enemy would you like to fight?");
             foreach (var item in Currently_figting_enemys)
             {
-
                 Console.WriteLine(enemynb+". "+item);
                 enemynb ++;
             }
-            int playerchoise = int.Parse(Console.ReadLine());
-            Currently_fighting_enemy_ID = Currently_figting_enemys[playerchoise];
-            Turn_start();          
-            return ("");
+
+            string userInput = "";
+            while (true)
+            {
+                userInput = Console.ReadLine();
+
+                if (int.Parse(userInput) > 0)
+                    if (int.Parse(userInput) < Currently_figting_enemys.Count())
+                        break;
+
+                else
+                    Console.WriteLine("Incorrect input");
+            }
+
+            Currently_fighting_enemy_ID = Currently_figting_enemys[int.Parse(userInput) - 1];
+            current_enemy_HP = int.Parse(Convertor.export_mon(Currently_fighting_enemy_ID, "mob_hp"));
+
+            //Console.Clear();
+
+            while (Turn_start())
+            {
+                Console.WriteLine();
+                Enemy_turn();
+                
+            }
+
+                  
+            return true;
         }
-        public static string Turn_start()
+        public static bool Turn_start()
         {
-            while (current_enemy_HP >= 0)
-            { 
-                if (Player_current_HP <= 0)
+            if (Player_current_HP <= 0)
             {
                 Console.WriteLine("You have died.");
-                Thread.Sleep(5000);
+                return false;
+
+                /*Thread.Sleep(5000);
                 Console.WriteLine("Prepare to die!");
                 //Directory.SetCurrentDirectory("../../img");
-                //System.Diagnostics.Process.Start("script.bat");
+                //System.Diagnostics.Process.Start("script.bat");*/
             }
+
             if (current_enemy_HP <= 0)
             {
                 Console.WriteLine("Good job! You killed your target!");
-                    return ("");
-            }                                                           
-                Console.WriteLine("Your turn, choose your action!");
-                Console.WriteLine("1. Normal attack");
-                int Userinput = int.Parse(Console.ReadLine());
-                if (Userinput == 1)
+                Console.ReadKey();
+                return false;
+            }       
+            
+            Console.WriteLine("Your turn, choose your action!");
+            Console.WriteLine("1. Normal attack");
+
+            while(true)
+            {
+                string userInput = Console.ReadLine();
+
+                if (userInput == "1")
                 {
                     Normal_attack();
+                    break;
                 }
-                Enemy_turn();
+
+                else
+                {
+                    Console.WriteLine("Unknown command");
+                }
             }
-            return ("");
+            
+            return true;
         }
         public static string Normal_attack()
         {
@@ -78,7 +114,7 @@ namespace ConsoleApp1
         {
             Random rng = new Random();
             Console.WriteLine("Enemies turn!");
-            Thread.Sleep(1000);
+            //Thread.Sleep(1000);
             int Is_gona_block = rng.Next(0,100);
             if (Is_gona_block < Player_block_chance)
             {
