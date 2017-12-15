@@ -11,6 +11,13 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Welcome to Swords and Shields(and potions if you pay for the potions DLC(4,99€))");
+            Console.WriteLine("Tutorial: you will be healed to max HP if you clear a room from enemys");
+            Console.WriteLine("Credits:");
+            Console.WriteLine("Hindrek Hannus: graphic designer");
+            Console.WriteLine("Kaur Samuel Kannel: Game Designer,Boss");
+            Console.WriteLine("Jaan Jahilo: Assets, Local autist");
+
             SoundPlayer music = new SoundPlayer
             {
                 SoundLocation = AppDomain.CurrentDomain.BaseDirectory + "\\music.wav"
