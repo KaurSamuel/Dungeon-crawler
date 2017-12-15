@@ -44,11 +44,12 @@ namespace ConsoleApp1
             Currently_fighting_enemy_ID = Currently_fighting_enemys[int.Parse(userInput) - 1];
             current_enemy_HP = int.Parse(Convertor.export_mon(Currently_fighting_enemy_ID, "mob_hp"));
 
-            while (Turn_start())
+            while (true)
             {
+                if (!Turn_start())
+                    break;
                 Console.WriteLine();
                 Enemy_turn();
-                
             }
 
             if (Dropped_item != "")
@@ -73,7 +74,7 @@ namespace ConsoleApp1
             {
                 Console.WriteLine("Good job! You killed your target!");
                 Dropped_item = Randon_drop_chance();
-                
+
                 return false;
             }       
             
@@ -100,7 +101,21 @@ namespace ConsoleApp1
                     Console.WriteLine("Unknown command");
                 }
             }
-            
+
+            if (Player_current_HP <= 0)
+            {
+                Console.WriteLine("You have died.");
+                return false;
+            }
+
+            if (current_enemy_HP <= 0)
+            {
+                Console.WriteLine("Good job! You killed your target!");
+                Dropped_item = Randon_drop_chance();
+
+                return false;
+            }
+
             return true;
         }
         public static string Normal_attack()
@@ -112,14 +127,12 @@ namespace ConsoleApp1
             Console.WriteLine("You hit your enemy and dealt "+ DMG +" damage.");
             current_enemy_HP = current_enemy_HP - DMG;
             Console.WriteLine("Enemy now has " + current_enemy_HP + " hitpoints.");
-            if (current_enemy_HP <= 0)
-            {
-                Turn_start();
-            }            
+          
             return ("");
         }
         public static string shield_attack()
         {
+            /*
             Random rng = new Random();
             int Gonna_miss_or_nah = rng.Next(0, 100);
             if (Gonna_miss_or_nah<60)
@@ -152,7 +165,7 @@ namespace ConsoleApp1
             {
                 Console.WriteLine("You missed,you bad");
             }
-
+            */
             return ("");
         }
         public static string Enemy_turn()
