@@ -72,6 +72,8 @@ namespace ConsoleApp1
             Console.WriteLine("--------------------");
             Console.WriteLine("");
             Console.WriteLine("--------------------");
+            mitukorda = 1;
+
                 foreach (var item in Shields_Inventory)
                 {
                     string Name = Convertor.exporter_shield(item, "shield_name");
@@ -86,9 +88,9 @@ namespace ConsoleApp1
         public static string Equip_weapon()
         {
             string userInput = "";
-            Console.WriteLine("do you want to equip a weapon or a shield");
+            Console.WriteLine("do you want to equip a 1.weapon or a 2.shield");
             string valik = Console.ReadLine();
-            if (valik == "weapon")
+            if (valik == "1")
             {
                 if (Weapons_Inventory.Count() == 0)
                 {
@@ -131,7 +133,7 @@ namespace ConsoleApp1
             }
                 
 
-            if (valik == "shield")
+            if (valik == "2")
             {
                 if (Shields_Inventory.Count() == 0)
                 {
@@ -152,7 +154,7 @@ namespace ConsoleApp1
                         if (int.Parse(userInput) < Shields_Inventory.Count() + 1)
                         {
                             Currently_equipped_shield = Shields_Inventory[int.Parse(userInput) - 1];
-                            Console.WriteLine("You've equipped a/an " + Convertor.exporter_shield(Currently_equipped, "shield_name" ));
+                            Console.WriteLine("You've equipped a/an " + Convertor.exporter_shield(Currently_equipped_shield, "shield_name" ));
                             Player_block_chance = int.Parse(Convertor.exporter_shield(Currently_equipped_shield, "shield_block_chance"));
                             Console.ReadKey();
                             return "";
