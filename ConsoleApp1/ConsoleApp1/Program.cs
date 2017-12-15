@@ -17,6 +17,7 @@ namespace ConsoleApp1
             Console.WriteLine("Hindrek Hannus: graphic designer");
             Console.WriteLine("Kaur Samuel Kannel: Game Designer,Boss");
             Console.WriteLine("Jaan Jahilo: Assets, Local autist");
+            Console.ReadLine();
 
             SoundPlayer music = new SoundPlayer
             {
