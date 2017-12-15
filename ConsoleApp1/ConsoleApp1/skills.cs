@@ -182,7 +182,8 @@ namespace ConsoleApp1
             Random rng = new Random();
             int weapon_or_shield = rng.Next(0, 100);
             int IS_gonna_drop = rng.Next(0, 100);
-            if (IS_gonna_drop<40)
+
+            if (IS_gonna_drop<100)
             {
                 if (weapon_or_shield<50)
                 {
