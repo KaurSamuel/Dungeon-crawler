@@ -10,10 +10,10 @@ aC002 Dragon_armor A_dragon_armor_set. 115
 aCC01 Bandos_armor A_bandos_armor_set. 150
 aCC02 Malevolent_armor A_malevolent_armor_set. 175
 # {ID} {shieldName} {shieldDesc} {shieldDodge}
-sA001 Bronze_shield A_bronze_shield. 2
-sA002 Iron_shield An_iron_shield. 4
-sAA01 Steel_shield A_steel_shield. 7
-sB001 Black_shield A_black_shield. 9
+sA001 Bronze_shield A_bronze_shield. 4
+sA002 Iron_shield An_iron_shield. 8
+sA003 Steel_shield A_steel_shield. 14
+sA004 Black_shield A_black_shield. 20
 sB002 Mithril_shield A_mithril_shield. 11
 sBB01 Adamant_shield An_adamant_shield. 14
 sC001 Rune_shield A_rune_shield. 16
