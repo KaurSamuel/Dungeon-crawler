@@ -24,7 +24,7 @@ namespace ConsoleApp1
             Console.WriteLine("Which enemy would you like to fight?");
             foreach (var item in Currently_fighting_enemys)
             {
-                Console.WriteLine(enemynb+". "+item);
+                Console.WriteLine(enemynb + ". " + Convertor.export_mon(Currently_fighting_enemys[enemynb - 1], "mob_Name"));
                 enemynb ++;
             }
 
@@ -34,7 +34,7 @@ namespace ConsoleApp1
                 userInput = Console.ReadLine();
 
                 if (int.Parse(userInput) > 0)
-                    if (int.Parse(userInput) < Currently_fighting_enemys.Count())
+                    if (int.Parse(userInput) < Currently_fighting_enemys.Count() + 1)
                         break;
 
                 else

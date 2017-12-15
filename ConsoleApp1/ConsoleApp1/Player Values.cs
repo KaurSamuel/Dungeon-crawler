@@ -52,14 +52,19 @@ namespace ConsoleApp1
         public static string Draw_inventory()
         {
             int mitukorda = 1;
-            //Console.WriteLine("--------------------");
+            Console.WriteLine("--------------------");
+            if (Weapons_Inventory.Count == 0)
+                Console.WriteLine("There are no items");
+
             foreach (var item in Weapons_Inventory)
             {
                 string Name = Convertor.exporter_wep(item, "wep_name");
                 Console.WriteLine(mitukorda +". "+ Name);
                 mitukorda++;
             }
-            //Console.WriteLine("-------------------");
+            Console.WriteLine("--------------------");
+
+            Console.ReadKey();
             return ("");
         }
         public static string Equip_weapon()
