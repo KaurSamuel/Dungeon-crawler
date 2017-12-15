@@ -115,7 +115,7 @@ namespace ConsoleApp1
         private Room AddMobs(Room room)
         {
             string id = "A000";
-            int mobCount = rnd.Next(0, 2);
+            int mobCount = rnd.Next(0, 4);
             
 
             for (int i = 0; i < mobCount; i++)
@@ -146,7 +146,7 @@ namespace ConsoleApp1
             {
                 Element.ElementStruct element;
 
-                element = Element.LoadElementFromFile(rnd.Next(0, 10).ToString());
+                element = Element.LoadElementFromFile(rnd.Next(0, 11).ToString());
 
                 while (true)
                 {
