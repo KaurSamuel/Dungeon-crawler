@@ -11,22 +11,22 @@ namespace ConsoleApp1
     class skills : Player_Values
     {
         public static int current_enemy_HP { get; set; }
-        public static string[] Currently_figting_enemys { get; set; }
+        public static string[] Currently_fighting_enemys { get; set; }
         public static string Currently_fighting_enemy_ID { get; set; }
         public static string Combat_start(string ID)
         {
-            Currently_figting_enemys = ID.Split(' ');
+            Currently_fighting_enemys = ID.Split(' ');
             
             int enemynb = 1;
             Console.WriteLine("Which enemy would you like to fight?");
-            foreach (var item in Currently_figting_enemys)
+            foreach (var item in Currently_fighting_enemys)
             {
 
                 Console.WriteLine(enemynb+". "+item);
                 enemynb ++;
             }
             int playerchoise = int.Parse(Console.ReadLine());
-            Currently_fighting_enemy_ID = Currently_figting_enemys[playerchoise];
+            Currently_fighting_enemy_ID = Currently_fighting_enemys[playerchoise];
             Turn_start();          
             return ("");
         }

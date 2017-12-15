@@ -5,3 +5,4 @@ hB1 Medium_Health_Potion 75
 hB2 Greater_Health_Potion 100
 hC1 Big_Health_Potion 125
 hC2 Huge_Health_Potion 150
+hh1 Coca_Cola Player_Max_HP
