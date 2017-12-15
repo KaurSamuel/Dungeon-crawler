@@ -56,9 +56,6 @@ namespace ConsoleApp1
             if (Dropped_item != "")
             {
 
-                Console.WriteLine("The enemy dropped a " + Convertor.exporter_wep(Dropped_item, "wep_name"));
-                Player_Inventory.Add_to_inventory("", Dropped_item);
-
                 Console.WriteLine("The enemy dropped a " + Dropped_item);
                 if (shield_or_nah==false)
                 {
