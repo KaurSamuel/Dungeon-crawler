@@ -176,6 +176,7 @@ namespace ConsoleApp1
         //Generates first room
         public Room GenerateStartRoom(Vector2 MapSize)
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Random rnd = new Random();
             Vector2 posTopLeft = MapSize * 0.25f;
             Vector2 posBotRight = MapSize * 0.75f;
@@ -235,6 +236,7 @@ namespace ConsoleApp1
         //Generates a random room
         public Room GenerateRoom(Vector2 pos = default(Vector2), byte sides = 0, bool events = true)
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Room room;
             string roomData = "";
             int roomWidth = rnd.Next(8, 32);
@@ -414,6 +416,7 @@ namespace ConsoleApp1
         //Prints CurRoom
         public bool DrawMap()
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Room curRoom = new Room();
 
             foreach (Room room in MapArray)

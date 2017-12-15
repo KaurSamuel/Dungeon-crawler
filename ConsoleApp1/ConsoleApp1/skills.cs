@@ -122,7 +122,7 @@ namespace ConsoleApp1
         {
             Random rng = new Random();
             int Gonna_miss_or_nah = rng.Next(0, 100);
-            if (Gonna_miss_or_nah<70)
+            if (Gonna_miss_or_nah<60)
             {
                 Console.WriteLine("you hit your enemy");
                 Console.WriteLine("The enemy is stunned!");
