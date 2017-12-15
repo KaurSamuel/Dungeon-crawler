@@ -134,18 +134,9 @@ namespace ConsoleApp1
                     Console.ReadKey();
                     return "";
                 }
-
-
-                if (int.Parse(userInput) == (Weapons_Inventory.Count + 1))
-                {
-                    return "";
-                }
-
-                else
-                    Draw_inventory();
-
+                Draw_inventory(false);
+                Console.WriteLine((Shields_Inventory.Count + 1) + ". Back");
                 Console.WriteLine("What item would you like to equip?(number)");
-
                 while (true)
 
                 {
@@ -156,7 +147,7 @@ namespace ConsoleApp1
                         if (int.Parse(userInput) <= Shields_Inventory.Count())
                         {
                             Currently_equipped_shield = Shields_Inventory[int.Parse(userInput) - 1];
-                            Console.WriteLine("You've equipped a/an " + Convertor.exporter_shield(Currently_equipped, "shield_name" + "."));
+                            Console.WriteLine("You've equipped a/an " + Convertor.exporter_shield(Currently_equipped, "shield_name" ));
                             Player_block_chance = int.Parse(Convertor.exporter_shield(Currently_equipped_shield, "shield_block_chance"));
                             Console.ReadKey();
                             return "";

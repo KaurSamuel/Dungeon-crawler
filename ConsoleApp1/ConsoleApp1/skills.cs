@@ -230,12 +230,13 @@ namespace ConsoleApp1
                     shield_or_nah = false; 
                     return (weapon);
                 }
-                else if (weapon_or_shield<50)
-                {
-                    hppots = Dungeon.ReplaceAtIndex(4, (char)rng.Next(49, 58), weapon);
-                    shield_or_nah = false;
-                    return (hppots);
-                }
+                
+                
+                    
+                    //hppots = Dungeon.ReplaceAtIndex(4, (char)rng.Next(49, 58), weapon);
+                    //shield_or_nah = false;
+                    //return (hppots);
+                
                 else
                 {
                     shield = Dungeon.ReplaceAtIndex(4, (char)rng.Next(49, 58), shield); //Generates a number between 1 and 9 and assigns it to 4th pos
