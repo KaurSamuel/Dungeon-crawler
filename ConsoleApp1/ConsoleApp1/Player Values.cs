@@ -59,7 +59,7 @@ namespace ConsoleApp1
             }
             return ("");
         }
-        public static string Draw_inventory()
+        public static string Draw_inventory(bool pause = true)
         {
             int mitukorda = 1;
 <<<<<<< HEAD
@@ -98,8 +98,13 @@ namespace ConsoleApp1
 =======
             Console.WriteLine("--------------------");
 
+<<<<<<< HEAD
+            if (pause)
+                Console.ReadKey();
+=======
             Console.ReadKey();
 >>>>>>> e7a43872f2707e897fdf3a27dc10677dd1c86b4c
+>>>>>>> f7c9901691e1772857b2c4cc26fb7954550ea000
             return ("");
         }
         public static string Equip_weapon()
@@ -115,8 +120,18 @@ namespace ConsoleApp1
                     return "";
                 }
 
+<<<<<<< HEAD
+            Draw_inventory(false);
+            Console.WriteLine((Weapons_Inventory.Count + 1) + ". Back");
+            Console.WriteLine("What item would you like to equip?(number)");
+            
+            while(true)
+            {
+                string userInput = Console.ReadLine();
+=======
                 Draw_inventory();
                 Console.WriteLine("What item would you like to equip?(number)");
+>>>>>>> f7c9901691e1772857b2c4cc26fb7954550ea000
 
                 while (true)
                 {
@@ -148,10 +163,19 @@ namespace ConsoleApp1
                     return "";
                 }
 
+<<<<<<< HEAD
+                if(int.Parse(userInput) == (Weapons_Inventory.Count + 1))
+                {
+                    return "";
+                }
+
+                else
+=======
                 Draw_inventory();
                 Console.WriteLine("What item would you like to equip?(number)");
 
                 while (true)
+>>>>>>> f7c9901691e1772857b2c4cc26fb7954550ea000
                 {
                     string userInput = Console.ReadLine();
 
@@ -175,8 +199,11 @@ namespace ConsoleApp1
                 }
                 
 
+<<<<<<< HEAD
+=======
             }
             return ("");
+>>>>>>> f7c9901691e1772857b2c4cc26fb7954550ea000
         }
     }
 }

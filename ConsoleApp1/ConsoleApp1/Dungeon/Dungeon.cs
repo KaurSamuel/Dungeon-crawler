@@ -13,10 +13,10 @@ namespace ConsoleApp1
 {
     class Dungeon
     {
-        List<Room> MapArray = new List<Room>();
+        public static List<Room> MapArray = new List<Room>();
         Vector2 CurPos = new Vector2(0.0f, 0.0f);
         Vector2 PrevPos = new Vector2(0.0f, 0.0f);
-        public Room CurRoom;
+        public static Room CurRoom;
         Random rnd = new Random();
         char doorSign = '\u0126';
 
@@ -133,6 +133,24 @@ namespace ConsoleApp1
 
                     break;
                 }
+            }
+
+            return room;
+        }
+
+        public static Room RemoveMob(string id, Room room)
+        {
+            if(room.Enemies.Remove(id))
+            {
+                int count;
+
+                count = room.roomData.IndexOf('?');
+
+                if (count != -1)
+                    room.roomData = ReplaceAtIndex(count, ' ', room.roomData);
+
+                count++;
+                
             }
 
             return room;
@@ -417,6 +435,7 @@ namespace ConsoleApp1
         public bool DrawMap()
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
+
             Room curRoom = new Room();
 
             foreach (Room room in MapArray)
@@ -426,7 +445,7 @@ namespace ConsoleApp1
             Console.WriteLine(curRoom.roomData);
 
             CurRoom = curRoom;
-
+            
             return true;
         }
 
