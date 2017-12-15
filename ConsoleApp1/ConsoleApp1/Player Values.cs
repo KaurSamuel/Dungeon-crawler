@@ -61,40 +61,26 @@ namespace ConsoleApp1
         }
         public static string Draw_inventory(bool pause = true)
         {
-            int mitukorda = 1;
-
-            Console.WriteLine("Do you wish to see your weapons or shields inventory");
-            string valik = Console.ReadLine();
-
-            if (valik == "weapons")
-            {
-                foreach (var item in Weapons_Inventory)
+            int mitukorda = 1;           
+            Console.WriteLine("--------------------");
+            foreach (var item in Weapons_Inventory)
                 {
                     string Name = Convertor.exporter_wep(item, "wep_name");
                     Console.WriteLine(mitukorda + ". " + Name);
                     mitukorda++;
                 }
-            }
-
-
-
-            if (valik == "shields")
-            {
-                Console.WriteLine("--------------------");
+            Console.WriteLine("--------------------");
+            Console.WriteLine("");
+            Console.WriteLine("--------------------");
                 foreach (var item in Shields_Inventory)
                 {
                     string Name = Convertor.exporter_shield(item, "shield_name");
                     Console.WriteLine(mitukorda + ". " + Name);
                     mitukorda++;
-                }
-            }
-
+                }            
             Console.WriteLine("--------------------");
-
-
             if (pause)
                 Console.ReadKey();
-
             return ("");
         }
         public static string Equip_weapon()
