@@ -97,12 +97,23 @@ namespace ConsoleApp1
         public static string Randon_drop_chance()
         {
             string weapon = "wA000";
+            string shield = "sA000";
             Random rng = new Random();
+            int weapon_or_shield = rng.Next(0, 100);
             int IS_gonna_drop = rng.Next(0, 100);
             if (IS_gonna_drop<30)
             {
-                weapon = Dungeon.ReplaceAtIndex(4, (char)rng.Next(48, 58), weapon); //Generates a number between 1 and 9 and assigns it to 4th pos
-                return (weapon);
+                if (weapon_or_shield<50)
+                {
+                    weapon = Dungeon.ReplaceAtIndex(4, (char)rng.Next(48, 58), weapon); //Generates a number between 1 and 9 and assigns it to 4th pos
+                    return (weapon);
+                }
+                else
+                {
+                    shield = Dungeon.ReplaceAtIndex(4, (char)rng.Next(48, 58), shield); //Generates a number between 1 and 9 and assigns it to 4th pos
+                    return (shield);
+                } 
+                
             }
 
             return ("");
