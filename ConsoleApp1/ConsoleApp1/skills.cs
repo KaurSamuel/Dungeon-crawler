@@ -10,6 +10,7 @@ namespace ConsoleApp1
 {
     class skills : Player_Values
     {
+        public static bool shield_or_nah { get; set; }
         public static int current_enemy_HP { get; set; }
         public static string[] Currently_fighting_enemys { get; set; }
         public static string Currently_fighting_enemy_ID { get; set; }
@@ -54,8 +55,24 @@ namespace ConsoleApp1
 
             if (Dropped_item != "")
             {
+<<<<<<< HEAD
                 Console.WriteLine("The enemy dropped a " + Convertor.exporter_wep(Dropped_item, "wep_name"));
                 Player_Inventory.Add_to_inventory("", Dropped_item);
+=======
+                Console.WriteLine("The enemy dropped a " + Dropped_item);
+                if (shield_or_nah==false)
+                {
+                    Player_Inventory.Add_to_inventory("weapon", Dropped_item);
+                }
+                else if (shield_or_nah==false)
+                {
+                    Player_Inventory.Add_to_inventory("hppots", Dropped_item);
+                }
+                else
+                {
+                    Player_Inventory.Add_to_inventory("shield", Dropped_item);
+                }
+>>>>>>> f7c9901691e1772857b2c4cc26fb7954550ea000
             }
 
             Dungeon.CurRoom = Dungeon.RemoveMob(Currently_fighting_enemy_ID, Dungeon.CurRoom);
@@ -171,7 +188,7 @@ namespace ConsoleApp1
             }
             else
             {
-                Console.WriteLine("You missed,you bad");
+                Console.WriteLine("You missed, too bad.");
             }
             
             return ("");
@@ -200,6 +217,7 @@ namespace ConsoleApp1
         {
             string weapon = "wA000";
             string shield = "sA000";
+            string hppots = "hA00";
             Random rng = new Random();
             int weapon_or_shield = rng.Next(0, 100);
             int IS_gonna_drop = rng.Next(0, 100);
@@ -209,11 +227,19 @@ namespace ConsoleApp1
                 if (weapon_or_shield<50)
                 {
                     weapon = Dungeon.ReplaceAtIndex(4, (char)rng.Next(49, 58), weapon); //Generates a number between 1 and 9 and assigns it to 4th pos
+                    shield_or_nah = false; 
                     return (weapon);
+                }
+                else if (weapon_or_shield<50)
+                {
+                    hppots = Dungeon.ReplaceAtIndex(4, (char)rng.Next(49, 58), weapon);
+                    shield_or_nah = false;
+                    return (hppots);
                 }
                 else
                 {
                     shield = Dungeon.ReplaceAtIndex(4, (char)rng.Next(49, 58), shield); //Generates a number between 1 and 9 and assigns it to 4th pos
+                    shield_or_nah = true;
                     return (shield);
                 } 
                 
