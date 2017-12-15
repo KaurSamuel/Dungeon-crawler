@@ -1,8 +1,8 @@
 # {ID} {potName} {healingAmount}
-hA1 Minor_Health_Potion 25
-hA2 Small_Health_Potion 50
-hB1 Medium_Health_Potion 75
-hB2 Greater_Health_Potion 100
-hC1 Big_Health_Potion 125
-hC2 Huge_Health_Potion 150
-hh1 Coca_Cola Player_Max_HP
+hA01 Minor_Health_Potion 25
+hA02 Small_Health_Potion 50
+hA03 Medium_Health_Potion 75
+hA04 Greater_Health_Potion 100
+hA05 Big_Health_Potion 125
+hA06 Huge_Health_Potion 150
+hA07 Coca_Cola Player_Max_HP
