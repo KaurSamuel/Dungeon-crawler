@@ -13,6 +13,7 @@ namespace ConsoleApp1
         public static int current_enemy_HP { get; set; }
         public static string[] Currently_fighting_enemys { get; set; }
         public static string Currently_fighting_enemy_ID { get; set; }
+        public static string Dropped_item { get; set; }
 
         public static bool Combat_start(string ID)
         {
@@ -25,7 +26,6 @@ namespace ConsoleApp1
                 Console.WriteLine(enemynb+". "+item);
                 enemynb ++;
             }
-
 
             string userInput = "";
             while (true)
@@ -43,8 +43,6 @@ namespace ConsoleApp1
             Currently_fighting_enemy_ID = Currently_fighting_enemys[int.Parse(userInput) - 1];
             current_enemy_HP = int.Parse(Convertor.export_mon(Currently_fighting_enemy_ID, "mob_hp"));
 
-            //Console.Clear();
-
             while (Turn_start())
             {
                 Console.WriteLine();
@@ -52,7 +50,14 @@ namespace ConsoleApp1
                 
             }
 
-                  
+            if (Dropped_item != "")
+            {
+                Console.WriteLine("The enemy dropped a " + Dropped_item);
+                Player_Inventory.Add_to_inventory("", Dropped_item);
+            }
+
+            Console.ReadLine();
+
             return true;
         }
         public static bool Turn_start()
@@ -61,17 +66,13 @@ namespace ConsoleApp1
             {
                 Console.WriteLine("You have died.");
                 return false;
-
-                /*Thread.Sleep(5000);
-                Console.WriteLine("Prepare to die!");
-                //Directory.SetCurrentDirectory("../../img");
-                //System.Diagnostics.Process.Start("script.bat");*/
             }
 
             if (current_enemy_HP <= 0)
             {
                 Console.WriteLine("Good job! You killed your target!");
-                Console.ReadKey();
+                Dropped_item = Randon_drop_chance();
+                
                 return false;
             }       
             
@@ -138,16 +139,16 @@ namespace ConsoleApp1
             Random rng = new Random();
             int weapon_or_shield = rng.Next(0, 100);
             int IS_gonna_drop = rng.Next(0, 100);
-            if (IS_gonna_drop<30)
+            if (IS_gonna_drop<40)
             {
                 if (weapon_or_shield<50)
                 {
-                    weapon = Dungeon.ReplaceAtIndex(4, (char)rng.Next(48, 58), weapon); //Generates a number between 1 and 9 and assigns it to 4th pos
+                    weapon = Dungeon.ReplaceAtIndex(4, (char)rng.Next(49, 58), weapon); //Generates a number between 1 and 9 and assigns it to 4th pos
                     return (weapon);
                 }
                 else
                 {
-                    shield = Dungeon.ReplaceAtIndex(4, (char)rng.Next(48, 58), shield); //Generates a number between 1 and 9 and assigns it to 4th pos
+                    shield = Dungeon.ReplaceAtIndex(4, (char)rng.Next(49, 58), shield); //Generates a number between 1 and 9 and assigns it to 4th pos
                     return (shield);
                 } 
                 

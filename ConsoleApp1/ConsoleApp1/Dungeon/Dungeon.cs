@@ -120,7 +120,7 @@ namespace ConsoleApp1
 
             for (int i = 0; i < mobCount; i++)
             {
-                id = ReplaceAtIndex(3, (char)rnd.Next(48, 54), id); // Generates a number between 1 and 6 and assigns it to 4th pos
+                id = ReplaceAtIndex(3, (char)rnd.Next(49, 54), id); // Generates a number between 1 and 6 and assigns it to 4th pos
                 
                 while(true)
                 {
