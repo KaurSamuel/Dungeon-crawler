@@ -108,13 +108,18 @@ namespace ConsoleApp1
 
                     if (int.Parse(userInput) > 0)
                     {
-                        if (int.Parse(userInput) <= Weapons_Inventory.Count())
+                        if (int.Parse(userInput) < Weapons_Inventory.Count() + 1)
                         {
                             Currently_equipped = Weapons_Inventory[int.Parse(userInput) - 1];
                             Console.WriteLine("You've equipped a/an " + Convertor.exporter_wep(Currently_equipped, "wep_name" + "."));
                             Console.ReadKey();
                             return "";
                         }
+                    }
+
+                    if (int.Parse(userInput) == Weapons_Inventory.Count + 1)
+                    {
+                        return "";
                     }
 
                     else
@@ -144,7 +149,7 @@ namespace ConsoleApp1
 
                     if (int.Parse(userInput) > 0)
                     {
-                        if (int.Parse(userInput) <= Shields_Inventory.Count())
+                        if (int.Parse(userInput) < Shields_Inventory.Count() + 1)
                         {
                             Currently_equipped_shield = Shields_Inventory[int.Parse(userInput) - 1];
                             Console.WriteLine("You've equipped a/an " + Convertor.exporter_shield(Currently_equipped, "shield_name" ));
@@ -152,6 +157,11 @@ namespace ConsoleApp1
                             Console.ReadKey();
                             return "";
                         }
+                    }
+
+                    if (int.Parse(userInput) == Shields_Inventory.Count + 1)
+                    {
+                        return "";
                     }
 
                     else
