@@ -26,42 +26,42 @@ namespace ConsoleApp1
         // hB - Tier2
         // hC - Tier3
         // hh - Special Tier, healib max eludeni
-        public HPvalues hA1()
+        public HPvalues hA01()
         {
             HPvalues minor_hp = new HPvalues();
             minor_hp.potName = "Minor Health Potion";
             minor_hp.healingAmount = "25";
             return (minor_hp);
         }
-        public HPvalues hA2()
+        public HPvalues hA02()
         {
             HPvalues small_hp = new HPvalues();
             small_hp.potName = "Small Health Potion";
             small_hp.healingAmount = "50";
             return (small_hp);
         }
-        public HPvalues hB1()
+        public HPvalues hA03()
         {
             HPvalues medium_hp = new HPvalues();
             medium_hp.potName = "Medium Health Potion";
             medium_hp.healingAmount = "75";
             return (medium_hp);
         }
-        public HPvalues hB2()
+        public HPvalues hA04()
         {
             HPvalues great_hp = new HPvalues();
             great_hp.potName = "Greater Health Potion";
             great_hp.healingAmount = "100";
             return (great_hp);
         }
-        public HPvalues hC1()
+        public HPvalues hA05()
         {
             HPvalues big_hp = new HPvalues();
             big_hp.potName = "Big Health Potion";
             big_hp.healingAmount = "125";
             return (big_hp);
         }
-        public HPvalues hC2()
+        public HPvalues hA06()
         {
             HPvalues huge_hp = new HPvalues();
             huge_hp.potName = "Huge Health Potion";
