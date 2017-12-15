@@ -92,7 +92,12 @@ namespace ConsoleApp1
                 Console.WriteLine("4. Inspect room");
                 Console.WriteLine("5. Suicide");
 
+
+
                 userInput = int.Parse(Console.ReadLine());
+
+                if (userInput == "")
+                    return false;
 
                 if (userInput == 1)
                     return Fight();

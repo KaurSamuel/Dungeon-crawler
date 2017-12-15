@@ -61,12 +61,7 @@ namespace ConsoleApp1
                 {
                     Player_Inventory.Add_to_inventory("weapon", Dropped_item);
                     Console.WriteLine(Convertor.exporter_wep(Dropped_item, "wep_name"));
-                }
-                else if (shield_or_nah==false)
-                {
-                    Player_Inventory.Add_to_inventory("hppots", Dropped_item);
-                    Console.Write("Pot(TODO)");
-                }
+                }               
                 else
                 {
                     Player_Inventory.Add_to_inventory("shield", Dropped_item);
