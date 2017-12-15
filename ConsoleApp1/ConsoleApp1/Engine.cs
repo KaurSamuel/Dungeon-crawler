@@ -16,6 +16,13 @@ namespace ConsoleApp1
         //Calls fight scene
         private bool Fight()
         {
+            if(dungeon.CurRoom.Enemies.Count == 0)
+            {
+                Console.WriteLine("There are no enemies in this room");
+                Console.ReadKey();
+                return false;
+            }
+
             string fullEnemies = "";
             foreach (string enemy in dungeon.CurRoom.Enemies)
                 fullEnemies += enemy + " ";

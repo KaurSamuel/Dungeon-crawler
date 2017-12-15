@@ -81,13 +81,20 @@ namespace ConsoleApp1
                 string userInput = Console.ReadLine();
 
                 if (int.Parse(userInput) > 0)
-                    if(int.Parse(userInput) < Weapons_Inventory.Count())
+                {
+                    if (int.Parse(userInput) <= Weapons_Inventory.Count())
                     {
-                        Currently_equipped = Weapons_Inventory[int.Parse(userInput)];
+                        Currently_equipped = Weapons_Inventory[int.Parse(userInput) - 1];
                         Console.WriteLine("You've equipped a/an " + Convertor.exporter_wep(Currently_equipped, "wep_name" + "."));
                         Console.ReadKey();
                         return "";
                     }
+                }
+
+                else
+                {
+                    Console.WriteLine("Unknown item");
+                }
             }
 
             
