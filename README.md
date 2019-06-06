@@ -1,6 +1,4 @@
 # Dungeon crawler
-
-<<<<<<< HEAD
 A GAME JUST PLAY IT
 =======
 TODO:
